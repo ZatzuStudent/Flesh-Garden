@@ -1,0 +1,293 @@
+[gd_scene load_steps=9 format=3 uid="uid://jrr0st0j5dx8"]
+
+[ext_resource type="Script" path="res://Script/Shop_pots.gd" id="1_3myyr"]
+[ext_resource type="Texture2D" uid="uid://bubuwu7a8lq1n" path="res://Art Assets/Shop_Pots.png" id="2_n7ws2"]
+[ext_resource type="Texture2D" uid="uid://c3jm0vx28q3rn" path="res://Art Assets/Shop_green.png" id="3_hmh3b"]
+[ext_resource type="Texture2D" uid="uid://dch72mv6dth78" path="res://Art Assets/Shop_red.png" id="4_u11at"]
+[ext_resource type="Texture2D" uid="uid://bucw4ojntycxt" path="res://Art Assets/Shop_green_B.png" id="4_yxub0"]
+[ext_resource type="Texture2D" uid="uid://cxseapfqx6o7a" path="res://Art Assets/Shop_red_B.png" id="6_7wdo1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onj8d"]
+size = Vector2(80.25, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w28hj"]
+size = Vector2(88.5, 34.5)
+
+[node name="Shop_Pots" type="Node2D"]
+z_index = 8
+script = ExtResource("1_3myyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_n7ws2")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-114, -50)
+scale = Vector2(0.5, 0.5)
+
+[node name="PullArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea2D"]
+position = Vector2(-234, 264)
+shape = SubResource("RectangleShape2D_onj8d")
+
+[node name="Colors" type="Node2D" parent="."]
+position = Vector2(-50, -4)
+scale = Vector2(1.2037, 1.47959)
+
+[node name="green" type="Sprite2D" parent="Colors"]
+position = Vector2(-31.5695, -59.9829)
+texture = ExtResource("3_hmh3b")
+
+[node name="green2" type="Sprite2D" parent="Colors"]
+position = Vector2(-50.6763, 67.0794)
+texture = ExtResource("3_hmh3b")
+
+[node name="green3" type="Sprite2D" parent="Colors"]
+position = Vector2(-29.908, 187.383)
+texture = ExtResource("3_hmh3b")
+
+[node name="green4" type="Sprite2D" parent="Colors"]
+position = Vector2(82.2462, -55.2518)
+texture = ExtResource("3_hmh3b")
+
+[node name="green5" type="Sprite2D" parent="Colors"]
+position = Vector2(82.2462, 71.8105)
+texture = ExtResource("3_hmh3b")
+
+[node name="green6" type="Sprite2D" parent="Colors"]
+position = Vector2(82.2462, 192.114)
+texture = ExtResource("3_hmh3b")
+
+[node name="green7" type="Sprite2D" parent="Colors"]
+position = Vector2(192.739, -54.576)
+texture = ExtResource("3_hmh3b")
+
+[node name="green8" type="Sprite2D" parent="Colors"]
+position = Vector2(203.539, 72.3173)
+texture = ExtResource("3_hmh3b")
+
+[node name="green9" type="Sprite2D" parent="Colors"]
+position = Vector2(187.754, 187.89)
+scale = Vector2(0.832, 0.686)
+texture = ExtResource("4_yxub0")
+
+[node name="red1" type="Sprite2D" parent="Colors"]
+position = Vector2(-31.5695, -59.9829)
+texture = ExtResource("4_u11at")
+
+[node name="red2" type="Sprite2D" parent="Colors"]
+position = Vector2(-50.6773, 67.0794)
+texture = ExtResource("4_u11at")
+
+[node name="red3" type="Sprite2D" parent="Colors"]
+position = Vector2(-29.908, 187.383)
+texture = ExtResource("4_u11at")
+
+[node name="red4" type="Sprite2D" parent="Colors"]
+position = Vector2(88.0616, -59.9829)
+texture = ExtResource("4_u11at")
+
+[node name="red5" type="Sprite2D" parent="Colors"]
+position = Vector2(75.6, 67.0794)
+texture = ExtResource("4_u11at")
+
+[node name="red6" type="Sprite2D" parent="Colors"]
+position = Vector2(84.7385, 187.383)
+texture = ExtResource("4_u11at")
+
+[node name="red7" type="Sprite2D" parent="Colors"]
+position = Vector2(194.4, -59.9829)
+texture = ExtResource("4_u11at")
+
+[node name="red8" type="Sprite2D" parent="Colors"]
+position = Vector2(201.877, 67.0794)
+texture = ExtResource("4_u11at")
+
+[node name="red9" type="Sprite2D" parent="Colors"]
+position = Vector2(186.093, 187.89)
+scale = Vector2(0.874497, 0.685863)
+texture = ExtResource("6_7wdo1")
+
+[node name="BuyAreas" type="Node2D" parent="."]
+
+[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
+position = Vector2(-106, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
+position = Vector2(136, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D5" type="Area2D" parent="BuyAreas"]
+position = Vector2(155, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D5"]
+position = Vector2(-106, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D6" type="Area2D" parent="BuyAreas"]
+position = Vector2(136, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D6"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D7" type="Area2D" parent="BuyAreas"]
+position = Vector2(264, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D7"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D8" type="Area2D" parent="BuyAreas"]
+position = Vector2(283, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D8"]
+position = Vector2(-82, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D9" type="Area2D" parent="BuyAreas"]
+position = Vector2(264, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D9"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="Prices" type="Node2D" parent="."]
+
+[node name="Label1" type="Label" parent="Prices"]
+offset_left = -126.0
+offset_top = -119.0
+offset_right = -43.0
+offset_bottom = -74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Prices"]
+offset_left = -151.0
+offset_top = 68.0
+offset_right = -68.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Prices"]
+offset_left = -125.0
+offset_top = 250.0
+offset_right = -42.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label4" type="Label" parent="Prices"]
+offset_left = 9.0
+offset_top = -118.0
+offset_right = 92.0
+offset_bottom = -73.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label5" type="Label" parent="Prices"]
+offset_left = 11.0
+offset_top = 69.0
+offset_right = 94.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label6" type="Label" parent="Prices"]
+offset_left = 10.0
+offset_top = 251.0
+offset_right = 93.0
+offset_bottom = 296.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label7" type="Label" parent="Prices"]
+offset_left = 141.0
+offset_top = -116.0
+offset_right = 224.0
+offset_bottom = -71.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label8" type="Label" parent="Prices"]
+offset_left = 160.0
+offset_top = 69.0
+offset_right = 243.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label9" type="Label" parent="Prices"]
+offset_left = 136.0
+offset_top = 252.0
+offset_right = 219.0
+offset_bottom = 297.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]
+[connection signal="input_event" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_input_event" binds= [0]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D2" to="." method="_on_buy_area_2d_input_event" binds= [1]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D3" to="." method="_on_buy_area_2d_input_event" binds= [2]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D4" to="." method="_on_buy_area_2d_input_event" binds= [3]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D5" to="." method="_on_buy_area_2d_input_event" binds= [4]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D6" to="." method="_on_buy_area_2d_input_event" binds= [5]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D7" to="." method="_on_buy_area_2d_input_event" binds= [6]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D8" to="." method="_on_buy_area_2d_input_event" binds= [7]]
+[connection signal="input_event" from="BuyAreas/BuyArea2D9" to="." method="_on_buy_area_2d_input_event" binds= [8]]

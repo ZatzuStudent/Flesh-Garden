@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8cmk71lupnif"]
+
+[ext_resource type="Script" path="res://Script/Plant_1.gd" id="1_70paf"]
+[ext_resource type="Texture2D" uid="uid://bwcjx36b2j7k7" path="res://Art Assets/Growth/Plant Growth Spite_0.png" id="2_yvjhp"]
+[ext_resource type="Texture2D" uid="uid://lmgc4qs1fw0f" path="res://Art/Fantasy Crops_6.png" id="3_fac5x"]
+[ext_resource type="Script" path="res://Script/GrowthComponent.gd" id="4_75psy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5f0"]
+size = Vector2(98, 82)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbq7c"]
+bg_color = Color(0.705882, 0.588235, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq2kn"]
+bg_color = Color(0.301961, 0.701961, 0.294118, 1)
+
+[node name="Plant1" type="Node2D"]
+script = ExtResource("1_70paf")
+
+[node name="PlantBody" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_yvjhp")
+
+[node name="GrowthTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CropTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["plants"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(11, 43)
+shape = SubResource("RectangleShape2D_nq5f0")
+
+[node name="BloodWater" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 2)
+offset_left = -53.0
+offset_top = 107.0
+offset_right = 53.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_nbq7c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hq2kn")
+value = 30.0
+show_percentage = false
+
+[node name="HarvestButton" type="Button" parent="."]
+offset_left = -38.0
+offset_top = 20.0
+offset_right = 51.0
+offset_bottom = 95.0
+
+[node name="NeedBlood" type="Sprite2D" parent="."]
+position = Vector2(87, -29)
+scale = Vector2(2.55625, 2.36641)
+texture = ExtResource("3_fac5x")
+
+[node name="GrowthComponent" type="Node2D" parent="."]
+script = ExtResource("4_75psy")
+
+[connection signal="eyeball_value" from="." to="GrowthComponent" method="_on_plant_1_eyeball_value"]
+[connection signal="timeout" from="GrowthTimer" to="GrowthComponent" method="_on_growth_timer_timeout"]
+[connection signal="timeout" from="CropTimer" to="GrowthComponent" method="_on_crop_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="GrowthComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="GrowthComponent" method="_on_area_2d_area_exited"]
+[connection signal="value_changed" from="BloodWater" to="GrowthComponent" method="_on_blood_water_value_changed"]
+[connection signal="button_down" from="HarvestButton" to="." method="_on_harvest_button_button_down"]
+[connection signal="button_down" from="HarvestButton" to="GrowthComponent" method="_on_harvest_button_button_down"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7yt1nyxkjtgk"]
+
+[ext_resource type="Texture2D" uid="uid://hy7ew54f2jpk" path="res://Art Assets/Seed_4.png" id="1_avkak"]
+[ext_resource type="Script" path="res://Script/FrogEater2.gd" id="1_b6lpf"]
+[ext_resource type="Script" path="res://Script/PlantSeedComponent_2.gd" id="4_xl7au"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cs5to"]
+radius = 40.1995
+
+[node name="Seed_4" type="Node2D"]
+script = ExtResource("1_b6lpf")
+
+[node name="Area2D" type="Area2D" parent="." groups=["seed_4", "seeds"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cs5to")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 11
+texture = ExtResource("1_avkak")
+
+[node name="PlantSeedComponent" type="Node2D" parent="."]
+script = ExtResource("4_xl7au")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D" to="PlantSeedComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

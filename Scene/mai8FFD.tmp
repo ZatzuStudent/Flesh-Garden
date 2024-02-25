@@ -1,0 +1,131 @@
+[gd_scene load_steps=22 format=3 uid="uid://8vyi52u1it48"]
+
+[ext_resource type="Script" path="res://Script/main.gd" id="1_ixatm"]
+[ext_resource type="Texture2D" uid="uid://fm8msb86msot" path="res://Art Assets/Background.png" id="2_upmqw"]
+[ext_resource type="PackedScene" uid="uid://du25gbhfvxjon" path="res://Scene/blood_can.tscn" id="3_e4dxx"]
+[ext_resource type="PackedScene" uid="uid://b0nont26ebbv" path="res://Scene/cauldron.tscn" id="5_ocog0"]
+[ext_resource type="PackedScene" uid="uid://bdp48oslgq81u" path="res://Scene/eye_ball.tscn" id="6_i160k"]
+[ext_resource type="Texture2D" uid="uid://c42b6a17n1760" path="res://Art Assets/Window.png" id="7_iy3n7"]
+[ext_resource type="PackedScene" uid="uid://bkpti1lp3tfcc" path="res://Scene/pot_small.tscn" id="8_yl8y4"]
+[ext_resource type="PackedScene" uid="uid://cf8dvdle3388t" path="res://Scene/table.tscn" id="9_c41lv"]
+[ext_resource type="PackedScene" uid="uid://wybsohnma5ca" path="res://Scene/seed_1.tscn" id="9_d851r"]
+[ext_resource type="Texture2D" uid="uid://cuit3mjiyt6jd" path="res://Art Assets/Tree3.png" id="12_yqjqo"]
+[ext_resource type="Texture2D" uid="uid://cskienbp2fh6i" path="res://Art Assets/Tree Leaves.png" id="13_hg4my"]
+[ext_resource type="PackedScene" uid="uid://cljkgx06to2le" path="res://Scene/stool.tscn" id="14_gceth"]
+[ext_resource type="PackedScene" uid="uid://cd44jek2l2vun" path="res://Scene/spray.tscn" id="15_alpx2"]
+[ext_resource type="PackedScene" uid="uid://bcswjkhcldxwc" path="res://Scene/wall_shelves.tscn" id="15_ij3g4"]
+[ext_resource type="PackedScene" uid="uid://dgkrv7baryfaf" path="res://Scene/seed_2.tscn" id="16_i623n"]
+[ext_resource type="PackedScene" uid="uid://cl7vj3ximt1ub" path="res://Scene/stick.tscn" id="17_8ia3o"]
+[ext_resource type="PackedScene" uid="uid://cjumk3w060xgh" path="res://Scene/PotHanging.tscn" id="17_to7am"]
+[ext_resource type="PackedScene" uid="uid://vax0qbx8ttty" path="res://Scene/seed_3.tscn" id="19_rw7lc"]
+[ext_resource type="PackedScene" uid="uid://bo8k6pfmcbe00" path="res://Scene/Shop_Seeds.tscn" id="20_a3ovp"]
+[ext_resource type="PackedScene" uid="uid://d1wq3m0lyru4u" path="res://Scene/Shop_Upgrades.tscn" id="21_m7waa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnnvw"]
+size = Vector2(1531, 124)
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ixatm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("2_upmqw")
+
+[node name="BloodCan" parent="." instance=ExtResource("3_e4dxx")]
+z_index = 1
+position = Vector2(648, 395)
+scale = Vector2(0.7, 1)
+
+[node name="Cauldron" parent="." instance=ExtResource("5_ocog0")]
+position = Vector2(-507, 335)
+
+[node name="EyeBall" parent="." instance=ExtResource("6_i160k")]
+position = Vector2(-856, -60)
+
+[node name="Window" type="Sprite2D" parent="."]
+position = Vector2(-446, -232)
+texture = ExtResource("7_iy3n7")
+
+[node name="Testing Buttons" type="Node" parent="."]
+
+[node name="Button" type="Button" parent="Testing Buttons"]
+offset_left = -937.0
+offset_top = -507.0
+offset_right = -807.0
+offset_bottom = -406.0
+
+[node name="Button2" type="Button" parent="Testing Buttons"]
+offset_left = -935.0
+offset_top = -362.0
+offset_right = -822.0
+offset_bottom = -246.0
+
+[node name="Button3" type="Button" parent="Testing Buttons"]
+offset_left = -940.0
+offset_top = -221.0
+offset_right = -831.0
+offset_bottom = -128.0
+
+[node name="spawn pot" type="Button" parent="Testing Buttons"]
+offset_left = -887.0
+offset_top = 247.0
+offset_right = -806.0
+offset_bottom = 326.0
+
+[node name="Pot" parent="." instance=ExtResource("8_yl8y4")]
+position = Vector2(721, 86)
+
+[node name="Seed" parent="." instance=ExtResource("9_d851r")]
+position = Vector2(-643, -477)
+
+[node name="Table" parent="." instance=ExtResource("9_c41lv")]
+position = Vector2(382, 294)
+
+[node name="Tree" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree"]
+position = Vector2(702, -41)
+texture = ExtResource("12_yqjqo")
+
+[node name="TreeLeavesSprite2D" type="Sprite2D" parent="Tree"]
+position = Vector2(745, -450)
+texture = ExtResource("13_hg4my")
+
+[node name="Spray" parent="." instance=ExtResource("15_alpx2")]
+position = Vector2(180, 388)
+
+[node name="Table2" parent="." instance=ExtResource("15_ij3g4")]
+position = Vector2(259, -65)
+
+[node name="Seed_2" parent="." instance=ExtResource("16_i623n")]
+position = Vector2(-802, 60)
+
+[node name="Stick" parent="." instance=ExtResource("17_8ia3o")]
+position = Vector2(-521, -5)
+
+[node name="HangingArea2D" type="Area2D" parent="." groups=["platform_hanging"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HangingArea2D"]
+position = Vector2(102.5, -652)
+shape = SubResource("RectangleShape2D_hnnvw")
+
+[node name="PotHanging" parent="." instance=ExtResource("17_to7am")]
+position = Vector2(15, -499)
+
+[node name="Seed_3" parent="." instance=ExtResource("19_rw7lc")]
+position = Vector2(-699, -281)
+
+[node name="Table3" parent="." instance=ExtResource("14_gceth")]
+position = Vector2(-61, 271)
+
+[node name="Shop_Seeds" parent="." instance=ExtResource("20_a3ovp")]
+position = Vector2(736, -737)
+
+[node name="Shop_Upgrades" parent="." instance=ExtResource("21_m7waa")]
+position = Vector2(602, -737)
+
+[connection signal="button_down" from="Testing Buttons/Button" to="." method="_on_button_button_down"]
+[connection signal="button_down" from="Testing Buttons/Button2" to="." method="_on_button_2_button_down"]
+[connection signal="button_down" from="Testing Buttons/Button3" to="." method="_on_button_3_button_down"]
+[connection signal="button_down" from="Testing Buttons/spawn pot" to="." method="_on_spawn_pot_button_down"]

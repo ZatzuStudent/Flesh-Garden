@@ -1,0 +1,394 @@
+[gd_scene load_steps=32 format=3 uid="uid://8vyi52u1it48"]
+
+[ext_resource type="Script" path="res://Script/main.gd" id="1_ixatm"]
+[ext_resource type="Texture2D" uid="uid://5si1gad3nh8f" path="res://Art Assets/White.png" id="2_o48cu"]
+[ext_resource type="Texture2D" uid="uid://fm8msb86msot" path="res://Art Assets/Background.png" id="2_upmqw"]
+[ext_resource type="PackedScene" uid="uid://du25gbhfvxjon" path="res://Scene/blood_can.tscn" id="3_e4dxx"]
+[ext_resource type="PackedScene" uid="uid://b0nont26ebbv" path="res://Scene/cauldron.tscn" id="5_ocog0"]
+[ext_resource type="Texture2D" uid="uid://c42b6a17n1760" path="res://Art Assets/Window.png" id="7_iy3n7"]
+[ext_resource type="PackedScene" uid="uid://brd7g7p68sc3d" path="res://Scene/tree.tscn" id="7_wsxbs"]
+[ext_resource type="PackedScene" uid="uid://cf8dvdle3388t" path="res://Scene/table.tscn" id="9_c41lv"]
+[ext_resource type="Texture2D" uid="uid://dtd1hpvq2308j" path="res://Art Assets/Placer.png" id="9_eqmot"]
+[ext_resource type="Script" path="res://Script/Products.gd" id="15_fqxdp"]
+[ext_resource type="PackedScene" uid="uid://cl7vj3ximt1ub" path="res://Scene/Stick.tscn" id="17_8ia3o"]
+[ext_resource type="Texture2D" uid="uid://dq7o53dt2uobs" path="res://Art Assets/Growth/Plant Growth Spite_23.png" id="18_psm56"]
+[ext_resource type="Texture2D" uid="uid://cinsvcn2e5rqe" path="res://Art Assets/Growth/Plant Growth Spite_24.png" id="19_mw66e"]
+[ext_resource type="PackedScene" uid="uid://bo8k6pfmcbe00" path="res://Scene/Shop_Seeds.tscn" id="20_a3ovp"]
+[ext_resource type="Texture2D" uid="uid://p4ia6em87nup" path="res://Art Assets/Growth/Plant Growth Spite_25.png" id="20_x6qci"]
+[ext_resource type="Texture2D" uid="uid://bqqappbaqmete" path="res://Art Assets/Growth/Plant Growth Spite_26.png" id="21_lfoio"]
+[ext_resource type="PackedScene" uid="uid://bcswjkhcldxwc" path="res://Scene/wall_shelves.tscn" id="22_8c0be"]
+[ext_resource type="PackedScene" uid="uid://bo73r42gcrfnv" path="res://Scene/Shop_Upgrade.tscn" id="22_81gtp"]
+[ext_resource type="Texture2D" uid="uid://bvwwr1ljdpww1" path="res://Art Assets/Growth/Plant Growth Spite_22.png" id="22_o4dva"]
+[ext_resource type="PackedScene" uid="uid://jrr0st0j5dx8" path="res://Scene/Shop_pots.tscn" id="23_6soky"]
+[ext_resource type="PackedScene" uid="uid://cljkgx06to2le" path="res://Scene/stool.tscn" id="23_lky02"]
+[ext_resource type="Texture2D" uid="uid://st8fx3tur72o" path="res://Art/Drier Basket.png" id="25_3j4go"]
+[ext_resource type="PackedScene" uid="uid://deymlppnnrqie" path="res://Scene/frog.tscn" id="26_xx58y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hnnvw"]
+size = Vector2(950, 304)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baq45"]
+size = Vector2(141, 113)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3h6o0"]
+radius = 65.6201
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1yg7l"]
+size = Vector2(410, 1121)
+
+[sub_resource type="Animation" id="Animation_mqrtw"]
+resource_name = "Sunrise"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Night:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.00784314, 0.2, 0.313726, 0.54902), Color(0.00784314, 0.2, 0.313726, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ioca6"]
+resource_name = "Sunset"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sunset:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.878431, 0.380392, 0.25098, 0), Color(0.879149, 0.381722, 0.251907, 0.219608)]
+}
+
+[sub_resource type="Animation" id="Animation_qewsi"]
+resource_name = "night_time"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sunset:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.879149, 0.381722, 0.251907, 0.219608), Color(0.878431, 0.380392, 0.25098, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Night:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.00784314, 0.2, 0.313726, 0), Color(0.00784314, 0.2, 0.313726, 0.54902)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2alo"]
+_data = {
+"Sunrise": SubResource("Animation_mqrtw"),
+"Sunset": SubResource("Animation_ioca6"),
+"night_time": SubResource("Animation_qewsi")
+}
+
+[node name="Main" type="Node"]
+script = ExtResource("1_ixatm")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="ClockTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+texture = ExtResource("2_upmqw")
+
+[node name="Window" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(-458, -246)
+texture = ExtResource("7_iy3n7")
+
+[node name="BloodCan" parent="." instance=ExtResource("3_e4dxx")]
+z_index = 8
+position = Vector2(632, 424)
+scale = Vector2(0.7, 1)
+
+[node name="Cauldron" parent="." instance=ExtResource("5_ocog0")]
+position = Vector2(-507, 335)
+
+[node name="HangingArea2D" type="Area2D" parent="." groups=["platform_hanging"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HangingArea2D"]
+position = Vector2(195, -706)
+shape = SubResource("RectangleShape2D_hnnvw")
+
+[node name="Tree" parent="." instance=ExtResource("7_wsxbs")]
+
+[node name="GetArea2D" type="Area2D" parent="."]
+position = Vector2(859, 450)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GetArea2D"]
+shape = SubResource("RectangleShape2D_baq45")
+
+[node name="Sprite2D5" type="Sprite2D" parent="GetArea2D"]
+texture = ExtResource("9_eqmot")
+
+[node name="Money" type="Label" parent="."]
+offset_left = -919.0
+offset_top = 404.0
+offset_right = -783.0
+offset_bottom = 503.0
+theme_override_font_sizes/font_size = 50
+text = "0000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Products" type="Node2D" parent="."]
+script = ExtResource("15_fqxdp")
+
+[node name="Sprite2D" type="Sprite2D" parent="Products"]
+position = Vector2(-861, -433)
+texture = ExtResource("18_psm56")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Products"]
+position = Vector2(-870, -279)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("19_mw66e")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Products"]
+position = Vector2(-858, 66)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("20_x6qci")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Products"]
+position = Vector2(-855, -107)
+texture = ExtResource("21_lfoio")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Products"]
+position = Vector2(-869, 241)
+texture = ExtResource("22_o4dva")
+
+[node name="Label1" type="Label" parent="Products"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -833.0
+offset_top = -423.0
+offset_right = -775.0
+offset_bottom = -351.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Label2" type="Label" parent="Products"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -843.0
+offset_top = -288.0
+offset_right = -785.0
+offset_bottom = -216.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Label3" type="Label" parent="Products"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -833.0
+offset_top = 85.0
+offset_right = -775.0
+offset_bottom = 157.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Label4" type="Label" parent="Products"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -833.0
+offset_top = -87.0
+offset_right = -775.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Label5" type="Label" parent="Products"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -847.0
+offset_top = 260.0
+offset_right = -789.0
+offset_bottom = 332.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "00"
+
+[node name="Node2D2" type="Node2D" parent="Products"]
+position = Vector2(1155, 207)
+
+[node name="Eye_Area2D" type="Area2D" parent="Products/Node2D2"]
+position = Vector2(-1155, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Products/Node2D2/Eye_Area2D"]
+position = Vector2(-867, -434)
+shape = SubResource("CircleShape2D_3h6o0")
+
+[node name="hand_Area2D" type="Area2D" parent="Products/Node2D2"]
+position = Vector2(-1155, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Products/Node2D2/hand_Area2D"]
+position = Vector2(-861, -271)
+shape = SubResource("CircleShape2D_3h6o0")
+
+[node name="Skull_Area2D" type="Area2D" parent="Products/Node2D2"]
+position = Vector2(-1155, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Products/Node2D2/Skull_Area2D"]
+position = Vector2(-851, 63)
+shape = SubResource("CircleShape2D_3h6o0")
+
+[node name="Foot_Area2D" type="Area2D" parent="Products/Node2D2"]
+position = Vector2(-1155, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Products/Node2D2/Foot_Area2D"]
+position = Vector2(-860, -102)
+shape = SubResource("CircleShape2D_3h6o0")
+
+[node name="Heart_Area2D" type="Area2D" parent="Products/Node2D2"]
+position = Vector2(-1155, -207)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Products/Node2D2/Heart_Area2D"]
+position = Vector2(-868, 251)
+shape = SubResource("CircleShape2D_3h6o0")
+
+[node name="Table" parent="." instance=ExtResource("9_c41lv")]
+position = Vector2(416, 284)
+
+[node name="DownBoarderArea2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownBoarderArea2D" groups=["down_boarder"]]
+position = Vector2(379, 88)
+shape = SubResource("RectangleShape2D_1yg7l")
+
+[node name="Shops" type="Node2D" parent="."]
+
+[node name="Shop_Pots" parent="Shops" instance=ExtResource("23_6soky")]
+position = Vector2(1154, -60)
+
+[node name="Shop_Upgrade" parent="Shops" instance=ExtResource("22_81gtp")]
+position = Vector2(1154, -152)
+
+[node name="Shop_Seeds" parent="Shops" instance=ExtResource("20_a3ovp")]
+position = Vector2(1154, 36)
+
+[node name="Day" type="Label" parent="."]
+offset_left = -749.0
+offset_top = -527.0
+offset_right = -687.0
+offset_bottom = -434.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="Day2" type="Label" parent="."]
+offset_left = -135.0
+offset_top = -506.0
+offset_right = 245.0
+offset_bottom = -434.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "1"
+
+[node name="Night" type="Sprite2D" parent="."]
+modulate = Color(0.00784314, 0.2, 0.313726, 0)
+z_index = 50
+position = Vector2(2313, -89)
+scale = Vector2(21.1229, 10.9333)
+texture = ExtResource("2_o48cu")
+
+[node name="Sunset" type="Sprite2D" parent="."]
+modulate = Color(0.878431, 0.380392, 0.25098, 0)
+z_index = 50
+position = Vector2(2308, -68)
+scale = Vector2(21.1229, 10.9333)
+texture = ExtResource("2_o48cu")
+
+[node name="DayColors" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a2alo")
+}
+
+[node name="Wall Shelves" parent="." instance=ExtResource("22_8c0be")]
+visible = false
+position = Vector2(272, -88)
+
+[node name="Stool" parent="." instance=ExtResource("23_lky02")]
+visible = false
+position = Vector2(-81, 275)
+
+[node name="DrierBasket" type="Sprite2D" parent="."]
+position = Vector2(-604, 488)
+texture = ExtResource("25_3j4go")
+
+[node name="Frog" parent="." instance=ExtResource("26_xx58y")]
+position = Vector2(-126, 463)
+
+[node name="Stick" parent="." instance=ExtResource("17_8ia3o")]
+position = Vector2(-464, 181)
+
+[connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="area_entered" from="GetArea2D" to="." method="_on_get_area_2d_area_entered"]
+[connection signal="area_exited" from="GetArea2D" to="." method="_on_get_area_2d_area_exited"]
+[connection signal="input_event" from="Products/Node2D2/Eye_Area2D" to="Products" method="_on_eye_area_2d_input_event"]
+[connection signal="input_event" from="Products/Node2D2/hand_Area2D" to="Products" method="_on_hand_area_2d_input_event"]
+[connection signal="input_event" from="Products/Node2D2/Skull_Area2D" to="Products" method="_on_skull_area_2d_input_event"]
+[connection signal="input_event" from="Products/Node2D2/Foot_Area2D" to="Products" method="_on_foot_area_2d_input_event"]
+[connection signal="input_event" from="Products/Node2D2/Heart_Area2D" to="Products" method="_on_heart_area_2d_input_event"]

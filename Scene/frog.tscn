@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://deymlppnnrqie"]
+
+[ext_resource type="Texture2D" uid="uid://dpwsl7n22e4xj" path="res://Art Assets/Frog_1.png" id="1_eyb4t"]
+[ext_resource type="Script" path="res://Script/frog.gd" id="1_j3tie"]
+[ext_resource type="Texture2D" uid="uid://be2jg0yyog3pq" path="res://Art Assets/Frog_mouth.png" id="2_gxkh2"]
+[ext_resource type="AudioStream" uid="uid://gdj7hopm4ewa" path="res://Audio/FrogCroak.mp3" id="3_q0vnq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7ql0"]
+radius = 72.1734
+
+[node name="Frog" type="Node2D"]
+script = ExtResource("1_j3tie")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(15.5, 49.5)
+scale = Vector2(2.6338, 1.73973)
+texture = ExtResource("2_gxkh2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_eyb4t")
+
+[node name="Area2D" type="Area2D" parent="." groups=["frogs"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(43, 44)
+shape = SubResource("CircleShape2D_b7ql0")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q0vnq")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

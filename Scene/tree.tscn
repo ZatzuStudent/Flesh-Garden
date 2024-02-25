@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://brd7g7p68sc3d"]
+
+[ext_resource type="Script" path="res://Script/Components/tree.gd" id="1_okutc"]
+[ext_resource type="Texture2D" uid="uid://cskienbp2fh6i" path="res://Art Assets/Tree Leaves.png" id="2_4swiy"]
+[ext_resource type="Texture2D" uid="uid://yohwiwtvs2vd" path="res://Art Assets/Tree1.png" id="3_2sirv"]
+[ext_resource type="Script" path="res://Script/fruitHanger.gd" id="4_n245u"]
+
+[node name="Tree" type="Node2D"]
+script = ExtResource("1_okutc")
+
+[node name="FruitHanger3" type="Node2D" parent="."]
+position = Vector2(775, -216)
+script = ExtResource("4_n245u")
+
+[node name="NewFruitTimer" type="Timer" parent="FruitHanger3"]
+one_shot = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(702, -41)
+texture = ExtResource("3_2sirv")
+
+[node name="FruitHanger1" type="Node2D" parent="."]
+position = Vector2(596, -360)
+script = ExtResource("4_n245u")
+
+[node name="NewFruitTimer" type="Timer" parent="FruitHanger1"]
+one_shot = true
+
+[node name="FruitHanger2" type="Node2D" parent="."]
+position = Vector2(918, -388)
+script = ExtResource("4_n245u")
+
+[node name="NewFruitTimer" type="Timer" parent="FruitHanger2"]
+one_shot = true
+
+[node name="TreeLeavesSprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(745, -450)
+texture = ExtResource("2_4swiy")
+
+[connection signal="timeout" from="FruitHanger3/NewFruitTimer" to="FruitHanger3" method="_on_new_fruit_timer_timeout"]
+[connection signal="timeout" from="FruitHanger1/NewFruitTimer" to="FruitHanger1" method="_on_new_fruit_timer_timeout"]
+[connection signal="timeout" from="FruitHanger2/NewFruitTimer" to="FruitHanger2" method="_on_new_fruit_timer_timeout"]

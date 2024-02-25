@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://du25gbhfvxjon"]
+
+[ext_resource type="Script" path="res://Script/BloodCan.gd" id="1_0eriw"]
+[ext_resource type="Script" path="res://Script/Components/HoldComponent.gd" id="3_bj3kv"]
+[ext_resource type="AudioStream" uid="uid://d26e1jfkf0vkv" path="res://Audio/Blooding.mp3" id="4_gb0lx"]
+[ext_resource type="Texture2D" uid="uid://bu5xnshi86hf8" path="res://Art Assets/BloodCan_anim_3.png" id="5_gyn1l"]
+[ext_resource type="Texture2D" uid="uid://ce1a5hyqy0lqd" path="res://Art Assets/BloodCan_anim_2.png" id="6_nk2m3"]
+[ext_resource type="Texture2D" uid="uid://dsdpx08ryypvy" path="res://Art Assets/BloodCan_anim_1.png" id="7_2shmx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f3cq0"]
+size = Vector2(132, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbpcf"]
+size = Vector2(158, 126)
+
+[sub_resource type="Animation" id="Animation_va4m1"]
+resource_name = "blooding"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_gyn1l"), ExtResource("6_nk2m3"), ExtResource("7_2shmx")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ikgvb"]
+_data = {
+"blooding": SubResource("Animation_va4m1")
+}
+
+[node name="BloodCan" type="Node2D"]
+script = ExtResource("1_0eriw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 1024
+visibility_layer = 1024
+position = Vector2(-37, -3)
+texture = ExtResource("5_gyn1l")
+
+[node name="Area2DWatering" type="Area2D" parent="." groups=["bloodCan"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DWatering"]
+position = Vector2(-208, 102)
+shape = SubResource("RectangleShape2D_f3cq0")
+
+[node name="HoldComponent" type="Node2D" parent="."]
+script = ExtResource("3_bj3kv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(72, -27)
+shape = SubResource("RectangleShape2D_nbpcf")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gb0lx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ikgvb")
+}
+
+[connection signal="area_entered" from="Area2DWatering" to="." method="_on_area_2d_watering_area_entered"]
+[connection signal="area_exited" from="Area2DWatering" to="." method="_on_area_2d_watering_area_exited"]
+[connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]

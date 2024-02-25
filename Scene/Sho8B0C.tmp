@@ -1,0 +1,148 @@
+[gd_scene load_steps=12 format=3 uid="uid://bo8k6pfmcbe00"]
+
+[ext_resource type="Script" path="res://Script/Shop_Seeds.gd" id="1_1bvlx"]
+[ext_resource type="Texture2D" uid="uid://b6eqik2ps65eo" path="res://Art Assets/Filter.png" id="1_ccs7w"]
+[ext_resource type="Texture2D" uid="uid://dq7o53dt2uobs" path="res://Art Assets/Growth/Plant Growth Spite_23.png" id="2_1vrlx"]
+[ext_resource type="Texture2D" uid="uid://cinsvcn2e5rqe" path="res://Art Assets/Growth/Plant Growth Spite_24.png" id="3_61b8q"]
+[ext_resource type="Texture2D" uid="uid://p4ia6em87nup" path="res://Art Assets/Growth/Plant Growth Spite_25.png" id="4_dgc6x"]
+[ext_resource type="Texture2D" uid="uid://bqqappbaqmete" path="res://Art Assets/Growth/Plant Growth Spite_26.png" id="5_mwjal"]
+[ext_resource type="Texture2D" uid="uid://cj7n7xqxhp5b5" path="res://Art Assets/Hanging Pot.png" id="7_dtown"]
+[ext_resource type="Texture2D" uid="uid://b6f4skmyjdhfp" path="res://Art Assets/Pot large.png" id="8_lkbbw"]
+[ext_resource type="Texture2D" uid="uid://b5nqye7vyw35k" path="res://Art Assets/Pot Small.png" id="9_lqt8o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onj8d"]
+size = Vector2(100.5, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w28hj"]
+size = Vector2(79, 41)
+
+[node name="Shop_Seeds" type="Node2D"]
+script = ExtResource("1_1bvlx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.136588, 0.357176)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-56, -41)
+scale = Vector2(0.0365232, 0.0517361)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+position = Vector2(-328, 148)
+scale = Vector2(0.0365232, 0.0517361)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+position = Vector2(-209, -46)
+scale = Vector2(0.0365232, 0.0517361)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D9" type="Sprite2D" parent="."]
+position = Vector2(-203, 160)
+scale = Vector2(0.0365232, 0.0517361)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D10" type="Sprite2D" parent="."]
+position = Vector2(59, 132)
+scale = Vector2(0.0365232, 0.0517361)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(72, -38.5312)
+scale = Vector2(0.0365232, 0.039757)
+texture = ExtResource("1_ccs7w")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(73, 209)
+scale = Vector2(0.0568358, 0.0600695)
+texture = ExtResource("1_ccs7w")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-114, -50)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlantGrowthSpite23" type="Sprite2D" parent="Node2D"]
+position = Vector2(92, -136)
+texture = ExtResource("2_1vrlx")
+
+[node name="PlantGrowthSpite24" type="Sprite2D" parent="Node2D"]
+position = Vector2(390, -152)
+texture = ExtResource("3_61b8q")
+
+[node name="PlantGrowthSpite25" type="Sprite2D" parent="Node2D"]
+position = Vector2(358, 204)
+texture = ExtResource("4_dgc6x")
+
+[node name="PlantGrowthSpite26" type="Sprite2D" parent="Node2D"]
+position = Vector2(86, 218)
+texture = ExtResource("5_mwjal")
+
+[node name="PlantGrowthSpite27" type="Sprite2D" parent="Node2D"]
+position = Vector2(-178, 220)
+texture = ExtResource("7_dtown")
+
+[node name="PlantGrowthSpite28" type="Sprite2D" parent="Node2D"]
+position = Vector2(-190, -72)
+texture = ExtResource("8_lkbbw")
+
+[node name="PlantGrowthSpite29" type="Sprite2D" parent="Node2D"]
+position = Vector2(-438, 320)
+texture = ExtResource("9_lqt8o")
+
+[node name="PullArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea2D"]
+position = Vector2(71.75, 209)
+shape = SubResource("RectangleShape2D_onj8d")
+
+[node name="BuyArea2D1" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D1"]
+position = Vector2(-62, -43)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D2"]
+position = Vector2(72, -42)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D3" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D3"]
+position = Vector2(-57, 122)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D4" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D4"]
+position = Vector2(56, 127)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D5" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D5"]
+position = Vector2(-206, -38)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D6" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D6"]
+position = Vector2(-202, 165)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D7" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyArea2D7"]
+position = Vector2(-332, 155)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]
+[connection signal="input_event" from="BuyArea2D1" to="." method="_on_buy_area_2d_1_input_event"]
+[connection signal="input_event" from="BuyArea2D2" to="." method="_on_buy_area_2d_2_input_event"]
+[connection signal="input_event" from="BuyArea2D3" to="." method="_on_buy_area_2d_3_input_event"]
+[connection signal="input_event" from="BuyArea2D4" to="." method="_on_buy_area_2d_4_input_event"]
+[connection signal="input_event" from="BuyArea2D5" to="." method="_on_buy_area_2d_5_input_event"]
+[connection signal="input_event" from="BuyArea2D6" to="." method="_on_buy_area_2d_6_input_event"]
+[connection signal="input_event" from="BuyArea2D7" to="." method="_on_buy_area_2d_7_input_event"]

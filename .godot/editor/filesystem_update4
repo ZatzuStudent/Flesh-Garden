@@ -1,0 +1,17 @@
+res://Scene/main.tscn
+res://Script/cauldron.gd
+res://Scene/Shop_pots.tscn
+res://Scene/Shop_Seeds.tscn
+res://Script/pot_small.gd
+res://Scene/pot_small_1.tscn
+res://Scene/frog.tscn
+res://Script/Shop_pots.gd
+res://Script/Shop_Seeds.gd
+res://Scene/Pot_Hanging_1.tscn
+res://Script/PotHanging.gd
+res://Scene/pot_big_1.tscn
+res://Script/FrogEater.gd
+res://Scene/Pot_Hanging_3.tscn
+res://Scene/Pot_Hanging_2.tscn
+res://Scene/plant_1.tscn
+res://Scene/cauldron.tscn

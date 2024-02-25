@@ -1,0 +1,220 @@
+[gd_scene load_steps=26 format=3 uid="uid://b0nont26ebbv"]
+
+[ext_resource type="Script" path="res://Script/cauldron.gd" id="1_h4743"]
+[ext_resource type="Texture2D" uid="uid://7w7x68ddt0vh" path="res://Art Assets/Bucket.png" id="2_2i6pj"]
+[ext_resource type="AudioStream" uid="uid://bvaxgv666hejl" path="res://Audio/Poof.mp3" id="3_wgkag"]
+[ext_resource type="AudioStream" uid="uid://8xxsqqwixh63" path="res://Audio/Bucket_1.mp3" id="4_lcy2k"]
+[ext_resource type="AudioStream" uid="uid://c6cf7w8smj15h" path="res://Audio/Bucket_2.mp3" id="5_xrf8a"]
+[ext_resource type="AudioStream" uid="uid://dgulh8go83csp" path="res://Audio/Water_Splash.mp3" id="6_saafq"]
+[ext_resource type="AudioStream" uid="uid://brdg7flkgjg3u" path="res://Audio/Cauldron_1.mp3" id="7_c3w10"]
+[ext_resource type="Texture2D" uid="uid://dfjbi3xvcvgsi" path="res://Art Assets/Splash_1.png" id="7_udt5e"]
+[ext_resource type="Texture2D" uid="uid://b1oa4je6a1mr5" path="res://Art Assets/Splash_2.png" id="8_g84kj"]
+[ext_resource type="AudioStream" uid="uid://drrc3o5y3j06v" path="res://Audio/Cauldron_2.mp3" id="8_iq2pv"]
+[ext_resource type="Texture2D" uid="uid://djmwoyydn7lk8" path="res://Art Assets/Splash_3.png" id="9_t3j4q"]
+[ext_resource type="Texture2D" uid="uid://cogpgufm41cpd" path="res://Art Assets/Splash_5.png" id="10_bcmdj"]
+[ext_resource type="Texture2D" uid="uid://dw7knliocyj52" path="res://Art Assets/Splash_6.png" id="11_0weg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghg7p"]
+size = Vector2(6759.25, 3978)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o8p"]
+size = Vector2(163, 33)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr1ce"]
+radius = 191.024
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlh2j"]
+size = Vector2(14, 145.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohboj"]
+size = Vector2(152, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htlnx"]
+size = Vector2(14, 251)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vpu33"]
+radius = 419.463
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbwvj"]
+size = Vector2(50.5479, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3g48"]
+size = Vector2(154.5, 384)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3iifv"]
+radius = 19.0263
+
+[sub_resource type="Animation" id="Animation_52abl"]
+resource_name = "splash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_udt5e"), ExtResource("8_g84kj"), ExtResource("9_t3j4q"), ExtResource("10_bcmdj"), ExtResource("11_0weg6"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgtcy"]
+_data = {
+"splash": SubResource("Animation_52abl")
+}
+
+[node name="Cauldron" type="Node2D"]
+script = ExtResource("1_h4743")
+
+[node name="Potion limit" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(676, 112)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Potion limit"]
+position = Vector2(-541, 1901)
+shape = SubResource("RectangleShape2D_ghg7p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 10
+texture = ExtResource("2_2i6pj")
+
+[node name="BucketArea2D" type="Area2D" parent="." groups=["CauldronPot"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BucketArea2D"]
+position = Vector2(10, 40)
+shape = SubResource("RectangleShape2D_t5o8p")
+
+[node name="BuckeyStaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuckeyStaticBody2D"]
+position = Vector2(11, 242)
+shape = SubResource("CircleShape2D_yr1ce")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BuckeyStaticBody2D"]
+position = Vector2(-84, 10.25)
+shape = SubResource("RectangleShape2D_tlh2j")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BuckeyStaticBody2D"]
+position = Vector2(104, 8.875)
+shape = SubResource("RectangleShape2D_tlh2j")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BuckeyStaticBody2D"]
+position = Vector2(86, 77)
+rotation = -0.535816
+shape = SubResource("RectangleShape2D_ohboj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="BuckeyStaticBody2D"]
+position = Vector2(-42, 77)
+rotation = 0.471239
+shape = SubResource("RectangleShape2D_ohboj")
+
+[node name="BucketStaticBody2D2" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(-3468, -243)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="BucketStaticBody2D2"]
+shape = SubResource("RectangleShape2D_ghg7p")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="BucketStaticBody2D2"]
+position = Vector2(6956, -128)
+shape = SubResource("RectangleShape2D_ghg7p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-143, -14)
+shape = SubResource("RectangleShape2D_htlnx")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(177, -11)
+shape = SubResource("RectangleShape2D_htlnx")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(23, 493)
+rotation = 0.174533
+shape = SubResource("CircleShape2D_vpu33")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(159.544, 102.281)
+rotation = 1.05418
+shape = SubResource("RectangleShape2D_tbwvj")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-117, 103)
+rotation = -1.05418
+shape = SubResource("RectangleShape2D_tbwvj")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+visible = false
+position = Vector2(-3468, -243)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(7018, -134)
+shape = SubResource("RectangleShape2D_ghg7p")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D3"]
+position = Vector2(-48, 6)
+shape = SubResource("RectangleShape2D_ghg7p")
+
+[node name="FallArea2D" type="Area2D" parent="." groups=["fallArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FallArea2D"]
+position = Vector2(10.75, -132)
+shape = SubResource("RectangleShape2D_b3g48")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-53, 43)
+shape = SubResource("CircleShape2D_3iifv")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(74, 45)
+shape = SubResource("CircleShape2D_3iifv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_wgkag")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lcy2k")
+volume_db = -7.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_xrf8a")
+volume_db = -7.0
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_saafq")
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_c3w10")
+
+[node name="AudioStreamPlayer2D6" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_iq2pv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jgtcy")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(21, -143)
+texture = ExtResource("7_udt5e")
+
+[connection signal="area_entered" from="BucketArea2D" to="." method="_on_bucket_area_2d_area_entered"]
+[connection signal="area_exited" from="BucketArea2D" to="." method="_on_bucket_area_2d_area_exited"]
+[connection signal="area_entered" from="FallArea2D" to="." method="_on_fall_area_2d_area_entered"]
+[connection signal="area_exited" from="FallArea2D" to="." method="_on_fall_area_2d_area_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]

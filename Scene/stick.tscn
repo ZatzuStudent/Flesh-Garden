@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl7vj3ximt1ub"]
+
+[ext_resource type="Texture2D" uid="uid://x3mys5flm3pv" path="res://Art Assets/Stick.png" id="1_h6ayo"]
+[ext_resource type="Script" path="res://Script/Stick.gd" id="1_jlygt"]
+[ext_resource type="Script" path="res://Script/Stick_que.gd" id="3_ynl12"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_orrbq"]
+size = Vector2(36.5, 226.875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3btl"]
+size = Vector2(24, 208)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uya3g"]
+radius = 12.0416
+
+[node name="Stick" type="RigidBody2D"]
+z_index = 17
+collision_layer = 20
+collision_mask = 21
+mass = 10.0
+script = ExtResource("1_jlygt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
+position = Vector2(6.5, 79)
+texture = ExtResource("1_h6ayo")
+
+[node name="Area2D" type="Area2D" parent="." groups=["laddle"]]
+position = Vector2(0.5, 73)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 2.5625)
+shape = SubResource("RectangleShape2D_orrbq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 85)
+shape = SubResource("RectangleShape2D_w3btl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(0, 189)
+shape = SubResource("CircleShape2D_uya3g")
+
+[node name="Stick_que" type="Node2D" parent="."]
+position = Vector2(0.5, 73)
+script = ExtResource("3_ynl12")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

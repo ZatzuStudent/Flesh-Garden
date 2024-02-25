@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://wybsohnma5ca"]
+
+[ext_resource type="Script" path="res://Script/seeds.gd" id="1_d8vxr"]
+[ext_resource type="Texture2D" uid="uid://b3u2ivnx705y2" path="res://Art Assets/Seed_1.png" id="1_rnx8m"]
+[ext_resource type="Script" path="res://Script/Components/HoldComponent.gd" id="2_pqnh1"]
+[ext_resource type="Script" path="res://Script/Components/SeedComponent.gd" id="4_l56fx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gswv1"]
+radius = 21.2132
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_akmry"]
+radius = 15.1327
+
+[node name="Seed_1" type="Node2D"]
+script = ExtResource("1_d8vxr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_rnx8m")
+
+[node name="Area2D" type="Area2D" parent="." groups=["seed_1", "seeds"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_gswv1")
+
+[node name="HoldComponent" type="Node2D" parent="."]
+script = ExtResource("2_pqnh1")
+
+[node name="SeedComponent" type="Node2D" parent="."]
+script = ExtResource("4_l56fx")
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_akmry")
+
+[connection signal="area_entered" from="Area2D" to="HoldComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="HoldComponent" method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]
+[connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
+[connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

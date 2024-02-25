@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvvr6nm2ltw3g"]
+
+[ext_resource type="Texture2D" uid="uid://tbh2dy5s1oo7" path="res://Art Assets/Growth/Plant Growth Spite_13.png" id="1_cfmfy"]
+[ext_resource type="Script" path="res://Script/Components/GrowthComponent.gd" id="3_al3ft"]
+[ext_resource type="Script" path="res://Script/PlantVariables_3.gd" id="4_f5h5m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5f0"]
+size = Vector2(123.5, 88.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbq7c"]
+bg_color = Color(0.705882, 0.588235, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hq2kn"]
+bg_color = Color(0.301961, 0.701961, 0.294118, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iib0g"]
+load_path = "res://.godot/imported/Fantasy Crops_6.png-b4c96e35d2ca3ccb4d62519399986661.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20j20"]
+size = Vector2(187, 132)
+
+[node name="Plant3" type="Node2D"]
+
+[node name="PlantBody" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_cfmfy")
+
+[node name="GrowthTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CropTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="BloodingArea2D" type="Area2D" parent="." groups=["plants"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BloodingArea2D"]
+position = Vector2(-12, 130)
+shape = SubResource("RectangleShape2D_nq5f0")
+
+[node name="BloodWater" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 2)
+offset_left = -53.0
+offset_top = 107.0
+offset_right = 53.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/background = SubResource("StyleBoxFlat_nbq7c")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hq2kn")
+value = 30.0
+show_percentage = false
+
+[node name="NeedBlood" type="Sprite2D" parent="."]
+position = Vector2(87, -29)
+scale = Vector2(2.55625, 2.36641)
+texture = SubResource("CompressedTexture2D_iib0g")
+
+[node name="GrowthComponent" type="Node2D" parent="."]
+z_index = 1
+script = ExtResource("3_al3ft")
+
+[node name="PlantVariables" type="Node2D" parent="."]
+script = ExtResource("4_f5h5m")
+
+[node name="HarvestArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea2D"]
+position = Vector2(-7.5, 14)
+shape = SubResource("RectangleShape2D_20j20")
+
+[connection signal="timeout" from="GrowthTimer" to="GrowthComponent" method="_on_growth_timer_timeout"]
+[connection signal="timeout" from="CropTimer" to="GrowthComponent" method="_on_crop_timer_timeout"]
+[connection signal="area_entered" from="BloodingArea2D" to="GrowthComponent" method="_on_blooding_area_2d_area_entered"]
+[connection signal="area_exited" from="BloodingArea2D" to="GrowthComponent" method="_on_blooding_area_2d_area_exited"]
+[connection signal="value_changed" from="BloodWater" to="GrowthComponent" method="_on_blood_water_value_changed"]
+[connection signal="fruit_value" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_fruit_value"]
+[connection signal="growth_time" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_growth_time"]
+[connection signal="harvest_time" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_harvest_time"]
+[connection signal="plant_growth_sprite" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_plant_growth_sprite"]
+[connection signal="plant_type" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_plant_type"]
+[connection signal="input_event" from="HarvestArea2D" to="GrowthComponent" method="_on_harvest_area_2d_input_event"]

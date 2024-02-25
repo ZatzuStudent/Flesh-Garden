@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://jrr0st0j5dx8"]
+
+[ext_resource type="Script" path="res://Script/Shop_pots.gd" id="1_3myyr"]
+[ext_resource type="Texture2D" uid="uid://bubuwu7a8lq1n" path="res://Art Assets/Shop_Pots.png" id="2_n7ws2"]
+[ext_resource type="Texture2D" uid="uid://c3jm0vx28q3rn" path="res://Art Assets/Shop_green.png" id="3_hmh3b"]
+[ext_resource type="Texture2D" uid="uid://dch72mv6dth78" path="res://Art Assets/Shop_red.png" id="4_u11at"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onj8d"]
+size = Vector2(80.25, 77)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w28hj"]
+size = Vector2(88.5, 34.5)
+
+[node name="Shop_Pots" type="Node2D"]
+z_index = 8
+script = ExtResource("1_3myyr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_n7ws2")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-114, -50)
+scale = Vector2(0.5, 0.5)
+
+[node name="PullArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PullArea2D"]
+position = Vector2(-234, 264)
+shape = SubResource("RectangleShape2D_onj8d")
+
+[node name="Colors" type="Node2D" parent="."]
+position = Vector2(-50, -4)
+scale = Vector2(1.2037, 1.47959)
+
+[node name="green" type="Sprite2D" parent="Colors"]
+position = Vector2(-31.5695, -59.9829)
+texture = ExtResource("3_hmh3b")
+
+[node name="green2" type="Sprite2D" parent="Colors"]
+position = Vector2(-50.6763, 67.0794)
+texture = ExtResource("3_hmh3b")
+
+[node name="green3" type="Sprite2D" parent="Colors"]
+position = Vector2(-29.908, 187.383)
+texture = ExtResource("3_hmh3b")
+
+[node name="red" type="Sprite2D" parent="Colors"]
+position = Vector2(-31.5695, -59.9829)
+texture = ExtResource("4_u11at")
+
+[node name="red2" type="Sprite2D" parent="Colors"]
+position = Vector2(-50.6773, 67.0794)
+texture = ExtResource("4_u11at")
+
+[node name="red3" type="Sprite2D" parent="Colors"]
+position = Vector2(-29.908, 187.383)
+texture = ExtResource("4_u11at")
+
+[node name="BuyAreas" type="Node2D" parent="."]
+
+[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
+position = Vector2(-106, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="Prices" type="Node2D" parent="."]
+
+[node name="Label1" type="Label" parent="Prices"]
+offset_left = -126.0
+offset_top = -119.0
+offset_right = -43.0
+offset_bottom = -74.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Prices"]
+offset_left = -151.0
+offset_top = 68.0
+offset_right = -68.0
+offset_bottom = 113.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Prices"]
+offset_left = -125.0
+offset_top = 250.0
+offset_right = -42.0
+offset_bottom = 295.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "000"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]
+[connection signal="input_event" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_1_input_event"]

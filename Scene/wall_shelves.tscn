@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcswjkhcldxwc"]
+
+[ext_resource type="Texture2D" uid="uid://c0hnrf0yhr0fh" path="res://Art Assets/Shelves.png" id="1_1mi7h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f647m"]
+size = Vector2(343.5, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fk00"]
+size = Vector2(294, 98)
+
+[node name="Wall Shelves" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4
+texture = ExtResource("1_1mi7h")
+
+[node name="Area2D" type="Area2D" parent="." groups=["platform_wall_1"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-220.75, -110)
+shape = SubResource("RectangleShape2D_f647m")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["platform_wall_2"]]
+z_index = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(248, 5)
+shape = SubResource("RectangleShape2D_4fk00")

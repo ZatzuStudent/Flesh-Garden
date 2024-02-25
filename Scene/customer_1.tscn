@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=3 uid="uid://dbqk3j0dub8ft"]
+
+[ext_resource type="Texture2D" uid="uid://c3uy36j0g302k" path="res://Art Assets/Customer_Mushroom.png" id="1_jqrca"]
+[ext_resource type="Script" path="res://Script/Components/CustomerComponent.gd" id="2_rd45g"]
+[ext_resource type="Script" path="res://Script/Story.gd" id="3_ls1uv"]
+[ext_resource type="Texture2D" uid="uid://dmm2dm5koqc4e" path="res://Art Assets/Dialog1.png" id="3_x3ryb"]
+[ext_resource type="Texture2D" uid="uid://p4ia6em87nup" path="res://Art Assets/Growth/Plant Growth Spite_25.png" id="4_be77s"]
+[ext_resource type="Texture2D" uid="uid://buwtgu8p6yy2i" path="res://Art Assets/Dialog2.png" id="5_x1qpo"]
+[ext_resource type="AudioStream" uid="uid://n354neifd42k" path="res://Audio/Customer_Crow.mp3" id="6_auv0d"]
+[ext_resource type="AudioStream" uid="uid://btca6duy2mrsx" path="res://Audio/Customer_Slime.mp3" id="6_j56xs"]
+[ext_resource type="AudioStream" uid="uid://bhb8v5e2hxlxm" path="res://Audio/Customer_Brain.mp3" id="7_tmyys"]
+[ext_resource type="AudioStream" uid="uid://bpmio1hifimdg" path="res://Audio/Customer_Human.mp3" id="9_itpyl"]
+[ext_resource type="AudioStream" uid="uid://huph7cu6nl3f" path="res://Audio/Customer_skelleton.mp3" id="10_mx4ka"]
+[ext_resource type="AudioStream" uid="uid://db55vhuuowlmy" path="res://Audio/Kaching.mp3" id="11_i8vdm"]
+
+[sub_resource type="Animation" id="Animation_oq3ur"]
+resource_name = "walk_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-300, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7hh46"]
+resource_name = "walk_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(500, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a1xk2"]
+_data = {
+"walk_in": SubResource("Animation_oq3ur"),
+"walk_out": SubResource("Animation_7hh46")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i38ji"]
+radius = 73.0616
+
+[node name="Customer_1" type="Node2D"]
+z_index = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -9
+position = Vector2(-300, 0)
+texture = ExtResource("1_jqrca")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a1xk2")
+}
+
+[node name="CustomerComponent" type="Node2D" parent="."]
+script = ExtResource("2_rd45g")
+
+[node name="Story" type="Node2D" parent="."]
+script = ExtResource("3_ls1uv")
+
+[node name="Label" type="Label" parent="Story"]
+visible = false
+offset_left = -39.0
+offset_top = 178.0
+offset_right = 475.0
+offset_bottom = 254.0
+theme_override_font_sizes/font_size = 20
+text = "The feather on my hat? It’s my wife’s. I’ve kept it 
+since she died as a memento. I miss her dearly."
+
+[node name="Button2" type="Button" parent="."]
+z_index = 4
+offset_left = -187.418
+offset_top = 123.021
+offset_right = -126.418
+offset_bottom = 175.021
+
+[node name="Dialog2" type="Sprite2D" parent="Button2"]
+position = Vector2(26.9997, 39.1845)
+rotation = -1.33692
+scale = Vector2(0.612835, 0.734494)
+texture = ExtResource("5_x1qpo")
+
+[node name="Label" type="Label" parent="Button2"]
+layout_mode = 0
+offset_left = -46.582
+offset_top = -8.02133
+offset_right = 116.418
+offset_bottom = 62.9787
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Sorry, 
+Next time"
+horizontal_alignment = 1
+
+[node name="DialogSprite2D1" type="Sprite2D" parent="."]
+position = Vector2(267, -92)
+texture = ExtResource("3_x3ryb")
+
+[node name="CropSprite2D1" type="Sprite2D" parent="DialogSprite2D1"]
+position = Vector2(1.52588e-05, -7.62939e-06)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_be77s")
+
+[node name="RequiredLabel" type="Label" parent="DialogSprite2D1"]
+offset_left = 29.0
+offset_top = -6.0
+offset_right = 63.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 60
+text = "0"
+
+[node name="DialogSprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(223, 186)
+texture = ExtResource("5_x1qpo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(264, -97)
+shape = SubResource("CircleShape2D_i38ji")
+
+[node name="potionArea2D" type="Area2D" parent="." groups=["sellingArea"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="potionArea2D"]
+position = Vector2(264, -97)
+shape = SubResource("CircleShape2D_i38ji")
+
+[node name="sfx" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D1" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_auv0d")
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("7_tmyys")
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("6_j56xs")
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("9_itpyl")
+
+[node name="AudioStreamPlayer2D5" type="AudioStreamPlayer2D" parent="sfx"]
+stream = ExtResource("10_mx4ka")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_i8vdm")
+volume_db = -10.0
+
+[connection signal="button_down" from="Button2" to="CustomerComponent" method="_on_button_2_button_down"]
+[connection signal="mouse_entered" from="Button2" to="CustomerComponent" method="_on_button_2_mouse_entered"]
+[connection signal="mouse_exited" from="Button2" to="CustomerComponent" method="_on_button_2_mouse_exited"]
+[connection signal="area_entered" from="Area2D" to="CustomerComponent" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="CustomerComponent" method="_on_area_2d_area_exited"]

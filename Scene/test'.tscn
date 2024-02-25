@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6f2fenv6c18x"]
+
+[ext_resource type="Script" path="res://Script/test.gd" id="1_xfrth"]
+[ext_resource type="Texture2D" uid="uid://b3u2ivnx705y2" path="res://Art Assets/Seed_1.png" id="2_4kmws"]
+[ext_resource type="Script" path="res://Script/Components/HoldComponent.gd" id="2_wbk0o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cs5to"]
+radius = 40.1995
+
+[node name="Seed_1" type="Node2D"]
+script = ExtResource("1_xfrth")
+
+[node name="Area2D" type="Area2D" parent="." groups=["seed_1", "seeds"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cs5to")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4kmws")
+
+[node name="HoldComponent" type="Node2D" parent="."]
+script = ExtResource("2_wbk0o")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]
