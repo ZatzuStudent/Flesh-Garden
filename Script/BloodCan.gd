@@ -30,8 +30,3 @@ func _on_area_2d_watering_area_entered(area):
 func _on_area_2d_watering_area_exited(area):
 	if area in get_tree().get_nodes_in_group("pots"):
 		inside -= 1
-
-func _input(event):
-	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			global_position = Vector2(553,453)

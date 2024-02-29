@@ -9,16 +9,16 @@ var customer_love = {
 }
 
 var storage = {
-	0: 20, #eye
-	1: 20, #hand
-	2: 20, #leg
-	3: 20, #head
+	0: 0, #eye
+	1: 0, #hand
+	2: 0, #leg
+	3: 0, #head
 	4: 99999,
 	5: 99999, 
 	6: 99999, 
 	7: 99999, 
 	8: 99999,
-	9: 20
+	9: 0
 }
 
 var isEmpty = true
@@ -27,8 +27,8 @@ var customer_number
 var cauldron = false
 var ClockTimer = 180
 var timePerday = 180
-var day = 0
-var daytime = 1
+var day = 1
+var time_of_day = 0
 var frog_eaten = 0
 var frog_size = 1
 var watering = false

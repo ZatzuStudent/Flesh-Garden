@@ -4,6 +4,7 @@ var isholding
 var isCauldron
 
 func _ready():
+	z_index = -10
 	inCauldron = false
 	isholding = true
 

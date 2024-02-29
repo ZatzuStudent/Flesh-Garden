@@ -54,7 +54,6 @@ stream = ExtResource("6_js81f")
 [connection signal="area_entered" from="Area2D" to="HoldComponent" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="area_exited" from="Area2D" to="HoldComponent" method="_on_area_2d_area_exited"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]
 [connection signal="area_entered" from="SeedArea2D" to="HoldComponent" method="_on_seed_area_2d_area_entered"]
 [connection signal="area_entered" from="PlatformPlacerArea2D" to="HoldComponent" method="_on_platform_placer_area_2d_area_entered"]

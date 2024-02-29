@@ -8,13 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bpy44wmo576df" path="res://Art Assets/sold2.png" id="6_l1xhh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w28hj"]
-size = Vector2(85, 32)
+size = Vector2(147, 184.875)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onj8d"]
 size = Vector2(80.25, 75)
 
 [node name="Shop_Upgrade" type="Node2D"]
-z_index = 6
 script = ExtResource("1_yk0r3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,45 +23,45 @@ texture = ExtResource("2_3gjv8")
 [node name="BuyAreas" type="Node2D" parent="."]
 
 [node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, -76)
+position = Vector2(-6, -161)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
-position = Vector2(-41, -8)
+position = Vector2(-30.5, 7.375)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, -76)
+position = Vector2(-6, -161)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
-position = Vector2(171.001, -2.75004)
+position = Vector2(174, 7.00001)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, -76)
+position = Vector2(-2, -144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
-position = Vector2(-39.5, 176)
+position = Vector2(-39.5, 179.563)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, -76)
+position = Vector2(-2, -144)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]
 position = Vector2(169.001, 179.25)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="BuyArea2D5" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, 287)
+position = Vector2(-1, 225)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D5"]
-position = Vector2(-41, 1)
+position = Vector2(-42, -2)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="BuyArea2D6" type="Area2D" parent="BuyAreas"]
-position = Vector2(3, 287)
+position = Vector2(-1, 225)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D6"]
-position = Vector2(170.001, 0.249958)
+position = Vector2(171.001, 2)
 shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="PullArea2D" type="Area2D" parent="."]

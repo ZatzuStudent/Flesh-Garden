@@ -8,7 +8,7 @@ size = Vector2(145.75, 84)
 [node name="Stool" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -4
+z_index = -80
 texture = ExtResource("1_w8dbg")
 
 [node name="Area2D" type="Area2D" parent="." groups=["platform_stool"]]

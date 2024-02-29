@@ -11,10 +11,9 @@
 size = Vector2(80.25, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w28hj"]
-size = Vector2(88.5, 34.5)
+size = Vector2(116, 150)
 
 [node name="Shop_Pots" type="Node2D"]
-z_index = 8
 script = ExtResource("1_3myyr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -108,68 +107,6 @@ texture = ExtResource("4_u11at")
 position = Vector2(186.093, 187.89)
 scale = Vector2(0.874497, 0.685863)
 texture = ExtResource("6_7wdo1")
-
-[node name="BuyAreas" type="Node2D" parent="."]
-
-[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
-position = Vector2(-80, -96)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
-position = Vector2(-106, 90)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
-position = Vector2(-80, 272)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
-position = Vector2(136, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]
-position = Vector2(-80, -96)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D5" type="Area2D" parent="BuyAreas"]
-position = Vector2(155, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D5"]
-position = Vector2(-106, 90)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D6" type="Area2D" parent="BuyAreas"]
-position = Vector2(136, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D6"]
-position = Vector2(-80, 272)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D7" type="Area2D" parent="BuyAreas"]
-position = Vector2(264, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D7"]
-position = Vector2(-80, -96)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D8" type="Area2D" parent="BuyAreas"]
-position = Vector2(283, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D8"]
-position = Vector2(-82, 90)
-shape = SubResource("RectangleShape2D_w28hj")
-
-[node name="BuyArea2D9" type="Area2D" parent="BuyAreas"]
-position = Vector2(264, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D9"]
-position = Vector2(-80, 272)
-shape = SubResource("RectangleShape2D_w28hj")
 
 [node name="Prices" type="Node2D" parent="."]
 
@@ -281,13 +218,96 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="BuyAreas" type="Node2D" parent="."]
+
+[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
+position = Vector2(-1, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
+position = Vector2(-1, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
+position = Vector2(-106, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
+position = Vector2(-1, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
+position = Vector2(135, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D5" type="Area2D" parent="BuyAreas"]
+position = Vector2(154, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D5"]
+position = Vector2(-106, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D6" type="Area2D" parent="BuyAreas"]
+position = Vector2(135, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D6"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D7" type="Area2D" parent="BuyAreas"]
+position = Vector2(263, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D7"]
+position = Vector2(-80, -96)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D8" type="Area2D" parent="BuyAreas"]
+position = Vector2(282, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D8"]
+position = Vector2(-82, 90)
+shape = SubResource("RectangleShape2D_w28hj")
+
+[node name="BuyArea2D9" type="Area2D" parent="BuyAreas"]
+position = Vector2(263, -37)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D9"]
+position = Vector2(-80, 272)
+shape = SubResource("RectangleShape2D_w28hj")
+
 [connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_input_event" binds= [0]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D2" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D2" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D2" to="." method="_on_buy_area_2d_input_event" binds= [1]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D3" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D3" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D3" to="." method="_on_buy_area_2d_input_event" binds= [2]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D4" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D4" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D4" to="." method="_on_buy_area_2d_input_event" binds= [3]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D5" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D5" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D5" to="." method="_on_buy_area_2d_input_event" binds= [4]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D6" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D6" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D6" to="." method="_on_buy_area_2d_input_event" binds= [5]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D7" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D7" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D7" to="." method="_on_buy_area_2d_input_event" binds= [6]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D8" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D8" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D8" to="." method="_on_buy_area_2d_input_event" binds= [7]]
+[connection signal="area_entered" from="BuyAreas/BuyArea2D9" to="." method="_on_buy_area_2d_1_area_entered"]
+[connection signal="area_exited" from="BuyAreas/BuyArea2D9" to="." method="_on_buy_area_2d_1_area_exited"]
 [connection signal="input_event" from="BuyAreas/BuyArea2D9" to="." method="_on_buy_area_2d_input_event" binds= [8]]

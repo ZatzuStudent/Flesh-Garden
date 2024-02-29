@@ -9,9 +9,9 @@ size = Vector2(343.5, 128)
 size = Vector2(294, 98)
 
 [node name="Wall Shelves" type="Node2D"]
+z_index = -80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -4
 texture = ExtResource("1_1mi7h")
 
 [node name="Area2D" type="Area2D" parent="." groups=["platform_wall_1"]]

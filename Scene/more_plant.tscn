@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr61sak5u7d1l"]
+[gd_scene load_steps=3 format=3 uid="uid://dr61sak5u7d1l"]
 
-[ext_resource type="Texture2D" uid="uid://sypcp114f5jt" path="res://Art Assets/Plants.png" id="1_bm7kb"]
+[ext_resource type="Texture2D" uid="uid://cph71b5nnmnte" path="res://Art Assets/Plants_2.png" id="1_fkj4a"]
+[ext_resource type="Texture2D" uid="uid://caj41ow6dudi8" path="res://Art Assets/Plants_1.png" id="2_wf8sv"]
 
 [node name="Real Plant" type="Node2D"]
-z_index = 10
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 30
-texture = ExtResource("1_bm7kb")
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(200, -8)
+texture = ExtResource("1_fkj4a")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(-741, 26)
+texture = ExtResource("2_wf8sv")

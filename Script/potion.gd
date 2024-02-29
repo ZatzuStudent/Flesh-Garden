@@ -5,12 +5,15 @@ var isCauldron
 @onready var puffing = $Puffing
 @onready var potion_sfx_pick = $AudioStreamPlayer2D
 @onready var potion_sfx_drop = $AudioStreamPlayer2D2
+@onready var puff_sfx = $AudioStreamPlayer2D3
 
 func _ready():
+	z_index = 26
 	isholding = false
 	infrog = false
 	insellingarea = false
 	puffing.play("Puff")
+	puff_sfx.play()
 
 func _process(_delta):
 	if isholding == true:

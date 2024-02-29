@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dbqk3j0dub8ft"]
+[gd_scene load_steps=21 format=3 uid="uid://dbqk3j0dub8ft"]
 
 [ext_resource type="Texture2D" uid="uid://c3uy36j0g302k" path="res://Art Assets/Customer_Mushroom.png" id="1_jqrca"]
 [ext_resource type="Script" path="res://Script/Components/CustomerComponent.gd" id="2_rd45g"]
+[ext_resource type="Texture2D" uid="uid://dppj61gc03mlf" path="res://Art Assets/Coin_1.png" id="2_t066i"]
 [ext_resource type="Script" path="res://Script/Story.gd" id="3_ls1uv"]
 [ext_resource type="Texture2D" uid="uid://dmm2dm5koqc4e" path="res://Art Assets/Dialog1.png" id="3_x3ryb"]
 [ext_resource type="Texture2D" uid="uid://p4ia6em87nup" path="res://Art Assets/Growth/Plant Growth Spite_25.png" id="4_be77s"]
@@ -12,6 +13,38 @@
 [ext_resource type="AudioStream" uid="uid://bpmio1hifimdg" path="res://Audio/Customer_Human.mp3" id="9_itpyl"]
 [ext_resource type="AudioStream" uid="uid://huph7cu6nl3f" path="res://Audio/Customer_skelleton.mp3" id="10_mx4ka"]
 [ext_resource type="AudioStream" uid="uid://db55vhuuowlmy" path="res://Audio/Kaching.mp3" id="11_i8vdm"]
+
+[sub_resource type="Animation" id="Animation_31jjd"]
+resource_name = "float_money"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(163, 16), Vector2(163, -96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g85dc"]
+_data = {
+"float_money": SubResource("Animation_31jjd")
+}
 
 [sub_resource type="Animation" id="Animation_oq3ur"]
 resource_name = "walk_in"
@@ -52,13 +85,38 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_i38ji"]
 radius = 73.0616
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f8vtm"]
+size = Vector2(258, 285)
+
 [node name="Customer_1" type="Node2D"]
-z_index = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -9
 position = Vector2(-300, 0)
 texture = ExtResource("1_jqrca")
+
+[node name="Float Plus Money" type="Node2D" parent="."]
+position = Vector2(163, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="Float Plus Money"]
+position = Vector2(20, -1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_t066i")
+
+[node name="Label" type="Label" parent="Float Plus Money"]
+offset_left = -92.0
+offset_top = -41.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "+200"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Float Plus Money"]
+libraries = {
+"": SubResource("AnimationLibrary_g85dc")
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -108,6 +166,7 @@ Next time"
 horizontal_alignment = 1
 
 [node name="DialogSprite2D1" type="Sprite2D" parent="."]
+z_index = -11
 position = Vector2(267, -92)
 texture = ExtResource("3_x3ryb")
 
@@ -138,7 +197,15 @@ texture = ExtResource("5_x1qpo")
 position = Vector2(264, -97)
 shape = SubResource("CircleShape2D_i38ji")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(21, 3)
+shape = SubResource("RectangleShape2D_f8vtm")
+
 [node name="potionArea2D" type="Area2D" parent="." groups=["sellingArea"]]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="potionArea2D"]
+position = Vector2(21, 3)
+shape = SubResource("RectangleShape2D_f8vtm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="potionArea2D"]
 position = Vector2(264, -97)
@@ -151,6 +218,7 @@ stream = ExtResource("6_auv0d")
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("7_tmyys")
+volume_db = 3.0
 
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="sfx"]
 stream = ExtResource("6_j56xs")

@@ -15,6 +15,7 @@ var harvest_time
 var plant_type
 var fruit_value
 var plant_spritesheet
+@onready var float_plus_crops = $"../Float Plus Crops"
 
 
 func _ready():
@@ -22,6 +23,7 @@ func _ready():
 	need_blood.visible = false
 	isblooding = false
 	blood_water.visible = false
+	float_plus_crops.visible = false
 	
 func _process(delta):
 	if isharvestTime == false:
@@ -31,14 +33,13 @@ func _process(delta):
 		blood_water.visible = true
 	else:
 		blood_water.visible = false
-	if blood_water.value < 30:
+	if blood_water.value < blood_water.max_value/10:
 		blood_water.visible = true
 		need_blood.visible = true
 		GrowthTimer.paused = true
 	else:
 		need_blood.visible = false
 		GrowthTimer.paused = false
-
 
 func _on_growth_timer_timeout():
 	plant_phase = plant_phase + 1
@@ -52,6 +53,8 @@ func _on_growth_timer_timeout():
 		GrowthTimer.stop()
 		isharvestTime = true
 
+@onready var plus_harvest = $"../Float Plus Crops/AnimationPlayer"
+@onready var plus_label = $"../Float Plus Crops/Label"
 
 func _on_harvest_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
@@ -62,12 +65,21 @@ func _on_harvest_area_2d_input_event(_viewport, event, _shape_idx):
 				PlantBody.texture = plant_spritesheet[4]
 				isharvestTime = false
 				GlobalScript.storage[plant_type] += fruit_value
+				float_plus_crops.visible = true
+				plus_label.text = str(fruit_value)
+				plus_harvest.play("plus")
 				harvest_timer.start()
 				
 		if event.pressed && (plant_type == 2 || plant_type == 3):
-			if plant_phase == plant_spritesheet.size()-1:
+			if isharvestTime == true:
+				isharvestTime = false
 				harvest_sfx.play()
 				GlobalScript.storage[plant_type] += fruit_value
+				$"../PlantBody".visible = false
+				float_plus_crops.visible = true
+				plus_label.text = str(fruit_value)
+				plus_harvest.play("plus")
+				await plus_harvest.animation_finished
 				$"..".queue_free()
 
 func _on_harvest_timer_timeout():
@@ -103,4 +115,5 @@ func _on_plant_variables_plant_type(type):
 	plant_type = type
 func _on_plant_variables_harvest_time(htime):
 	harvest_timer.wait_time = htime
+
 

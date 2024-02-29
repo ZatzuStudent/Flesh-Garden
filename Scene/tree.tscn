@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" path="res://Script/Components/tree.gd" id="1_okutc"]
 [ext_resource type="Texture2D" uid="uid://cskienbp2fh6i" path="res://Art Assets/Tree Leaves.png" id="2_4swiy"]
-[ext_resource type="Texture2D" uid="uid://yohwiwtvs2vd" path="res://Art Assets/Tree1.png" id="3_2sirv"]
+[ext_resource type="Texture2D" uid="uid://yohwiwtvs2vd" path="res://Art Assets/Tree1.png" id="2_sphse"]
 [ext_resource type="Script" path="res://Script/fruitHanger.gd" id="4_n245u"]
 
 [node name="Tree" type="Node2D"]
+z_index = 41
 script = ExtResource("1_okutc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(702, -41)
+texture = ExtResource("2_sphse")
 
 [node name="FruitHanger3" type="Node2D" parent="."]
 position = Vector2(775, -216)
@@ -14,10 +19,6 @@ script = ExtResource("4_n245u")
 
 [node name="NewFruitTimer" type="Timer" parent="FruitHanger3"]
 one_shot = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(702, -41)
-texture = ExtResource("3_2sirv")
 
 [node name="FruitHanger1" type="Node2D" parent="."]
 position = Vector2(596, -360)

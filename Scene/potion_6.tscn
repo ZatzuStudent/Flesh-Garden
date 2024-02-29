@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dvgr0ju0j68a2"]
+[gd_scene load_steps=12 format=3 uid="uid://dvgr0ju0j68a2"]
 
 [ext_resource type="Script" path="res://Script/potion.gd" id="1_jx60s"]
 [ext_resource type="Texture2D" uid="uid://bpi3xthdkii4k" path="res://Art Assets/Potions Colored_5.png" id="2_cn3xv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dcpjbi82772e4" path="res://Art Assets/Puff_3.png" id="5_mohao"]
 [ext_resource type="AudioStream" uid="uid://ckdu7tcq7hl2d" path="res://Audio/pottion_pick.mp3" id="6_01akd"]
 [ext_resource type="AudioStream" uid="uid://mt5bul4ydowf" path="res://Audio/pottion_drop.mp3" id="7_qqgnp"]
+[ext_resource type="AudioStream" uid="uid://bvaxgv666hejl" path="res://Audio/Poof.mp3" id="8_nhbqm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph8oo"]
 size = Vector2(80, 64)
@@ -45,13 +46,14 @@ texture = ExtResource("2_cn3xv")
 position = Vector2(-11, 13)
 shape = SubResource("RectangleShape2D_ph8oo")
 
-[node name="Area2D" type="Area2D" parent="." groups=["potions", "strength"]]
+[node name="Area2D" type="Area2D" parent="." groups=["chum", "potions"]]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-11, 13)
 shape = SubResource("RectangleShape2D_ph8oo")
 
 [node name="Puff" type="Sprite2D" parent="."]
+texture = ExtResource("5_mohao")
 
 [node name="Puffing" type="AnimationPlayer" parent="."]
 libraries = {
@@ -65,6 +67,9 @@ volume_db = -2.0
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_qqgnp")
 volume_db = -3.0
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_nhbqm")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

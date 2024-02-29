@@ -1,0 +1,90 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2y83v6huda6x"]
+
+[ext_resource type="Script" path="res://Script/Angles.gd" id="1_54w1q"]
+[ext_resource type="Texture2D" uid="uid://vt58je3gytiu" path="res://Art Assets/Angel_2.png" id="2_205bo"]
+[ext_resource type="Texture2D" uid="uid://cm1r5n5nen87f" path="res://Art Assets/Angel_Fly_1.png" id="3_pd0q2"]
+[ext_resource type="Texture2D" uid="uid://bb8wq3o8lv0ap" path="res://Art Assets/Angel_Fly_2.png" id="4_3hytx"]
+[ext_resource type="Texture2D" uid="uid://csd517ne24x7h" path="res://Art Assets/Angel_Fly_3.png" id="5_di38i"]
+[ext_resource type="Texture2D" uid="uid://1h3b60yxeequ" path="res://Art Assets/Angel_1.png" id="6_iaing"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2qms"]
+size = Vector2(106, 120)
+
+[sub_resource type="Animation" id="Animation_jdha1"]
+resource_name = "Attack"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_205bo"), ExtResource("6_iaing")]
+}
+
+[sub_resource type="Animation" id="Animation_bshp4"]
+resource_name = "Fly"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_pd0q2"), ExtResource("4_3hytx"), ExtResource("5_di38i")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d5afa"]
+_data = {
+"Attack": SubResource("Animation_jdha1"),
+"Fly": SubResource("Animation_bshp4")
+}
+
+[node name="Angles" type="CharacterBody2D"]
+z_index = 100
+collision_layer = 2
+script = ExtResource("1_54w1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_205bo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_e2qms")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d5afa")
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=["angel"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_e2qms")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.372549, 0.301961, 1)
+offset_left = -64.0
+offset_top = 57.0
+offset_right = 64.0
+offset_bottom = 64.0
+max_value = 6.0
+value = 6.0
+show_percentage = false
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

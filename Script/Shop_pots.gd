@@ -14,30 +14,38 @@ var upgrade_types = {
 	7 : {scene = preload("res://Scene/pot_big_3.tscn"), price = 130},#pot_big
 	8 : {scene = preload("res://Scene/Pot_Hanging_3.tscn"), price = 230}, #pot_hang
 }
+var time_of_holding = 0
+
 func _ready():
 	for i in range(upgrade_types.size()):
 		if upgrade_types[i].has("price"):
 			get_node("Prices/Label" + str(i+1)).text = str(upgrade_types[i].price)
 			
-func _process(_delta):
+func _process(delta):
 	for i in range(upgrade_types.size()):
 		if upgrade_types[i].has("price"):
 			get_node("Colors/red" + str(i+1)).visible = GlobalScript.money < upgrade_types[i].price
-		
 	if isHolding == true:
-		global_position.x = clamp(get_global_mouse_position().x - movePotPos.x, 685, 1156)
+		time_of_holding += delta
+		global_position.x = clamp(get_global_mouse_position().x - movePotPos.x, 685, 1155)
+	if spawn_in_shop == 0:
+		$BuyAreas.visible = true
+	else:
+		$BuyAreas.visible = false
 
 func _on_pull_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
-			if at_max == true:
-				global_position.x = 1156
-				at_max = false
-			else:
-				isHolding = true
-				movePotPos = get_global_mouse_position() - global_position
-				oldPotPos = global_position
+			isHolding = true
+			movePotPos = get_global_mouse_position() - global_position
+			oldPotPos = global_position
 		else:
+			if time_of_holding <= 0.2:
+				if global_position.x <= 920:
+					global_position.x = 1155
+				else:
+					global_position.x = 686
+			time_of_holding = 0
 			isHolding = false
 
 var at_max = false
@@ -46,8 +54,6 @@ func _input( event ):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and !event.is_pressed():
 			isHolding = false
-			if global_position.x <= 690:
-				at_max = true
 
 func _on_buy_area_2d_input_event(_viewport, event, _shape_idx, i):
 	if GlobalScript.isEmpty == true && GlobalScript.money >= upgrade_types[i].price:
@@ -55,4 +61,17 @@ func _on_buy_area_2d_input_event(_viewport, event, _shape_idx, i):
 			GlobalScript.money -= upgrade_types[i].price
 			var instance = upgrade_types[i].scene.instantiate()
 			call_deferred("add_sibling", instance)
-			global_position.x = 1156
+			var instance2 = spawn_node.instantiate()
+			call_deferred("add_sibling", instance2)
+			global_position.x = 1155
+var spawn_node = preload("res://Scene/just_spawned.tscn")
+
+var spawn_in_shop = 0
+
+func _on_buy_area_2d_1_area_entered(area):
+	if area.is_in_group("just_spawn"):
+		spawn_in_shop += 1
+
+func _on_buy_area_2d_1_area_exited(area):
+	if area.is_in_group("just_spawn"):
+		spawn_in_shop -= 1

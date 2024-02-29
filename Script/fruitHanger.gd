@@ -7,11 +7,11 @@ var intimer
 func _ready():
 	intimer = false
 	randi()
-	new_fruit_timer.wait_time = randi_range(25,65)
+	new_fruit_timer.wait_time = randi_range(18,45)
 	new_fruit_timer.one_shot = false
 
 func _process(_delta):
-	if GlobalScript.day >= 6:
+	if GlobalScript.day >= 4:
 		if get_child_count() == 1:
 			if intimer == false:
 				intimer = true

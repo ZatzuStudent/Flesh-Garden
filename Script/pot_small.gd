@@ -14,18 +14,25 @@ var plant_type_2 = {
 var isHolding
 var oldPotPos
 var movePotPos
-var isPlatform
+var isPlatform = false
 var platform_pos
 var pot_type
 var hasPlant
 var is_just_bought = true
+var number_of_pots = 0
 
 func _ready():
 	seed_collision.disabled = false
-	isPlatform = false
-	$"..".modulate = Color(1,1,1,1)
+	$"..".modulate = Color(1,1,1,.3)
 	
 func _process(_delta):
+	if number_of_pots == 0 && onthePlatform == true:
+		$"..".modulate = Color(1,1,1,1)
+		isPlatform = true
+	else:
+		$"..".modulate = Color(1,1,1,.3)
+		isPlatform = false
+
 	if is_just_bought == true:
 		$"..".global_position = get_global_mouse_position()
 	if get_child_count() >  0:
@@ -47,16 +54,18 @@ func _on_seed_area_2d_area_entered(area):
 			instance.position = plant_type_2[group2]["pos"]
 			call_deferred("add_child", instance)
 
-var is_seed_pressed = false
-
 func _input(event):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			print('pressed')
-			is_seed_pressed = true
-		else:
-			print('notpressed')
-			is_seed_pressed = false
+		if !event.is_pressed() && isHolding == true:
+			isHolding = false
+			if isPlatform == false:
+				$"..".global_position = oldPotPos
+			if isPlatform == true:
+				$"..".global_position.y = platform_pos
+				is_just_bought = false
+				placepot_sfx.play()
+			if !is_just_bought:
+				number_of_pots = 0
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
@@ -65,14 +74,6 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 			movepot_sfx.play()
 			movePotPos = get_global_mouse_position() - global_position
 			oldPotPos = global_position
-		elif isHolding == true:
-			isHolding = false
-			if isPlatform == false:
-				$"..".global_position = oldPotPos
-			if isPlatform == true:
-				$"..".global_position.y = platform_pos
-				is_just_bought = false
-				placepot_sfx.play()
 
 var platforms = {
 	0 : {name= "platform_table", platform_pos_y = 178}, 
@@ -82,42 +83,31 @@ var platforms = {
 
 var onthePlatform
 func _on_platform_placer_area_2d_area_entered(area):
-	if is_inside_tree() && inPot == false:
+	if is_inside_tree():
 		for i in platforms:
 			if area in get_tree().get_nodes_in_group(platforms[i].name):
-				isPlatform = true
 				onthePlatform = true
 				platform_pos = platforms[i].platform_pos_y
-				$"..".modulate = Color(1,1,1,1)
 
 func _on_platform_placer_area_2d_area_exited(area):
-	if is_inside_tree() || inPot == true:
+	if is_inside_tree():
 		for i in platforms:
 			if area in get_tree().get_nodes_in_group(platforms[i].name):
-				isPlatform = false
 				onthePlatform = false
-				platform_pos = platforms[i].platform_pos_y
-				$"..".modulate = Color(1,1,1,.3)
+
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("pots") && isHolding == true:
+		number_of_pots += 1
+	if area.is_in_group("pots") && is_just_bought == true:
+		number_of_pots += 1
+
+func _on_area_2d_area_exited(area):
+	if area.is_in_group("pots") && isHolding == true:
+		number_of_pots -= 1
+	if area.is_in_group("pots") && is_just_bought == true:
+		number_of_pots -= 1
 
 func _on_pot_component_pot_type(type):
 	pot_type = type
-
-var inPot = false
-
-func _on_area_2d_area_entered(area):
-	if area.is_in_group("pot") && isHolding == true:
-		inPot = true
-		$"..".modulate = Color(1,1,1,.3)
-		isPlatform = false
-func _on_area_2d_area_exited(area):
-	if area.is_in_group("pot") && isHolding == true:
-		inPot = false
-		if onthePlatform == true:
-			isPlatform = true
-			$"..".modulate = Color(1,1,1,1)
-
-
-
-
 
 

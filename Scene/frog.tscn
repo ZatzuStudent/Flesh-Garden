@@ -1,35 +1,135 @@
-[gd_scene load_steps=6 format=3 uid="uid://deymlppnnrqie"]
+[gd_scene load_steps=18 format=3 uid="uid://deymlppnnrqie"]
 
 [ext_resource type="Texture2D" uid="uid://dpwsl7n22e4xj" path="res://Art Assets/Frog_1.png" id="1_eyb4t"]
 [ext_resource type="Script" path="res://Script/frog.gd" id="1_j3tie"]
 [ext_resource type="Texture2D" uid="uid://be2jg0yyog3pq" path="res://Art Assets/Frog_mouth.png" id="2_gxkh2"]
 [ext_resource type="AudioStream" uid="uid://gdj7hopm4ewa" path="res://Audio/FrogCroak.mp3" id="3_q0vnq"]
+[ext_resource type="Texture2D" uid="uid://bjahu4hde6s5s" path="res://Art Assets/Frog_3.png" id="5_rl5cm"]
+[ext_resource type="AudioStream" uid="uid://63nf6e7elmqu" path="res://Audio/Frog_Hungry.mp3" id="6_b3upw"]
+[ext_resource type="Texture2D" uid="uid://oeisiuh4sdk0" path="res://Art Assets/Frog_2.png" id="6_n67tg"]
+[ext_resource type="Texture2D" uid="uid://dkddx8rcmc04l" path="res://Art Assets/Puff_1.png" id="8_oub4g"]
+[ext_resource type="Texture2D" uid="uid://pxwinehou34m" path="res://Art Assets/Puff_2.png" id="9_ha301"]
+[ext_resource type="Texture2D" uid="uid://dcpjbi82772e4" path="res://Art Assets/Puff_3.png" id="10_leu6y"]
+[ext_resource type="AudioStream" uid="uid://bvaxgv666hejl" path="res://Audio/Poof.mp3" id="11_ijy05"]
+[ext_resource type="AudioStream" uid="uid://cjboelawekkbu" path="res://Audio/Frog_Gulp.mp3" id="12_1lde7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ql0"]
 radius = 72.1734
 
+[sub_resource type="Animation" id="Animation_kccoe"]
+resource_name = "tremble"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture Node/Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_eyb4t"), ExtResource("5_rl5cm"), ExtResource("6_n67tg"), ExtResource("5_rl5cm"), ExtResource("1_eyb4t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture Node:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(0.0358968, 0.0358968, 0.0358968, 0.0358968, 0.0358968, 0.0358968, 1, 0.0358968, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-25, 0), Vector2(0, 0), Vector2(-25, 0), Vector2(0, 0), Vector2(-25, 0), Vector2(0, 0), Vector2(-25, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f555i"]
+_data = {
+"tremble": SubResource("Animation_kccoe")
+}
+
+[sub_resource type="Animation" id="Animation_1kweg"]
+resource_name = "Puff"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Puff:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_oub4g"), ExtResource("8_oub4g"), ExtResource("9_ha301"), ExtResource("10_leu6y"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xd8ab"]
+_data = {
+"Puff": SubResource("Animation_1kweg")
+}
+
 [node name="Frog" type="Node2D"]
 script = ExtResource("1_j3tie")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(15.5, 49.5)
+[node name="Texture Node" type="Node2D" parent="."]
+z_index = 25
+
+[node name="Sprite2D2" type="Sprite2D" parent="Texture Node"]
+position = Vector2(41, 54)
 scale = Vector2(2.6338, 1.73973)
 texture = ExtResource("2_gxkh2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
+[node name="Sprite2D" type="Sprite2D" parent="Texture Node"]
 texture = ExtResource("1_eyb4t")
 
 [node name="Area2D" type="Area2D" parent="." groups=["frogs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(43, 44)
+position = Vector2(20, 53)
 shape = SubResource("CircleShape2D_b7ql0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_q0vnq")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f555i")
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.282353, 1, 1)
+offset_left = -52.0
+offset_top = 127.0
+offset_right = 105.0
+offset_bottom = 136.0
+max_value = 200.0
+value = 130.0
+show_percentage = false
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_b3upw")
+volume_db = 5.0
+
+[node name="Puff" type="Sprite2D" parent="."]
+z_index = 26
+position = Vector2(9, 27)
+scale = Vector2(1.34035, 1.34444)
+
+[node name="Puff2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xd8ab")
+}
+
+[node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_ijy05")
+
+[node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_1lde7")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]

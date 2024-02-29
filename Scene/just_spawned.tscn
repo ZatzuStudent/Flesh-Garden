@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://co26svpk4iq1j"]
+
+[ext_resource type="Script" path="res://Script/just_spawned.gd" id="1_f1p17"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8moqi"]
+radius = 21.8403
+
+[node name="Just Spawned" type="Node2D"]
+script = ExtResource("1_f1p17")
+
+[node name="Area2D" type="Area2D" parent="." groups=["just_spawn"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8moqi")
+
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

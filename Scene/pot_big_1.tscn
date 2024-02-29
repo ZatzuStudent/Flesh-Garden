@@ -13,10 +13,10 @@ size = Vector2(214, 62)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrhk3"]
 size = Vector2(23, 12)
 
-[node name="Pot_big" type="Node2D"]
+[node name="Pot_big" type="Node2D" groups=["potter"]]
 script = ExtResource("1_1npfq")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 texture = ExtResource("2_yh4xu")
 
 [node name="Area2D" type="Area2D" parent="." groups=["pots"]]
@@ -53,7 +53,6 @@ stream = ExtResource("6_udioc")
 [connection signal="area_entered" from="Area2D" to="HoldComponent" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="area_exited" from="Area2D" to="HoldComponent" method="_on_area_2d_area_exited"]
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]
 [connection signal="area_entered" from="SeedArea2D" to="HoldComponent" method="_on_seed_area_2d_area_entered"]
 [connection signal="area_entered" from="PlatformPlacerArea2D" to="HoldComponent" method="_on_platform_placer_area_2d_area_entered"]

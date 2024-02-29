@@ -8,7 +8,6 @@ radius = 43.0
 height = 162.0
 
 [node name="EyeBall" type="CharacterBody2D"]
-z_index = 8
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_ih2c3")

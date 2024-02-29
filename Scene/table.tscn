@@ -3,17 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://co8had5ngkjyl" path="res://Art Assets/Table.png" id="1_jx4w0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f647m"]
-size = Vector2(552, 58)
+size = Vector2(552, 48)
 
 [node name="Table" type="Node2D"]
+z_index = -80
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -4
 texture = ExtResource("1_jx4w0")
 
 [node name="Area2D" type="Area2D" parent="." groups=["platform_table"]]
 z_index = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -75)
+position = Vector2(0, -70)
 shape = SubResource("RectangleShape2D_f647m")

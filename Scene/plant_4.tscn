@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://cya1hgl5v7myr"]
+[gd_scene load_steps=14 format=3 uid="uid://cya1hgl5v7myr"]
 
 [ext_resource type="Texture2D" uid="uid://c0nfe8mc5nyxd" path="res://Art Assets/Growth/Plant Growth Spite_18.png" id="1_aj4h8"]
 [ext_resource type="Texture2D" uid="uid://cfq26swbsku78" path="res://Art Assets/BloodNotify.png" id="2_wetdt"]
 [ext_resource type="Script" path="res://Script/Components/GrowthComponent.gd" id="3_0nxui"]
 [ext_resource type="Script" path="res://Script/PlantVariables_4.gd" id="3_7q1ni"]
 [ext_resource type="AudioStream" uid="uid://bsm63o8m8k2nb" path="res://Audio/Harvest.mp3" id="5_f5qvd"]
+[ext_resource type="Texture2D" uid="uid://p4ia6em87nup" path="res://Art Assets/Growth/Plant Growth Spite_25.png" id="6_flaq5"]
+[ext_resource type="Script" path="res://Script/Components/Plant_Health_component.gd" id="7_hkq2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq5f0"]
 size = Vector2(204, 88.5)
@@ -17,6 +19,38 @@ bg_color = Color(0.301961, 0.701961, 0.294118, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20j20"]
 size = Vector2(218, 132)
+
+[sub_resource type="Animation" id="Animation_mrdx3"]
+resource_name = "plus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 0.999997),
+"update": 0,
+"values": [Vector2(88, -24), Vector2(88, -96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3vpau"]
+_data = {
+"plus": SubResource("Animation_mrdx3")
+}
 
 [node name="Plant_4" type="Node2D"]
 
@@ -59,7 +93,7 @@ script = ExtResource("3_0nxui")
 [node name="PlantVariables" type="Node2D" parent="."]
 script = ExtResource("3_7q1ni")
 
-[node name="HarvestArea2D" type="Area2D" parent="."]
+[node name="HarvestArea2D" type="Area2D" parent="." groups=["planter"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea2D"]
 position = Vector2(23, 9)
@@ -67,6 +101,43 @@ shape = SubResource("RectangleShape2D_20j20")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_f5qvd")
+
+[node name="Float Plus Crops" type="Node2D" parent="."]
+position = Vector2(88, -24)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Float Plus Crops"]
+position = Vector2(20, -3)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("6_flaq5")
+
+[node name="Label" type="Label" parent="Float Plus Crops"]
+offset_left = -47.0
+offset_top = -31.0
+offset_right = 11.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "+2"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Float Plus Crops"]
+libraries = {
+"": SubResource("AnimationLibrary_3vpau")
+}
+
+[node name="Health_component" type="Node2D" parent="."]
+position = Vector2(13, 58)
+script = ExtResource("7_hkq2j")
+
+[node name="ProgressBar" type="ProgressBar" parent="Health_component"]
+modulate = Color(1, 0.345098, 0, 1)
+offset_left = -45.0
+offset_top = -3.0
+offset_right = 49.0
+offset_bottom = 6.0
+value = 100.0
+show_percentage = false
 
 [connection signal="timeout" from="GrowthTimer" to="GrowthComponent" method="_on_growth_timer_timeout"]
 [connection signal="timeout" from="harvest_timer" to="GrowthComponent" method="_on_crop_timer_timeout"]
@@ -78,4 +149,6 @@ stream = ExtResource("5_f5qvd")
 [connection signal="harvest_time" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_harvest_time"]
 [connection signal="plant_growth_sprite" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_plant_growth_sprite"]
 [connection signal="plant_type" from="PlantVariables" to="GrowthComponent" method="_on_plant_variables_plant_type"]
+[connection signal="area_entered" from="HarvestArea2D" to="Health_component" method="_on_harvest_area_2d_area_entered"]
+[connection signal="area_exited" from="HarvestArea2D" to="Health_component" method="_on_harvest_area_2d_area_exited"]
 [connection signal="input_event" from="HarvestArea2D" to="GrowthComponent" method="_on_harvest_area_2d_input_event"]

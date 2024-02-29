@@ -83,7 +83,7 @@ func _process(_delta):
 	mixing_three()
 
 func mixing_two():
-	if crop_cauldron == 2 && stir >= 7:
+	if crop_cauldron == 2 && stir >= 5:
 		if crop_types[1].number == 1 && crop_types[2].number == 1:
 			var instance = potion_types[0].instantiate() #agility
 			instance.position = Vector2(-476,-30)
@@ -109,7 +109,7 @@ func mixing_two():
 		in_the_cauldron[1].name = "pop"
 
 func mixing_three():
-	if crop_cauldron == 3 && stir >= 7:
+	if crop_cauldron == 3 && stir >= 5:
 		if (crop_types[1].number == 1 && crop_types[3].number == 1 && crop_types[9].number == 1):
 			var instance = potion_types[2].instantiate() #lust
 			instance.position = Vector2(-476,-30)

@@ -5,5 +5,5 @@
 [node name="Real Plant" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -3
+z_index = -50
 texture = ExtResource("1_qhwtc")

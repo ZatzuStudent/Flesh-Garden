@@ -14,9 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://cogpgufm41cpd" path="res://Art Assets/Splash_5.png" id="10_bcmdj"]
 [ext_resource type="Texture2D" uid="uid://dw7knliocyj52" path="res://Art Assets/Splash_6.png" id="11_0weg6"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghg7p"]
-size = Vector2(6759.25, 3978)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5o8p"]
 size = Vector2(163, 33)
 
@@ -28,6 +25,9 @@ size = Vector2(14, 145.75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ohboj"]
 size = Vector2(152, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghg7p"]
+size = Vector2(6759.25, 3978)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htlnx"]
 size = Vector2(14, 251)
@@ -66,20 +66,10 @@ _data = {
 }
 
 [node name="Cauldron" type="Node2D"]
+z_index = 20
 script = ExtResource("1_h4743")
 
-[node name="Potion limit" type="StaticBody2D" parent="."]
-visible = false
-position = Vector2(676, 112)
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Potion limit"]
-position = Vector2(-541, 1901)
-shape = SubResource("RectangleShape2D_ghg7p")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 10
 texture = ExtResource("2_2i6pj")
 
 [node name="BucketArea2D" type="Area2D" parent="." groups=["CauldronPot"]]
