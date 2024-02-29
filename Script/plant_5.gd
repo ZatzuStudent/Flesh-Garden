@@ -10,10 +10,10 @@ var heart_growth_sprite= {
 	2 : preload("res://Art Assets/Growth/Plant Growth Spite_21.png"),
 	3 : preload("res://Art Assets/Growth/Plant Growth Spite_22.png")
 }
-@onready var float_plus_crops = $"../Float Plus Crops"
+@onready var float_plus_crops = $"Float Plus Crops"
 
-@onready var plus_harvest = $"../Float Plus Crops/AnimationPlayer"
-@onready var plus_label = $"../Float Plus Crops/Label"
+@onready var plus_harvest = $"Float Plus Crops/AnimationPlayer"
+@onready var plus_label = $"Float Plus Crops/Label"
 
 var plant_phase = 0
 

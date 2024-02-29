@@ -1,14 +1,15 @@
 res://Scene/main.tscn
 res://Script/Angel Spawner.gd
 res://Script/cauldron.gd
-res://Script/Shop_Seeds.gd
+res://Script/global_script.gd
 res://Scene/spray.tscn
 res://Scene/customer_1.tscn
 res://Scene/Pot_Hanging_1.tscn
 res://Scene/blood_can.tscn
 res://Scene/Shop_Seeds.tscn
-res://Script/Shop_pots.gd
-res://Script/Components/Shop_Upgrade.gd
 res://Scene/Shop_pots.tscn
 res://Scene/Shop_Upgrade.tscn
-res://Script/global_script.gd
+res://Script/plant_5.gd
+res://Scene/tree.tscn
+res://Scene/plant_5.tscn
+res://Scene/frog.tscn

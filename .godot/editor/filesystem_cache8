@@ -1,6 +1,6 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1709204169
-export_presets.cfg::TextFile::-1::1709155783::0::1::::<><>::
+::res://::1709213272
+export_presets.cfg::TextFile::-1::1709204274::0::1::::<><>::
 ::res://Art/::1708077005
 Drier Basket.png::CompressedTexture2D::1304636204724819276::1708076977::1708076978::1::::<><>::
 icon.svg::CompressedTexture2D::3642746328908586411::1708076721::1708076722::1::::<><>::
@@ -161,14 +161,14 @@ pottion_drop.mp3::AudioStreamMP3::883313665370108833::1708599993::1708599993::1:
 pottion_pick.mp3::AudioStreamMP3::5482195424092271101::1708599993::1708599993::1::::<><>::
 Spray.mp3::AudioStreamMP3::8858663508923146824::1709154569::1709154569::1::::<><>::
 Water_Splash.mp3::AudioStreamMP3::7622364798687138091::1708600803::1708600804::1::::<><>::
-::res://GameExport/::1709155792
-::res://GameExport/Game/::1709155783
-index.apple-touch-icon.png::CompressedTexture2D::1507320974741494643::1709155783::1708666464::1::::<><>::
-index.icon.png::CompressedTexture2D::3947893132673206581::1709155783::1708666464::1::::<><>::
-index.png::CompressedTexture2D::8310964269629108565::1709155783::1708666464::1::::<><>::
-::res://Scene/::1709198078
+::res://GameExport/::1709204289
+::res://GameExport/Game/::1709204275
+index.apple-touch-icon.png::CompressedTexture2D::1507320974741494643::1709204275::1708666464::1::::<><>::
+index.icon.png::CompressedTexture2D::3947893132673206581::1709204275::1708666464::1::::<><>::
+index.png::CompressedTexture2D::8310964269629108565::1709204275::1708666464::1::::<><>::
+::res://Scene/::1709204265
 angels.tscn::PackedScene::9105960709618426157::1709154365::0::1::::<><>::res://Script/Angles.gd<>uid://vt58je3gytiu
-blood_can.tscn::PackedScene::8620609411339124213::1709198078::0::1::::<><>::res://Script/BloodCan.gd<>res://Script/Components/HoldComponent.gd<>uid://d26e1jfkf0vkv::::res://Audio/Blooding.mp3<>uid://bu5xnshi86hf8::::res://Art Assets/BloodCan_anim_3.png<>uid://ce1a5hyqy0lqd::::res://Art Assets/BloodCan_anim_2.png<>uid://dsdpx08ryypvy::::res://Art Assets/BloodCan_anim_1.png
+blood_can.tscn::PackedScene::8620609411339124213::1709204241::0::1::::<><>::res://Script/BloodCan.gd<>res://Script/Components/HoldComponent.gd<>uid://d26e1jfkf0vkv::::res://Audio/Blooding.mp3<>uid://bu5xnshi86hf8::::res://Art Assets/BloodCan_anim_3.png<>uid://ce1a5hyqy0lqd::::res://Art Assets/BloodCan_anim_2.png<>uid://dsdpx08ryypvy::::res://Art Assets/BloodCan_anim_1.png
 cauldron.tscn::PackedScene::122613322933336427::1709141307::0::1::::<><>::res://Script/cauldron.gd<>uid://7w7x68ddt0vh
 clock.tscn::PackedScene::3008654080896809321::1709154365::0::1::::<><>::res://Script/clock.gd<>uid://cebylwclywytd
 crop_eyeball.tscn::PackedScene::2629773368549040972::1709154364::0::1::::<><>::res://Script/crop.gd
@@ -176,11 +176,11 @@ crop_hands.tscn::PackedScene::179790903037780777::1709132761::0::1::::<><>::res:
 crop_head.tscn::PackedScene::5746753337144591822::1709132761::0::1::::<><>::res://Script/crop.gd<>uid://p4ia6em87nup
 crop_heart.tscn::PackedScene::3231675176483655901::1709132761::0::1::::<><>::res://Script/crop.gd<>uid://bvwwr1ljdpww1
 crop_leg.tscn::PackedScene::2834287520834311554::1709132761::0::1::::<><>::res://Script/crop.gd<>uid://bqqappbaqmete
-customer_1.tscn::PackedScene::7263138622432666025::1709198078::0::1::::<><>::uid://c3uy36j0g302k::::res://Art Assets/Customer_Mushroom.png<>res://Script/Components/CustomerComponent.gd<>uid://dppj61gc03mlf::::res://Art Assets/Coin_1.png<>res://Script/Story.gd<>uid://dmm2dm5koqc4e::::res://Art Assets/Dialog1.png<>uid://p4ia6em87nup::::res://Art Assets/Growth/Plant Growth Spite_25.png<>uid://buwtgu8p6yy2i::::res://Art Assets/Dialog2.png<>uid://n354neifd42k::::res://Audio/Customer_Crow.mp3<>uid://btca6duy2mrsx::::res://Audio/Customer_Slime.mp3<>uid://bhb8v5e2hxlxm::::res://Audio/Customer_Brain.mp3<>uid://bpmio1hifimdg::::res://Audio/Customer_Human.mp3<>uid://huph7cu6nl3f::::res://Audio/Customer_skelleton.mp3<>uid://db55vhuuowlmy::::res://Audio/Kaching.mp3
+customer_1.tscn::PackedScene::7263138622432666025::1709204241::0::1::::<><>::uid://c3uy36j0g302k::::res://Art Assets/Customer_Mushroom.png<>res://Script/Components/CustomerComponent.gd<>uid://dppj61gc03mlf::::res://Art Assets/Coin_1.png<>res://Script/Story.gd<>uid://dmm2dm5koqc4e::::res://Art Assets/Dialog1.png<>uid://p4ia6em87nup::::res://Art Assets/Growth/Plant Growth Spite_25.png<>uid://buwtgu8p6yy2i::::res://Art Assets/Dialog2.png<>uid://n354neifd42k::::res://Audio/Customer_Crow.mp3<>uid://btca6duy2mrsx::::res://Audio/Customer_Slime.mp3<>uid://bhb8v5e2hxlxm::::res://Audio/Customer_Brain.mp3<>uid://bpmio1hifimdg::::res://Audio/Customer_Human.mp3<>uid://huph7cu6nl3f::::res://Audio/Customer_skelleton.mp3<>uid://db55vhuuowlmy::::res://Audio/Kaching.mp3
 frog.tscn::PackedScene::7490311551006056972::1709154365::0::1::::<><>::uid://dpwsl7n22e4xj
 just_spawned.tscn::PackedScene::5813138875400179021::1709087463::0::1::::<><>::res://Script/just_spawned.gd
 Laddle.tscn::PackedScene::602964618931264371::1709130298::0::1::::<><>::res://Script/Stick.gd<>uid://ctk14bcaibslf
-main.tscn::PackedScene::2361056885421972455::1709198078::0::1::::<><>::res://Script/main.gd<>uid://fm8msb86msot::::res://Art Assets/Background.png<>uid://c42b6a17n1760::::res://Art Assets/Window.png<>uid://du25gbhfvxjon::::res://Scene/blood_can.tscn<>uid://b0nont26ebbv::::res://Scene/cauldron.tscn<>uid://brd7g7p68sc3d::::res://Scene/tree.tscn<>uid://b0ubuxy2puntm::::res://Art Assets/Coin Pouch.png<>res://Script/Products.gd<>uid://dq7o53dt2uobs::::res://Art Assets/Growth/Plant Growth Spite_23.png<>uid://cinsvcn2e5rqe::::res://Art Assets/Growth/Plant Growth Spite_24.png<>uid://p4ia6em87nup::::res://Art Assets/Growth/Plant Growth Spite_25.png<>uid://bqqappbaqmete::::res://Art Assets/Growth/Plant Growth Spite_26.png<>uid://bvwwr1ljdpww1::::res://Art Assets/Growth/Plant Growth Spite_22.png<>uid://cf8dvdle3388t::::res://Scene/table.tscn<>uid://jrr0st0j5dx8::::res://Scene/Shop_pots.tscn<>uid://bo73r42gcrfnv::::res://Scene/Shop_Upgrade.tscn<>uid://bo8k6pfmcbe00::::res://Scene/Shop_Seeds.tscn<>uid://5si1gad3nh8f::::res://Art Assets/White.png<>uid://deymlppnnrqie::::res://Scene/frog.tscn<>uid://cl7vj3ximt1ub::::res://Scene/stick.tscn<>res://Script/Tutorial_Cauldron_up.gd<>uid://bmlhmt7t7w06a::::res://Art Assets/Potion Shelf.png<>uid://b6eqik2ps65eo::::res://Art Assets/Filter.png<>res://Script/Tutorial.gd<>uid://x3mys5flm3pv::::res://Art Assets/Stick.png<>res://Script/Tutorial_Plant.gd<>uid://b7o4sjpft8icq::::res://Art Assets/Extras_1.png<>res://Script/Extras.gd<>uid://d3kc0yqj5tta2::::res://Art Assets/Extras_2.png<>uid://dm6vdfdo7yuvr::::res://Art Assets/Extras_3.png<>uid://chalxxevru5ql::::res://Audio/HumanFarmMainTrack_v1_2-27-24_RileyHodges.mp3<>uid://cd44jek2l2vun::::res://Scene/spray.tscn<>res://Script/Angel Spawner.gd<>uid://cjet1mx7a7ujf::::res://Scene/potion_2.tscn<>uid://dd81i8b5ytgv5::::res://Scene/potion_3.tscn<>uid://lejhkkjxlio1::::res://Scene/potion_4.tscn<>uid://b54setsnfcu53::::res://Scene/potion_1.tscn
+main.tscn::PackedScene::2361056885421972455::1709204241::0::1::::<><>::res://Script/main.gd<>uid://fm8msb86msot::::res://Art Assets/Background.png<>uid://c42b6a17n1760::::res://Art Assets/Window.png<>uid://du25gbhfvxjon::::res://Scene/blood_can.tscn<>uid://b0nont26ebbv::::res://Scene/cauldron.tscn<>uid://brd7g7p68sc3d::::res://Scene/tree.tscn<>uid://b0ubuxy2puntm::::res://Art Assets/Coin Pouch.png<>res://Script/Products.gd<>uid://dq7o53dt2uobs::::res://Art Assets/Growth/Plant Growth Spite_23.png<>uid://cinsvcn2e5rqe::::res://Art Assets/Growth/Plant Growth Spite_24.png<>uid://p4ia6em87nup::::res://Art Assets/Growth/Plant Growth Spite_25.png<>uid://bqqappbaqmete::::res://Art Assets/Growth/Plant Growth Spite_26.png<>uid://bvwwr1ljdpww1::::res://Art Assets/Growth/Plant Growth Spite_22.png<>uid://cf8dvdle3388t::::res://Scene/table.tscn<>uid://jrr0st0j5dx8::::res://Scene/Shop_pots.tscn<>uid://bo73r42gcrfnv::::res://Scene/Shop_Upgrade.tscn<>uid://bo8k6pfmcbe00::::res://Scene/Shop_Seeds.tscn<>uid://5si1gad3nh8f::::res://Art Assets/White.png<>uid://deymlppnnrqie::::res://Scene/frog.tscn<>uid://cl7vj3ximt1ub::::res://Scene/stick.tscn<>res://Script/Tutorial_Cauldron_up.gd<>uid://bmlhmt7t7w06a::::res://Art Assets/Potion Shelf.png<>uid://b6eqik2ps65eo::::res://Art Assets/Filter.png<>res://Script/Tutorial.gd<>uid://x3mys5flm3pv::::res://Art Assets/Stick.png<>res://Script/Tutorial_Plant.gd<>uid://b7o4sjpft8icq::::res://Art Assets/Extras_1.png<>res://Script/Extras.gd<>uid://d3kc0yqj5tta2::::res://Art Assets/Extras_2.png<>uid://dm6vdfdo7yuvr::::res://Art Assets/Extras_3.png<>uid://chalxxevru5ql::::res://Audio/HumanFarmMainTrack_v1_2-27-24_RileyHodges.mp3<>uid://cd44jek2l2vun::::res://Scene/spray.tscn<>res://Script/Angel Spawner.gd<>uid://cjet1mx7a7ujf::::res://Scene/potion_2.tscn<>uid://dd81i8b5ytgv5::::res://Scene/potion_3.tscn<>uid://lejhkkjxlio1::::res://Scene/potion_4.tscn<>uid://b54setsnfcu53::::res://Scene/potion_1.tscn
 more_plant.tscn::PackedScene::8418078906243018635::1709154365::0::1::::<><>::uid://cph71b5nnmnte
 plant_1.tscn::PackedScene::1796448191633574598::1709154364::0::1::::<><>::uid://c067aa6s5mn7y
 plant_2.tscn::PackedScene::3818612595028526421::1709127465::0::1::::<><>::uid://3s1yb7a63wll
@@ -196,7 +196,7 @@ potion_6.tscn::PackedScene::8646691372482403015::1709125393::0::1::::<><>::res:/
 pot_big_1.tscn::PackedScene::4301780071946714660::1709145648::0::1::::<><>::res://Script/FrogEater.gd<>uid://b6f4skmyjdhfp
 pot_big_2.tscn::PackedScene::1931694548916286011::1709145648::0::1::::<><>::res://Script/FrogEater.gd<>uid://0ex0csjqp7sg
 pot_big_3.tscn::PackedScene::622895180739861745::1709145648::0::1::::<><>::res://Script/FrogEater.gd<>uid://bn08e1gja7pvu
-Pot_Hanging_1.tscn::PackedScene::5446576482879758215::1709198078::0::1::::<><>::res://Script/PotHanging.gd<>uid://cj7n7xqxhp5b5::::res://Art Assets/Hanging Pot.png
+Pot_Hanging_1.tscn::PackedScene::5446576482879758215::1709204241::0::1::::<><>::res://Script/PotHanging.gd<>uid://cj7n7xqxhp5b5::::res://Art Assets/Hanging Pot.png
 Pot_Hanging_2.tscn::PackedScene::1893534178521290855::1709125944::0::1::::<><>::res://Script/PotHanging.gd<>uid://cj7n7xqxhp5b5
 Pot_Hanging_3.tscn::PackedScene::826768876311674378::1708875312::0::1::::<><>::res://Script/PotHanging.gd<>uid://cj7n7xqxhp5b5
 pot_small_1.tscn::PackedScene::9127237452304649542::1709142094::0::1::::<><>::res://Script/FrogEater.gd<>uid://b5nqye7vyw35k
@@ -207,21 +207,21 @@ seed_1.tscn::PackedScene::1903214579342227325::1709145437::0::1::::<><>::res://S
 seed_2.tscn::PackedScene::3058713630151871225::1709145438::0::1::::<><>::res://Script/FrogEater.gd<>uid://okiynvnio6p2
 seed_3.tscn::PackedScene::2731582034758093025::1709145438::0::1::::<><>::uid://doms7x2xwudye
 seed_4.tscn::PackedScene::4683209520649273962::1709145438::0::1::::<><>::uid://hy7ew54f2jpk
-Shop_pots.tscn::PackedScene::667871824206642459::1709130297::0::1::::<><>::res://Script/Shop_pots.gd<>uid://bubuwu7a8lq1n
-Shop_Seeds.tscn::PackedScene::3437852286170460259::1709130298::0::1::::<><>::res://Script/Shop_Seeds.gd<>uid://dreo0qxe2qne5
-Shop_Upgrade.tscn::PackedScene::3436856582212144523::1709132781::0::1::::<><>::res://Script/Components/Shop_Upgrade.gd<>uid://84tma73qk20u
-spray.tscn::PackedScene::5045051944887391345::1709198078::0::1::::<><>::uid://bdvh53tjlubwk::::res://Art Assets/Spray1.png<>res://Script/spray.gd<>res://Script/Components/HoldComponent.gd<>uid://dr6y8rnd1ij8q::::res://Art Assets/Spray_mist_1.png<>uid://b7upfsnf1ni8u::::res://Art Assets/Spray_mist_2.png<>uid://bqwoiwaoedyii::::res://Art Assets/Spray_mist_3.png<>uid://dyhg5ne76twse::::res://Audio/Spray.mp3
+Shop_pots.tscn::PackedScene::667871824206642459::1709204241::0::1::::<><>::res://Script/Shop_pots.gd<>uid://bubuwu7a8lq1n::::res://Art Assets/Shop_Pots.png<>uid://c3jm0vx28q3rn::::res://Art Assets/Shop_green.png<>uid://dch72mv6dth78::::res://Art Assets/Shop_red.png<>uid://bucw4ojntycxt::::res://Art Assets/Shop_green_B.png<>uid://cxseapfqx6o7a::::res://Art Assets/Shop_red_B.png
+Shop_Seeds.tscn::PackedScene::3437852286170460259::1709204241::0::1::::<><>::res://Script/Shop_Seeds.gd<>uid://dreo0qxe2qne5::::res://Art Assets/Shop_seeds.png<>uid://dch72mv6dth78::::res://Art Assets/Shop_red.png<>uid://c3jm0vx28q3rn::::res://Art Assets/Shop_green.png
+Shop_Upgrade.tscn::PackedScene::3436856582212144523::1709204265::0::1::::<><>::res://Script/Components/Shop_Upgrade.gd<>uid://84tma73qk20u::::res://Art Assets/Shop_upgrade.png<>uid://c3jm0vx28q3rn::::res://Art Assets/Shop_green.png<>uid://dch72mv6dth78::::res://Art Assets/Shop_red.png<>uid://dshi1ib2yhaws::::res://Art Assets/sold1.png<>uid://bpy44wmo576df::::res://Art Assets/sold2.png
+spray.tscn::PackedScene::5045051944887391345::1709204241::0::1::::<><>::uid://bdvh53tjlubwk::::res://Art Assets/Spray1.png<>res://Script/spray.gd<>res://Script/Components/HoldComponent.gd<>uid://dr6y8rnd1ij8q::::res://Art Assets/Spray_mist_1.png<>uid://b7upfsnf1ni8u::::res://Art Assets/Spray_mist_2.png<>uid://bqwoiwaoedyii::::res://Art Assets/Spray_mist_3.png<>uid://dyhg5ne76twse::::res://Audio/Spray.mp3
 stick.tscn::PackedScene::5612271371092313513::1709130298::0::1::::<><>::uid://x3mys5flm3pv
 stool.tscn::PackedScene::5564117179973824422::1709129705::0::1::::<><>::uid://k635o4fh2e3k
 table.tscn::PackedScene::5192129878893836761::1709144893::0::1::::<><>::uid://co8had5ngkjyl
 test'.tscn::PackedScene::6960665927881262017::1708083350::0::1::::<><>::res://Script/test.gd<>uid://b3u2ivnx705y2
 tree.tscn::PackedScene::3587779522706365955::1709145648::0::1::::<><>::res://Script/Components/tree.gd<>uid://cskienbp2fh6i
 wall_shelves.tscn::PackedScene::2565309552681096210::1709129697::0::1::::<><>::uid://c0hnrf0yhr0fh
-::res://Script/::1709197832
-Angel Spawner.gd::GDScript::-1::1709197832::0::1::::<>Node2D<>::
+::res://Script/::1709204265
+Angel Spawner.gd::GDScript::-1::1709204197::0::1::::<>Node2D<>::
 Angles.gd::GDScript::-1::1709100864::0::1::::<>CharacterBody2D<>::
 BloodCan.gd::GDScript::-1::1709155673::0::1::::<>Node2D<>::
-cauldron.gd::GDScript::-1::1709197832::0::1::::<>Node2D<>::
+cauldron.gd::GDScript::-1::1709204197::0::1::::<>Node2D<>::
 clock.gd::GDScript::-1::1708253576::0::1::::<>Node2D<>::
 crop.gd::GDScript::-1::1709133255::0::1::::<>CharacterBody2D<>::
 Extras.gd::GDScript::-1::1708695681::0::1::::<>Node2D<>::
@@ -232,7 +232,7 @@ FrogEater2.gd::GDScript::-1::1708253577::0::1::::<>Node2D<>::
 FrogEater.gd::GDScript::-1::1709142022::0::1::::<>Node2D<>::
 frogToEat.gd::GDScript::-1::1708253577::0::1::::<>Node2D<>::
 fruitHanger.gd::GDScript::-1::1709042092::0::1::::<>Node2D<>::
-global_script.gd::GDScript::-1::1709197832::0::1::::<>Node<>::
+global_script.gd::GDScript::-1::1709204265::0::1::::<>Node<>::
 just_spawned.gd::GDScript::-1::1709056879::0::1::::<>Node2D<>::
 main.gd::GDScript::-1::1709154036::0::1::::<>Node<>::
 PlantAngleScript.gd::GDScript::-1::1709048472::0::1::::<>Node2D<>::
@@ -250,8 +250,8 @@ pot_small.gd::GDScript::-1::1709144740::0::1::::<>Node2D<>::
 Products.gd::GDScript::-1::1708680745::0::1::::<>Node2D<>::
 seeds.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
 seed_1.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
-Shop_pots.gd::GDScript::-1::1709087461::0::1::::<>Node2D<>::
-Shop_Seeds.gd::GDScript::-1::1709123750::0::1::::<>Node2D<>::
+Shop_pots.gd::GDScript::-1::1709204241::0::1::::<>Node2D<>::
+Shop_Seeds.gd::GDScript::-1::1709204197::0::1::::<>Node2D<>::
 spray.gd::GDScript::-1::1709154675::0::1::::<>Node2D<>::
 Stick.gd::GDScript::-1::1708525178::0::1::::<>RigidBody2D<>::
 Stick_que.gd::GDScript::-1::1708253580::0::1::::<>Node2D<>::
@@ -260,7 +260,7 @@ test.gd::GDScript::-1::1708253580::0::1::::<>Node2D<>::
 Tutorial.gd::GDScript::-1::1708679843::0::1::::<>Node2D<>::
 Tutorial_Cauldron_up.gd::GDScript::-1::1708757726::0::1::::<>Node2D<>::
 Tutorial_Plant.gd::GDScript::-1::1709100220::0::1::::<>Node2D<>::
-::res://Script/Components/::1709155748
+::res://Script/Components/::1709204241
 CustomerComponent.gd::GDScript::-1::1709147276::0::1::::<>Node2D<>::
 GrowthComponent.gd::GDScript::-1::1709145921::0::1::::<>Node2D<>::
 HoldComponent.gd::GDScript::-1::1709155748::0::1::::<>Node2D<>::
@@ -273,5 +273,5 @@ SeedComponent.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
 SeedComponent_3.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
 ShopComponents_1.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
 ShopComponents_3.gd::GDScript::-1::1708253579::0::1::::<>Node2D<>::
-Shop_Upgrade.gd::GDScript::-1::1709132781::0::1::::<>Node2D<>::
+Shop_Upgrade.gd::GDScript::-1::1709204241::0::1::::<>Node2D<>::
 tree.gd::GDScript::-1::1709145090::0::1::::<>Node2D<>::
