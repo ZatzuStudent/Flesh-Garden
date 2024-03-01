@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var growth_timer = $GrowthTimer
 
-var fruit_value = 2
+var fruit_value = 1
 
 var heart_growth_sprite= {
 	0 : preload("res://Art Assets/Growth/Plant Growth Spite_19.png"),

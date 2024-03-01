@@ -52,5 +52,3 @@ func _on_get_area_2d_area_exited(area):
 
 func _on_clock_timer_timeout():
 	GlobalScript.day += 1
-
-

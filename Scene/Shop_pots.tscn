@@ -220,69 +220,71 @@ metadata/_edit_use_anchors_ = true
 
 [node name="BuyAreas" type="Node2D" parent="."]
 
-[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D1" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-1, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
 position = Vector2(-80, -96)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D2" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-1, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
 position = Vector2(-106, 90)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D3" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-1, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
 position = Vector2(-80, 272)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D4" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(135, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]
 position = Vector2(-80, -96)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D5" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D5" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(154, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D5"]
 position = Vector2(-106, 90)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D6" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D6" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(135, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D6"]
 position = Vector2(-80, 272)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D7" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D7" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(263, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D7"]
 position = Vector2(-80, -96)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D8" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D8" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(282, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D8"]
 position = Vector2(-82, 90)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D9" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D9" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(263, -37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D9"]
 position = Vector2(-80, 272)
 shape = SubResource("RectangleShape2D_w28hj")
 
+[connection signal="area_entered" from="PullArea2D" to="." method="_on_pull_area_2d_area_entered"]
+[connection signal="area_exited" from="PullArea2D" to="." method="_on_pull_area_2d_area_exited"]
 [connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]
 [connection signal="area_entered" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_1_area_entered"]
 [connection signal="area_exited" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_1_area_exited"]

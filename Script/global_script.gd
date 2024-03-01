@@ -33,6 +33,8 @@ var frog_eaten = 0
 var frog_size = 1
 var watering = false
 var is_cauldron_area = false
+var paused = false
+var shop_open = 1
 
 func _ready():
 	customer_number = randi_range(0,4)

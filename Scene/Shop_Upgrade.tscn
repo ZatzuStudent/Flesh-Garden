@@ -243,4 +243,6 @@ texture = ExtResource("6_l1xhh")
 [connection signal="input_event" from="BuyAreas/BuyArea2D4" to="." method="_on_buy_area_2d_input_event" binds= [3]]
 [connection signal="input_event" from="BuyAreas/BuyArea2D5" to="." method="_on_buy_area_2d_input_event" binds= [4]]
 [connection signal="input_event" from="BuyAreas/BuyArea2D6" to="." method="_on_buy_area_2d_input_event" binds= [5]]
+[connection signal="area_entered" from="PullArea2D" to="." method="_on_pull_area_2d_area_entered"]
+[connection signal="area_exited" from="PullArea2D" to="." method="_on_pull_area_2d_area_exited"]
 [connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]

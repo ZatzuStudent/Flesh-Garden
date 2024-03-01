@@ -78,7 +78,7 @@ script = ExtResource("1_j3tie")
 z_index = 25
 
 [node name="Sprite2D2" type="Sprite2D" parent="Texture Node"]
-position = Vector2(41, 54)
+position = Vector2(37, 54)
 scale = Vector2(2.6338, 1.73973)
 texture = ExtResource("2_gxkh2")
 
@@ -101,10 +101,10 @@ libraries = {
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0.282353, 1, 1)
-offset_left = -52.0
-offset_top = 127.0
-offset_right = 105.0
-offset_bottom = 136.0
+offset_left = -63.0
+offset_top = 143.0
+offset_right = 94.0
+offset_bottom = 152.0
 max_value = 200.0
 value = 130.0
 show_percentage = false
@@ -132,4 +132,3 @@ stream = ExtResource("12_1lde7")
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
-[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]

@@ -114,28 +114,28 @@ vertical_alignment = 1
 
 [node name="BuyAreas" type="Node2D" parent="."]
 
-[node name="BuyArea2D1" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D1" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-7, 37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D1"]
 position = Vector2(-41, -8)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D2" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D2" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-12, 36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D2"]
 position = Vector2(191, -9)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D3" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D3" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-7, 37)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D3"]
 position = Vector2(-39.5, 176)
 shape = SubResource("RectangleShape2D_w28hj")
 
-[node name="BuyArea2D4" type="Area2D" parent="BuyAreas"]
+[node name="BuyArea2D4" type="Area2D" parent="BuyAreas" groups=["shops"]]
 position = Vector2(-12, 36)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BuyAreas/BuyArea2D4"]

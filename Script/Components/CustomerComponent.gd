@@ -68,17 +68,20 @@ var customer_old
 
 func _ready():
 	sprite_2d.z_index = -101
-	next_time_but.modulate = Color(1,1,1,.2)
-	dialog_sprite.visible = false
-	next_time_but.visible = false
-	float_plus_node.visible = false
 	seller_area.call_deferred("set_disabled", true)
 	seller_area2.call_deferred("set_disabled", true)
-	sprite_2d.texture = customer_type[GlobalScript.customer_number]
-	customer_sfx[GlobalScript.customer_number].play()
-	animation_player.play("walk_in")
+	sprite_2d.visible = false
+	dialog_sprite.visible = false
+	next_time_but.visible = false
 	collision_req.disabled = true
 	collision_req2.disabled = true
+	float_plus_node.visible = false
+	await get_tree().create_timer(randi_range(6,15)).timeout
+	next_time_but.modulate = Color(1,1,1,.2)
+	sprite_2d.texture = customer_type[GlobalScript.customer_number]
+	customer_sfx[GlobalScript.customer_number].play()
+	sprite_2d.visible = true
+	animation_player.play("walk_in")
 	await animation_player.animation_finished
 	dialog_sprite.visible = true
 	next_time_but.visible = true

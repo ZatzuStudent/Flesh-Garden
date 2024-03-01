@@ -91,9 +91,9 @@ shape = SubResource("RectangleShape2D_nq5f0")
 
 [node name="BloodWater" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 2)
-offset_left = -43.0
+offset_left = -51.0
 offset_top = 33.0
-offset_right = 63.0
+offset_right = 55.0
 offset_bottom = 38.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/background = SubResource("StyleBoxFlat_nbq7c")

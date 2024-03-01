@@ -3,7 +3,7 @@ extends Node2D
 var isfrog
 
 func _ready():
-	z_index = -10
+	z_index = -5
 	isfrog = false
 
 func _on_area_2d_area_entered(area):

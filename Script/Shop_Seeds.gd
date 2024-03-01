@@ -9,14 +9,20 @@ var upgrade_types = {
 	2 : {scene = preload("res://Scene/seed_3.tscn"), price = 40}, #onionfoot_seed
 	3 : {scene = preload("res://Scene/seed_4.tscn"), price = 100}, #pumpkinskull_seed
 }
+var spawn_node = preload("res://Scene/just_spawned.tscn")
 var time_of_holding = 0
+var spawn_in_shop = 0
+var at_max = false
 
 func _ready():
 	for i in range(upgrade_types.size()):
 		if upgrade_types[i].has("price"):
 			get_node("Prices/Label" + str(i+1)).text = str(upgrade_types[i].price)
-			
+
 func _process(delta):
+	if GlobalScript.shop_open != 1:
+		global_position.x = 1155
+		
 	for i in range(upgrade_types.size()):
 		if upgrade_types[i].has("price") && GlobalScript.money < upgrade_types[i].price:
 			get_node("Colors/red" + str(i+1)).visible = true
@@ -30,17 +36,13 @@ func _process(delta):
 	else:
 		$BuyAreas.visible = false
 
-
 func _on_pull_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		GlobalScript.shop_open = 1
 		if event.pressed:
-			if at_max == true:
-				global_position.x = 1156
-				at_max = false
-			else:
-				isHolding = true
-				movePotPos = get_global_mouse_position() - global_position
-				oldPotPos = global_position
+			isHolding = true
+			movePotPos = get_global_mouse_position() - global_position
+			oldPotPos = global_position
 		else:
 			if time_of_holding <= 0.2:
 				if global_position.x <= 920:
@@ -50,15 +52,10 @@ func _on_pull_area_2d_input_event(_viewport, event, _shape_idx):
 			time_of_holding = 0
 			isHolding = false
 
-var at_max = false
-
 func _input( event ):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and !event.is_pressed():
 			isHolding = false
-			if global_position.x <= 690:
-				at_max = true
-
 
 func _on_buy_area_2d_1_input_event(_viewport, event, _shape_idx, i):
 	if GlobalScript.isEmpty == true && GlobalScript.money >= upgrade_types[i].price:
@@ -69,9 +66,6 @@ func _on_buy_area_2d_1_input_event(_viewport, event, _shape_idx, i):
 			var instance2 = spawn_node.instantiate()
 			call_deferred("add_sibling", instance2)
 			global_position.x = 1155
-var spawn_node = preload("res://Scene/just_spawned.tscn")
-
-var spawn_in_shop = 0
 
 func _on_buy_area_2d_1_area_entered(area):
 	if area.is_in_group("just_spawn"):
@@ -80,5 +74,3 @@ func _on_buy_area_2d_1_area_entered(area):
 func _on_buy_area_2d_1_area_exited(area):
 	if area.is_in_group("just_spawn"):
 		spawn_in_shop -= 1
-
-
