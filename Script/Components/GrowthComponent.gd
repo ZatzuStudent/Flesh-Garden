@@ -56,6 +56,8 @@ func _on_growth_timer_timeout():
 @onready var plus_harvest = $"../Float Plus Crops/AnimationPlayer"
 @onready var plus_label = $"../Float Plus Crops/Label"
 
+var number_of_harvest = 0
+
 func _on_harvest_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed && (plant_type == 0 || plant_type == 1):
@@ -65,6 +67,13 @@ func _on_harvest_area_2d_input_event(_viewport, event, _shape_idx):
 				PlantBody.texture = plant_spritesheet[4]
 				isharvestTime = false
 				GlobalScript.storage[plant_type] += fruit_value
+				if number_of_harvest > 3:
+					if plant_type == 0:
+						harvest_timer.wait_time = 25
+					if plant_type == 1:
+						harvest_timer.wait_time = 35
+				else:
+					number_of_harvest += 1
 				float_plus_crops.visible = true
 				plus_label.text = str(fruit_value)
 				plus_harvest.play("plus")

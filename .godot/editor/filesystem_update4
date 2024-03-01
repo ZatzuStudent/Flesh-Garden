@@ -24,3 +24,4 @@ res://Scene/plant_3.tscn
 res://Script/PlantVariables_4.gd
 res://Script/PlantVariables_1.gd
 res://Script/PlantVariables_3.gd
+res://Script/Components/GrowthComponent.gd
