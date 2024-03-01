@@ -52,8 +52,6 @@ func _on_get_area_2d_area_exited(area):
 
 func _on_clock_timer_timeout():
 	GlobalScript.day += 1
-<<<<<<< Updated upstream
-=======
 	
 func load_game():
 	if not FileAccess.file_exists("user://savegame.save"):
@@ -96,5 +94,3 @@ func load_game():
 				continue
 			new_object.set(i, node_data[i])
 
-
->>>>>>> Stashed changes
