@@ -8,7 +8,7 @@ signal plant_type(type)
 
 var eyeberry_value = 3
 var eyeberry_growth_time = 5
-var eyeberry_harvest_time = 10
+var eyeberry_harvest_time = 30
 var eyeberry_growth_sprite= {
 	0 : preload("res://Art Assets/Growth/Plant Growth Spite_0.png"),
 	1 : preload("res://Art Assets/Growth/Plant Growth Spite_1.png"),
