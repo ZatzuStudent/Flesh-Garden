@@ -17,6 +17,10 @@ var fruit_value
 var plant_spritesheet
 @onready var float_plus_crops = $"../Float Plus Crops"
 
+var eye_wither_sprite = preload("res://Art Assets/Growth/Plant Growth Spite_4.5.png")
+var hand_wither_sprite = preload("res://Art Assets/Growth/Plant Growth Spite_9.5.png")
+
+var blood_can = 1
 
 func _ready():
 	isharvestTime = false
@@ -27,7 +31,7 @@ func _ready():
 	
 func _process(delta):
 	if isharvestTime == false:
-		blood_water.value -= 1 * delta
+		blood_water.value -= blood_can * delta
 	if isblooding == true:
 		blood_water.value += 80 * delta
 		blood_water.visible = true
@@ -61,23 +65,29 @@ var number_of_harvest = 0
 func _on_harvest_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed && (plant_type == 0 || plant_type == 1):
-			if isharvestTime == true:
+			if plant_phase == 9:
+				$"..".queue_free()
+			elif isharvestTime == true:
 				plant_phase = 5
 				harvest_sfx.play()
 				PlantBody.texture = plant_spritesheet[4]
 				isharvestTime = false
 				GlobalScript.storage[plant_type] += fruit_value
-				if number_of_harvest > 3:
-					if plant_type == 0:
-						harvest_timer.wait_time = 25
-					if plant_type == 1:
-						harvest_timer.wait_time = 35
-				else:
-					number_of_harvest += 1
+				number_of_harvest += 1
+				harvest_timer.start()
 				float_plus_crops.visible = true
 				plus_label.text = str(fruit_value)
 				plus_harvest.play("plus")
-				harvest_timer.start()
+				if number_of_harvest >= 3:
+					plant_phase = 9
+					blood_can = 0
+					harvest_timer.stop()
+					if plant_type == 0:
+						PlantBody.texture = eye_wither_sprite
+					if plant_type == 1:
+						PlantBody.texture = hand_wither_sprite
+				
+		
 				
 		if event.pressed && (plant_type == 2 || plant_type == 3):
 			if isharvestTime == true:

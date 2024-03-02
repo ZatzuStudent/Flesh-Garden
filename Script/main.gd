@@ -42,14 +42,6 @@ func _process(_delta):
 		get_node("Products/Label4").text = str(GlobalScript.storage[9])
 	GlobalScript.ClockTimer = MainTimer.time_left
 
-func _on_get_area_2d_area_entered(area):
-	if area in get_tree().get_nodes_in_group("seeds") || area in get_tree().get_nodes_in_group("pots"):
-		GlobalScript.isEmpty = false
-
-func _on_get_area_2d_area_exited(area):
-	if area in get_tree().get_nodes_in_group("seeds") || area in get_tree().get_nodes_in_group("pots"):
-		GlobalScript.isEmpty = true
-
 func _on_clock_timer_timeout():
 	GlobalScript.day += 1
 	

@@ -8,7 +8,7 @@ signal plant_type(type)
 
 var palmfern_value = 2
 var palmfern_growth_time = 7
-var palmfern_harvest_time = 20
+var palmfern_harvest_time = 16
 var palmfern_growth_sprite= {
 	0 : preload("res://Art Assets/Growth/Plant Growth Spite_5.png"),
 	1 : preload("res://Art Assets/Growth/Plant Growth Spite_6.png"),

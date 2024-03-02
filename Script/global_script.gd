@@ -21,16 +21,15 @@ var storage = {
 	9: 0
 }
 
-var isEmpty = true
+var crop_numbers = [0, 1, 8]
+
+var timePerday = 180 #constant
+var ClockTimer = 180 #chages
 var money = 120
 var customer_number
 var cauldron = false
-var ClockTimer = 180
-var timePerday = 180
 var day = 1
 var time_of_day = 0
-var frog_eaten = 0
-var frog_size = 1
 var watering = false
 var is_cauldron_area = false
 var paused = false

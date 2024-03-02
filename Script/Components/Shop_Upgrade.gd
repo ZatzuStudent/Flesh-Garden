@@ -57,7 +57,7 @@ func _input( event ):
 			isHolding = false
 
 func _on_buy_area_2d_input_event(_viewport, event, _shape_idx, i):
-	if GlobalScript.isEmpty == true && GlobalScript.money >= upgrade_types[i].price && !upgrade_types[i].bought:
+	if GlobalScript.money >= upgrade_types[i].price && !upgrade_types[i].bought:
 		if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 			GlobalScript.money -= upgrade_types[i].price
 			var instance = upgrade_types[i].scene.instantiate()

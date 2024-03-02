@@ -50,14 +50,6 @@ func _process(delta):
 		frog_hungry.stop()
 		pink.visible = false
 
-
-	if GlobalScript.frog_eaten == 5:
-		scale = scale*1.1
-		GlobalScript.frog_size += 1
-		GlobalScript.frog_eaten = 0
-	if GlobalScript.frog_size == 0:
-		scale = Vector2(1,1)
-
 	scale.x = .3+((hunger_bar.value)*.0035)
 
 func _on_area_2d_area_entered(area):

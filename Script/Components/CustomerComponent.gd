@@ -25,8 +25,8 @@ var crop_type= {
 var parts = ["eyeball", "hands", "leg", "head","agility","wisdom","strength","passion", "lust", "heart"]
 var part_numbers = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
 var part_price = {
-	0: 2, #eye
-	1: 5, #hand
+	0: 3, #eye 3x3x3 = 27
+	1: 6, #hand 6x3x2 = 36
 	2: 30, #leg
 	3: 50, #skull
 	4: 90, #agility 35 
@@ -91,20 +91,28 @@ func _ready():
 	if GlobalScript.customer_number == 2:
 		sprite_2d.z_index = -89
 	customer_old = GlobalScript.customer_number
-	
-	if GlobalScript.day >= 4:
-		var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-		required_type_harvest = numbers[randi_range(0, numbers.size() -  1)]
-	elif GlobalScript.day == 3:
-		var numbers = [0, 1, 2, 3, 4, 5, 6, 8]
-		required_type_harvest = numbers[randi_range(0, numbers.size() -  1)]
-	elif GlobalScript.day == 2:
-		var numbers = [0, 1, 2, 4, 8]
-		required_type_harvest = numbers[randi_range(0, numbers.size() -  1)]
+
+	if GlobalScript.day >= 2:
+		required_type_harvest = GlobalScript.crop_numbers[randi_range(0, GlobalScript.crop_numbers.size() -  1)]
 	elif GlobalScript.day <= 1:
-		var numbers = [0, 1, 8]
-		required_type_harvest = numbers[randi_range(0, numbers.size() -  1)]
-		
+		required_type_harvest = GlobalScript.crop_numbers[randi_range(0, GlobalScript.crop_numbers.size() -  1)]
+
+	print(GlobalScript.crop_numbers)
+	
+	if GlobalScript.storage[2] >= 1 && !GlobalScript.crop_numbers.has(2):
+		GlobalScript.crop_numbers.append(2)
+		GlobalScript.crop_numbers.append(4)
+	if GlobalScript.storage[3] >= 1 && !GlobalScript.crop_numbers.has(3):
+		GlobalScript.crop_numbers.append(3)
+		GlobalScript.crop_numbers.append(5)
+	if GlobalScript.storage[9] >= 1 && !GlobalScript.crop_numbers.has(9):
+		GlobalScript.crop_numbers.append(9)
+	if GlobalScript.cauldron == true:
+		if GlobalScript.storage[3] >= 1:
+			GlobalScript.crop_numbers.append(6)
+		if GlobalScript.storage[9] >= 1:
+			GlobalScript.crop_numbers.append(7)
+	
 	if required_type_harvest != null:
 		if required_type_harvest == 0:
 			if GlobalScript.day >= 3:
@@ -115,16 +123,17 @@ func _ready():
 				required_number_harvest = randi_range(1,5)
 		elif required_type_harvest == 1:
 			if GlobalScript.day >= 3:
-				required_number_harvest = randi_range(3,10)
+				required_number_harvest = randi_range(3,15)
 			elif GlobalScript.day <= 2:
 				required_number_harvest = randi_range(1,5)
-		elif required_type_harvest == 2 || required_type_harvest == 3 || required_type_harvest == 9:
+		elif required_type_harvest == 2 || required_type_harvest == 3:
 			required_number_harvest = randi_range(1,3)
+		elif required_type_harvest == 9:
+			required_number_harvest = randi_range(2,6)
 		else:
 			required_number_harvest = 1
 
 	if required_type_harvest != null:
-		print(required_type_harvest)
 		part_numbers[required_type_harvest] = required_number_harvest
 		required_label.text = str(required_number_harvest)
 		crop_sprite.texture = crop_type[required_type_harvest]
@@ -136,7 +145,7 @@ func _process(_delta):
 func _input( event ):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 && !event.is_pressed():
-			if inSeller == true && required_type_harvest != null:
+			if inSeller == true && required_type_harvest != null && inMouse == true:
 				if GlobalScript.storage[required_type_harvest] >= part_numbers[required_type_harvest]:
 					GlobalScript.storage[required_type_harvest] = GlobalScript.storage[required_type_harvest]-required_number_harvest
 					GlobalScript.money += required_number_harvest*part_price[required_type_harvest]
@@ -186,3 +195,13 @@ func _on_button_2_mouse_entered():
 
 func _on_button_2_mouse_exited():
 	next_time_but.modulate = Color(1,1,1,.2)
+
+
+
+var inMouse = false
+func _on_area_2d_mouse_entered():
+	inMouse = true
+
+
+func _on_area_2d_mouse_exited():
+	inMouse = false

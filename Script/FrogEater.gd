@@ -20,6 +20,5 @@ func _input(event):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if !event.pressed && isfrog == true:
 			queue_free()
-			GlobalScript.frog_eaten += 1
 		else:
 			pass

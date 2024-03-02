@@ -7,8 +7,8 @@ signal plant_growth_sprite(sprite)
 signal plant_type(type)
 
 var pupmkinskull_value = 3
-var pupmkinskull_growth_time = 30
-var pupmkinskull_harvest_time = 30
+var pupmkinskull_growth_time = 25
+var pupmkinskull_harvest_time = 25
 var pupmkinskull_growth_sprite= {
 	0 : preload("res://Art Assets/Growth/Plant Growth Spite_14.png"),
 	1 : preload("res://Art Assets/Growth/Plant Growth Spite_15.png"),

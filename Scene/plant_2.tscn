@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bun08yhimk1p6"]
+[gd_scene load_steps=15 format=3 uid="uid://bun08yhimk1p6"]
 
 [ext_resource type="Texture2D" uid="uid://3s1yb7a63wll" path="res://Art Assets/Growth/Plant Growth Spite_8.png" id="2_8i5hf"]
 [ext_resource type="Texture2D" uid="uid://cfq26swbsku78" path="res://Art Assets/BloodNotify.png" id="2_glsp5"]
@@ -19,6 +19,9 @@ bg_color = Color(0.301961, 0.701961, 0.294118, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p2v3i"]
 radius = 35.2278
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exn3i"]
+size = Vector2(107, 70)
 
 [sub_resource type="Animation" id="Animation_mrdx3"]
 resource_name = "plus"
@@ -97,6 +100,10 @@ script = ExtResource("5_nkqrd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HarvestArea2D"]
 position = Vector2(-45, -42)
 shape = SubResource("CircleShape2D_p2v3i")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="HarvestArea2D"]
+position = Vector2(-10.5, 48)
+shape = SubResource("RectangleShape2D_exn3i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HarvestArea2D"]
 position = Vector2(43, -59)
