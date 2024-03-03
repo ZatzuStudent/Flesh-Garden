@@ -21,18 +21,16 @@ var storage = {
 	9: 0
 }
 
-var crop_numbers = [0, 1, 8]
+var crop_numbers = [0, 1, 8] 
 
 var timePerday = 180 #constant
 var ClockTimer = 180 #chages
 var isHoldingPotion = false
-var money = 120000
+var money = 12000
 var customer_number
 var cauldron = false
 var day = 1
 var time_of_day = 0
-var watering = false
-var is_cauldron_area = false
 var paused = false
 var shop_open = 1
 
