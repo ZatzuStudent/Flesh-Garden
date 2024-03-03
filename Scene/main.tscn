@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://cd44jek2l2vun" path="res://Scene/spray.tscn" id="33_ob8lq"]
 [ext_resource type="Script" path="res://Script/Angel Spawner.gd" id="33_rjhpf"]
 [ext_resource type="PackedScene" uid="uid://b54setsnfcu53" path="res://Scene/potion_1.tscn" id="35_r6pd4"]
-[ext_resource type="PackedScene" uid="uid://d2y83v6huda6x" path="res://Scene/angels.tscn" id="36_oyy2w"]
+[ext_resource type="PackedScene" uid="uid://dd81i8b5ytgv5" path="res://Scene/potion_3.tscn" id="36_742qc"]
 [ext_resource type="PackedScene" uid="uid://cjet1mx7a7ujf" path="res://Scene/potion_2.tscn" id="37_vjbo2"]
 [ext_resource type="Script" path="res://Script/Pause.gd" id="38_e3t80"]
 
@@ -51,7 +51,7 @@ size = Vector2(355, 32)
 size = Vector2(59, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaepy"]
-size = Vector2(350, 619)
+size = Vector2(350, 499)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbged"]
 size = Vector2(133, 772)
@@ -477,7 +477,7 @@ shape = SubResource("RectangleShape2D_w0jam")
 [node name="Area2D2" type="Area2D" parent="PotionShelf" groups=["potion_boarder"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PotionShelf/Area2D2"]
-position = Vector2(-1, -260.5)
+position = Vector2(-1, -200.5)
 shape = SubResource("RectangleShape2D_oaepy")
 
 [node name="Tutorial_Cauldron_up" type="Node2D" parent="."]
@@ -749,19 +749,14 @@ position = Vector2(13.5, 9.00002)
 scale = Vector2(16.5583, 9.58333)
 texture = ExtResource("18_wveum")
 
+[node name="Potion2" parent="." instance=ExtResource("37_vjbo2")]
+position = Vector2(-480, -188)
+
+[node name="Potion3" parent="." instance=ExtResource("36_742qc")]
+position = Vector2(-480, -188)
+
 [node name="Potion" parent="." instance=ExtResource("35_r6pd4")]
-position = Vector2(-453, -231)
-
-[node name="Potion2" parent="." instance=ExtResource("35_r6pd4")]
-position = Vector2(-453, -231)
-
-[node name="Potion3" parent="." instance=ExtResource("35_r6pd4")]
-position = Vector2(-453, -231)
-
-[node name="Angles" parent="." instance=ExtResource("36_oyy2w")]
-
-[node name="Potion4" parent="." instance=ExtResource("37_vjbo2")]
-position = Vector2(-563, -301)
+position = Vector2(-480, -188)
 
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="input_event" from="Products/Node2D2/Eye_Area2D" to="Products" method="_on_parts_area_2d_input_event" binds= [0]]

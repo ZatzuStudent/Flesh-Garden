@@ -10,6 +10,7 @@ func _ready():
 
 func _process(_delta):
 	if isholding == true:
+		
 		var direction : Vector2 = (get_global_mouse_position() - global_position)
 		if direction.length() < 50:
 			direction = direction.normalized()*1
@@ -40,8 +41,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
 		if event.is_pressed():
 			isholding = true
-		else:
-			isholding = false
+			GlobalScript.isItem = true
 
 func _input( event ):
 	if event is InputEventMouseButton:

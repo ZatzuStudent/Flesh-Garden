@@ -30,14 +30,12 @@ var type_to_eat = 0
 var potion_took = 6
 var isEat
 
-
-
 func _ready():
 	isEat = false
 
 func _process(delta):
 	if GlobalScript.paused == false:
-		hunger_bar.value -= delta*10
+		hunger_bar.value -= delta*60
 	else:
 		hunger_bar.value = hunger_bar.value
 
@@ -45,11 +43,6 @@ func _process(delta):
 		shiver_anim.play("tremble")
 		frog_hungry.play()
 		pink.visible = true
-	elif (hunger_bar.value > 10 && frog_hungry.is_playing() == true) || GlobalScript.paused == true:
-		shiver_anim.stop()
-		frog_hungry.stop()
-		pink.visible = false
-	
 
 	scale.x = .3+((hunger_bar.value)*.0035)
 
@@ -75,7 +68,7 @@ func _on_area_2d_area_exited(area):
 			pink.visible = false
 			isEat = false
 			frog.texture = frog_sprite[0]
-			if fed == true:
+			if fed == true && pressed == false:
 				_transform()
 			else:
 				type_to_eat = 0
@@ -89,7 +82,6 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 			await get_tree().create_timer(.3).timeout
 			frog.texture = frog_sprite[0]
 			frog_croak.play()
-			
 
 var fed = false
 
@@ -97,17 +89,21 @@ func _input(event):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if !event.pressed:
 			pressed = false
+			shiver_anim.stop()
+			frog_hungry.stop()
+			pink.visible = false
 			if type_to_eat == 1:
 				hunger_bar.value += 30
 				gulp_sfx.play()
+				fed = false
 			elif type_to_eat == 2:
 				hunger_bar.value += 100
 				gulp_sfx.play()
+				fed = false
 			elif type_to_eat == 3 && fed == false:
 				hunger_bar.value += 200
 				gulp_sfx.play()
-				fed = true
-				
+			
 				
 				
 				
@@ -116,17 +112,8 @@ func _input(event):
 func _transform():
 	puffing_anim.play("Puff")
 	puff_sfx.play()
-	print(potion_took)
-	print('joj')
 	frog.texture = potion_types[potion_took].sprite
 	await get_tree().create_timer(.1).timeout
 	frog_collision.disabled = true
 	await get_tree().create_timer(3.0).timeout
-	potion_took = 6
-	puffing_anim.play("Puff")
-	puff_sfx.play()
 	frog.texture = frog_sprite[0]
-	frog_collision.disabled = false
-	fed = false
-	type_to_eat = 4
-	

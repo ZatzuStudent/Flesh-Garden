@@ -25,10 +25,10 @@ var crop_type= {
 var parts = ["eyeball", "hands", "leg", "head","agility","wisdom","strength","passion", "lust", "heart"]
 var part_numbers = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
 var part_price = {
-	0: 3, #eye 3x3x3 = 27
-	1: 6, #hand 6x3x2 = 36
-	2: 30, #leg
-	3: 50, #skull
+	0: 4, #eye 4x3x3 = 36
+	1: 7, #hand 6x3x2 = 36
+	2: 30, #leg x4
+	3: 50, #skull x3
 	4: 90, #agility 35 
 	5: 150, #wisdom 52
 	6: 250,# strength 72 or 85
@@ -121,15 +121,19 @@ func _ready():
 				required_number_harvest = randi_range(6,12)
 			elif GlobalScript.day <= 1:
 				required_number_harvest = randi_range(1,5)
+
 		elif required_type_harvest == 1:
 			if GlobalScript.day >= 3:
 				required_number_harvest = randi_range(3,15)
 			elif GlobalScript.day <= 2:
 				required_number_harvest = randi_range(1,5)
+
 		elif required_type_harvest == 2 || required_type_harvest == 3:
 			required_number_harvest = randi_range(1,3)
+
 		elif required_type_harvest == 9:
 			required_number_harvest = randi_range(2,6)
+
 		else:
 			required_number_harvest = 1
 
@@ -143,18 +147,27 @@ func _process(_delta):
 		_to_exit()
 
 func _input( event ):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 && !event.is_pressed():
-			if inSeller == true && required_type_harvest != null && GlobalScript.isHoldingPotion == true:
+	if event is InputEventMouseButton && event.button_index == 1:
+		if !event.is_pressed():
+			if inSeller == true && required_type_harvest != null:
 				if GlobalScript.storage[required_type_harvest] >= part_numbers[required_type_harvest]:
-					GlobalScript.storage[required_type_harvest] = GlobalScript.storage[required_type_harvest]-required_number_harvest
-					GlobalScript.money += required_number_harvest*part_price[required_type_harvest]
-					plus_money_label.text = '+' + str(required_number_harvest*part_price[required_type_harvest])
-					GlobalScript.customer_love[GlobalScript.customer_number] += 1
-					kaching_sfx.play()
-					float_plus_node.visible = true
-					plus_money_anim.play("float_money")
-					_to_exit()
+					if 4 <= required_type_harvest && required_type_harvest <= 8:
+						if  GlobalScript.isHoldingPotion == true:
+							_to_be_sold()
+					else:
+						_to_be_sold()
+
+func _to_be_sold():
+	GlobalScript.storage[required_type_harvest] = GlobalScript.storage[required_type_harvest]-required_number_harvest
+	GlobalScript.money += required_number_harvest*part_price[required_type_harvest]
+	plus_money_label.text = '+' + str(required_number_harvest*part_price[required_type_harvest])
+	GlobalScript.customer_love[GlobalScript.customer_number] += 1
+	kaching_sfx.play()
+	float_plus_node.visible = true
+	plus_money_anim.play("float_money")
+	_to_exit()
+
+var potion_needed = 0
 
 func _on_area_2d_area_entered(area):
 	if required_type_harvest != null:
@@ -162,8 +175,6 @@ func _on_area_2d_area_entered(area):
 			inSeller = true
 			seller_area.call_deferred("set_disabled", false)
 			seller_area2.call_deferred("set_disabled", false)
-		return
-		
 func _on_area_2d_area_exited(area):
 	if required_type_harvest != null:
 		if area.is_in_group(parts[required_type_harvest]):

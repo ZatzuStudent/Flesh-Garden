@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://deymlppnnrqie"]
 
 [ext_resource type="Texture2D" uid="uid://dpwsl7n22e4xj" path="res://Art Assets/Frog_1.png" id="1_eyb4t"]
-[ext_resource type="Script" path="res://Script/frog.gd" id="1_j3tie"]
+[ext_resource type="Script" path="res://Script/frog2.gd" id="1_ha5q2"]
 [ext_resource type="Texture2D" uid="uid://be2jg0yyog3pq" path="res://Art Assets/Frog_mouth.png" id="2_gxkh2"]
 [ext_resource type="AudioStream" uid="uid://gdj7hopm4ewa" path="res://Audio/FrogCroak.mp3" id="3_q0vnq"]
 [ext_resource type="Texture2D" uid="uid://bjahu4hde6s5s" path="res://Art Assets/Frog_3.png" id="5_rl5cm"]
@@ -16,6 +16,27 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ql0"]
 radius = 143.014
 
+[sub_resource type="Animation" id="Animation_1kweg"]
+resource_name = "Puff"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Puff:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_oub4g"), ExtResource("8_oub4g"), ExtResource("9_ha301"), ExtResource("10_leu6y"), null]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xd8ab"]
+_data = {
+"Puff": SubResource("Animation_1kweg")
+}
+
 [sub_resource type="Animation" id="Animation_kccoe"]
 resource_name = "tremble"
 length = 0.8
@@ -23,7 +44,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture Node/Sprite2D:texture")
+tracks/0/path = NodePath("Texture Node/Frog:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -50,39 +71,18 @@ _data = {
 "tremble": SubResource("Animation_kccoe")
 }
 
-[sub_resource type="Animation" id="Animation_1kweg"]
-resource_name = "Puff"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Puff:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("8_oub4g"), ExtResource("8_oub4g"), ExtResource("9_ha301"), ExtResource("10_leu6y"), null]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xd8ab"]
-_data = {
-"Puff": SubResource("Animation_1kweg")
-}
-
 [node name="Frog" type="Node2D"]
-script = ExtResource("1_j3tie")
+script = ExtResource("1_ha5q2")
 
 [node name="Texture Node" type="Node2D" parent="."]
 z_index = 25
 
-[node name="Sprite2D2" type="Sprite2D" parent="Texture Node"]
+[node name="Pink" type="Sprite2D" parent="Texture Node"]
 position = Vector2(37, 54)
 scale = Vector2(2.6338, 1.73973)
 texture = ExtResource("2_gxkh2")
 
-[node name="Sprite2D" type="Sprite2D" parent="Texture Node"]
+[node name="Frog" type="Sprite2D" parent="Texture Node"]
 texture = ExtResource("1_eyb4t")
 
 [node name="Area2D" type="Area2D" parent="." groups=["frogs"]]
@@ -91,14 +91,6 @@ texture = ExtResource("1_eyb4t")
 position = Vector2(15, 93)
 shape = SubResource("CircleShape2D_b7ql0")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_q0vnq")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_f555i")
-}
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0.282353, 1, 1)
 offset_left = -63.0
@@ -106,28 +98,36 @@ offset_top = 143.0
 offset_right = 94.0
 offset_bottom = 152.0
 max_value = 200.0
-value = 130.0
+value = 100.0
 show_percentage = false
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q0vnq")
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_b3upw")
 volume_db = 5.0
-
-[node name="Puff" type="Sprite2D" parent="."]
-z_index = 26
-position = Vector2(9, 27)
-scale = Vector2(1.34035, 1.34444)
-
-[node name="Puff2" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_xd8ab")
-}
 
 [node name="AudioStreamPlayer2D3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_ijy05")
 
 [node name="AudioStreamPlayer2D4" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_1lde7")
+
+[node name="Puff" type="Sprite2D" parent="."]
+z_index = 26
+position = Vector2(9, 27)
+scale = Vector2(1.34035, 1.34444)
+
+[node name="Puff_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xd8ab")
+}
+
+[node name="Hungry_anim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f555i")
+}
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

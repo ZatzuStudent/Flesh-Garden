@@ -5,9 +5,9 @@ signal growth_time(gtime)
 signal harvest_time(htime)
 signal plant_growth_sprite(sprite)
 signal plant_type(type)
-var onionfoot_value = 2
-var onionfoot_growth_time = 18
-var onionfoot_harvest_time = 18
+var onionfoot_value = 4
+var onionfoot_growth_time = 15
+var onionfoot_harvest_time = 15
 
 var onionfoot_growth_sprite= {
 	0 : preload("res://Art Assets/Growth/Plant Growth Spite_10.png"),
