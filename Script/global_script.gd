@@ -33,6 +33,7 @@ var day = 1
 var time_of_day = 0
 var paused = false
 var shop_open = 1
+var is_cauldron_area = false
 
 func _ready():
 	customer_number = randi_range(0,4)

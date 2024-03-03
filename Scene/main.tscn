@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://8vyi52u1it48"]
+[gd_scene load_steps=58 format=3 uid="uid://8vyi52u1it48"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_881hs"]
 [ext_resource type="Texture2D" uid="uid://fm8msb86msot" path="res://Art Assets/Background.png" id="2_m8nip"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" path="res://Script/Angel Spawner.gd" id="33_rjhpf"]
 [ext_resource type="PackedScene" uid="uid://b54setsnfcu53" path="res://Scene/potion_1.tscn" id="35_r6pd4"]
 [ext_resource type="PackedScene" uid="uid://d2y83v6huda6x" path="res://Scene/angels.tscn" id="36_oyy2w"]
+[ext_resource type="PackedScene" uid="uid://cjet1mx7a7ujf" path="res://Scene/potion_2.tscn" id="37_vjbo2"]
 [ext_resource type="Script" path="res://Script/Pause.gd" id="38_e3t80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnnvw"]
@@ -758,6 +759,9 @@ position = Vector2(-453, -231)
 position = Vector2(-453, -231)
 
 [node name="Angles" parent="." instance=ExtResource("36_oyy2w")]
+
+[node name="Potion4" parent="." instance=ExtResource("37_vjbo2")]
+position = Vector2(-563, -301)
 
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="input_event" from="Products/Node2D2/Eye_Area2D" to="Products" method="_on_parts_area_2d_input_event" binds= [0]]
