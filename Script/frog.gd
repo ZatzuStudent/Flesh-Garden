@@ -37,7 +37,7 @@ func _ready():
 
 func _process(delta):
 	if GlobalScript.paused == false:
-		hunger_bar.value -= delta*1
+		hunger_bar.value -= delta*60
 	else:
 		hunger_bar.value = hunger_bar.value
 
@@ -45,10 +45,13 @@ func _process(delta):
 		shiver_anim.play("tremble")
 		frog_hungry.play()
 		pink.visible = true
+		frog.texture = potion_types[potion_took].sprite
 	elif (hunger_bar.value > 10 && frog_hungry.is_playing() == true) || GlobalScript.paused == true:
 		shiver_anim.stop()
 		frog_hungry.stop()
 		pink.visible = false
+		frog.texture = potion_types[potion_took].sprite
+	
 
 	scale.x = .3+((hunger_bar.value)*.0035)
 
@@ -106,6 +109,8 @@ func _input(event):
 				
 				puffing_anim.play("Puff")
 				puff_sfx.play()
+				print(potion_took)
+				print('joj')
 				frog.texture = potion_types[potion_took].sprite
 				await get_tree().create_timer(.1).timeout
 				frog_collision.disabled = true
@@ -115,5 +120,3 @@ func _input(event):
 				puff_sfx.play()
 				frog.texture = frog_sprite[0]
 				frog_collision.disabled = false
-		else:
-			pressed = true

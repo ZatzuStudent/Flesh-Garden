@@ -9,6 +9,7 @@ radius = 69.0072
 load_path = "res://.godot/imported/Plant Growth Spite_23.png-e9d6ec7ed771f98d54e4cee9b7046c6e.ctex"
 
 [node name="EyeBall" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_yny6k")

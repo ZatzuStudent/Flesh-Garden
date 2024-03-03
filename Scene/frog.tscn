@@ -14,7 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cjboelawekkbu" path="res://Audio/Frog_Gulp.mp3" id="12_1lde7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7ql0"]
-radius = 72.1734
+radius = 143.014
 
 [sub_resource type="Animation" id="Animation_kccoe"]
 resource_name = "tremble"
@@ -88,7 +88,7 @@ texture = ExtResource("1_eyb4t")
 [node name="Area2D" type="Area2D" parent="." groups=["frogs"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(20, 53)
+position = Vector2(15, 93)
 shape = SubResource("CircleShape2D_b7ql0")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

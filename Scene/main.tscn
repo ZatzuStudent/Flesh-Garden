@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://8vyi52u1it48"]
+[gd_scene load_steps=57 format=3 uid="uid://8vyi52u1it48"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_881hs"]
 [ext_resource type="Texture2D" uid="uid://fm8msb86msot" path="res://Art Assets/Background.png" id="2_m8nip"]
@@ -33,6 +33,8 @@
 [ext_resource type="AudioStream" uid="uid://rwvylcfy36ag" path="res://Audio/HumanFarmMainTrack_v3_3-1-24_RileyHodges.mp3" id="32_xbt32"]
 [ext_resource type="PackedScene" uid="uid://cd44jek2l2vun" path="res://Scene/spray.tscn" id="33_ob8lq"]
 [ext_resource type="Script" path="res://Script/Angel Spawner.gd" id="33_rjhpf"]
+[ext_resource type="PackedScene" uid="uid://b54setsnfcu53" path="res://Scene/potion_1.tscn" id="35_r6pd4"]
+[ext_resource type="PackedScene" uid="uid://d2y83v6huda6x" path="res://Scene/angels.tscn" id="36_oyy2w"]
 [ext_resource type="Script" path="res://Script/Pause.gd" id="38_e3t80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnnvw"]
@@ -269,6 +271,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Products" type="Node2D" parent="."]
+z_index = -40
 script = ExtResource("8_220xr")
 
 [node name="Sprite2D" type="Sprite2D" parent="Products"]
@@ -703,6 +706,7 @@ script = ExtResource("33_rjhpf")
 [node name="Timer" type="Timer" parent="Angel Spawner"]
 
 [node name="Pause" type="Node2D" parent="."]
+visible = false
 z_index = 200
 script = ExtResource("38_e3t80")
 
@@ -743,6 +747,17 @@ modulate = Color(0.0941176, 0.0941176, 0.0941176, 0.564706)
 position = Vector2(13.5, 9.00002)
 scale = Vector2(16.5583, 9.58333)
 texture = ExtResource("18_wveum")
+
+[node name="Potion" parent="." instance=ExtResource("35_r6pd4")]
+position = Vector2(-453, -231)
+
+[node name="Potion2" parent="." instance=ExtResource("35_r6pd4")]
+position = Vector2(-453, -231)
+
+[node name="Potion3" parent="." instance=ExtResource("35_r6pd4")]
+position = Vector2(-453, -231)
+
+[node name="Angles" parent="." instance=ExtResource("36_oyy2w")]
 
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="input_event" from="Products/Node2D2/Eye_Area2D" to="Products" method="_on_parts_area_2d_input_event" binds= [0]]

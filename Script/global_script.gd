@@ -9,8 +9,8 @@ var customer_love = {
 }
 
 var storage = {
-	0: 0, #eye
-	1: 0, #hand
+	0: 10, #eye
+	1: 10, #hand
 	2: 0, #leg
 	3: 0, #head
 	4: 99999,
@@ -25,7 +25,8 @@ var crop_numbers = [0, 1, 8]
 
 var timePerday = 180 #constant
 var ClockTimer = 180 #chages
-var money = 120
+var isHoldingPotion = false
+var money = 120000
 var customer_number
 var cauldron = false
 var day = 1

@@ -8,7 +8,7 @@ var isCauldron
 @onready var puff_sfx = $AudioStreamPlayer2D3
 
 func _ready():
-	z_index = 26
+	z_index = 20
 	isholding = false
 	infrog = false
 	insellingarea = false
@@ -24,6 +24,7 @@ func _process(_delta):
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
 		if event.is_pressed():
+			GlobalScript.isHoldingPotion = true
 			isholding = true
 			rotation = 0
 			potion_sfx_pick.play()
@@ -31,6 +32,11 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 			if infrog == true || insellingarea == true:
 				queue_free()
 			isholding = false
+
+func _input(event):
+	if event is InputEventMouseButton && event.button_index == 1:
+		if !event.is_pressed():
+			GlobalScript.isHoldingPotion = false
 
 var infrog
 var insellingarea

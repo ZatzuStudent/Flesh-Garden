@@ -145,7 +145,7 @@ func _process(_delta):
 func _input( event ):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 && !event.is_pressed():
-			if inSeller == true && required_type_harvest != null && inMouse == true:
+			if inSeller == true && required_type_harvest != null && GlobalScript.isHoldingPotion == true:
 				if GlobalScript.storage[required_type_harvest] >= part_numbers[required_type_harvest]:
 					GlobalScript.storage[required_type_harvest] = GlobalScript.storage[required_type_harvest]-required_number_harvest
 					GlobalScript.money += required_number_harvest*part_price[required_type_harvest]
@@ -196,12 +196,3 @@ func _on_button_2_mouse_entered():
 func _on_button_2_mouse_exited():
 	next_time_but.modulate = Color(1,1,1,.2)
 
-
-
-var inMouse = false
-func _on_area_2d_mouse_entered():
-	inMouse = true
-
-
-func _on_area_2d_mouse_exited():
-	inMouse = false
