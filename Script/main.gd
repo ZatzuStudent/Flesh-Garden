@@ -20,6 +20,7 @@ func _process(_delta):
 	var sunset = (MainTimer.wait_time/2)
 	var night = (MainTimer.wait_time/3)-5
 	
+	#for sun
 	if MainTimer.time_left < sunrise && MainTimer.time_left > sunrise-.1 :
 		day_colors.play("Sunrise")
 		GlobalScript.time_of_day = 0
@@ -30,12 +31,14 @@ func _process(_delta):
 		day_colors.play("Sunset")
 	await get_tree().create_timer(1).timeout
 	
+	#for customer
 	if !has_node("Customer_1") && GlobalScript.time_of_day == 0:
 		var instance = customers.instantiate()
 		instance.position = Vector2(-470,-216)
 		call_deferred("add_child", instance)
 	$Day.text = str("Day: ", GlobalScript.day)
-		
+	
+	#for Money
 	money.text = str(GlobalScript.money)
 	for i in range(4):
 		get_node("Products/Label%d" % (i)).text = str(GlobalScript.storage[i])

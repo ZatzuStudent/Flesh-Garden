@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbqk3j0dub8ft"]
+[gd_scene load_steps=23 format=3 uid="uid://dbqk3j0dub8ft"]
 
 [ext_resource type="Texture2D" uid="uid://c3uy36j0g302k" path="res://Art Assets/Customer_Mushroom.png" id="1_jqrca"]
 [ext_resource type="Script" path="res://Script/Components/CustomerComponent.gd" id="2_rd45g"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://bpmio1hifimdg" path="res://Audio/Customer_Human.mp3" id="9_itpyl"]
 [ext_resource type="AudioStream" uid="uid://huph7cu6nl3f" path="res://Audio/Customer_skelleton.mp3" id="10_mx4ka"]
 [ext_resource type="AudioStream" uid="uid://db55vhuuowlmy" path="res://Audio/Kaching.mp3" id="11_i8vdm"]
+[ext_resource type="Script" path="res://Script/PotionHolder.gd" id="14_66gui"]
 
 [sub_resource type="Animation" id="Animation_31jjd"]
 resource_name = "float_money"
@@ -87,6 +88,9 @@ radius = 73.0616
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f8vtm"]
 size = Vector2(258, 285)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ve606"]
+radius = 2.0
 
 [node name="Customer_1" type="Node2D"]
 
@@ -191,7 +195,7 @@ visible = false
 position = Vector2(223, 186)
 texture = ExtResource("5_x1qpo")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["area_behind_selling"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(264, -97)
@@ -233,8 +237,16 @@ stream = ExtResource("10_mx4ka")
 stream = ExtResource("11_i8vdm")
 volume_db = -10.0
 
+[node name="PotionHolder" type="Area2D" parent="." groups=["potion_hold_area"]]
+script = ExtResource("14_66gui")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PotionHolder"]
+shape = SubResource("CircleShape2D_ve606")
+
 [connection signal="button_down" from="Button2" to="CustomerComponent" method="_on_button_2_button_down"]
 [connection signal="mouse_entered" from="Button2" to="CustomerComponent" method="_on_button_2_mouse_entered"]
 [connection signal="mouse_exited" from="Button2" to="CustomerComponent" method="_on_button_2_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="CustomerComponent" method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="CustomerComponent" method="_on_area_2d_area_exited"]
+[connection signal="area_entered" from="PotionHolder" to="CustomerComponent" method="_on_potion_holder_area_entered"]
+[connection signal="area_exited" from="PotionHolder" to="CustomerComponent" method="_on_potion_holder_area_exited"]

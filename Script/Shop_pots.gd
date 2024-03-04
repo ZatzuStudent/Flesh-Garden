@@ -6,13 +6,13 @@ var movePotPos
 var upgrade_types = {
 	0 : {scene = preload("res://Scene/pot_small_1.tscn"), price = 30}, #pot_small
 	1 : {scene = preload("res://Scene/pot_big_1.tscn"), price = 50},#pot_big
-	2 : {scene = preload("res://Scene/Pot_Hanging_1.tscn"), price = 70}, #pot_hang
+	2 : {scene = preload("res://Scene/Pot_Hanging_1.tscn"), price = 40}, #pot_hang
 	3 : {scene = preload("res://Scene/pot_small_2.tscn"), price = 50}, #pot_small
 	4 : {scene = preload("res://Scene/pot_big_2.tscn"), price = 80},#pot_big
-	5 : {scene = preload("res://Scene/Pot_Hanging_2.tscn"), price = 120}, #pot_hang
+	5 : {scene = preload("res://Scene/Pot_Hanging_2.tscn"), price = 60}, #pot_hang
 	6 : {scene = preload("res://Scene/pot_small_3.tscn"), price = 100}, #pot_small
-	7 : {scene = preload("res://Scene/pot_big_3.tscn"), price = 130},#pot_big
-	8 : {scene = preload("res://Scene/Pot_Hanging_3.tscn"), price = 230}, #pot_hang
+	7 : {scene = preload("res://Scene/pot_big_3.tscn"), price = 230},#pot_big
+	8 : {scene = preload("res://Scene/Pot_Hanging_3.tscn"), price = 180}, #pot_hang
 }
 @onready var pull_coll = $PullArea2D/CollisionShape2D
 

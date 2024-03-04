@@ -237,6 +237,14 @@ z_index = 1
 position = Vector2(168, 232)
 texture = ExtResource("6_l1xhh")
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+
+[node name="Label" type="Label" parent="Node2D"]
+offset_right = 40.0
+offset_bottom = 23.0
+
 [connection signal="input_event" from="BuyAreas/BuyArea2D1" to="." method="_on_buy_area_2d_input_event" binds= [0]]
 [connection signal="input_event" from="BuyAreas/BuyArea2D2" to="." method="_on_buy_area_2d_input_event" binds= [1]]
 [connection signal="input_event" from="BuyAreas/BuyArea2D3" to="." method="_on_buy_area_2d_input_event" binds= [2]]

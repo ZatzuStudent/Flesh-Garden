@@ -41,7 +41,6 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
 		if event.is_pressed():
 			isholding = true
-			GlobalScript.isItem = true
 
 func _input( event ):
 	if event is InputEventMouseButton:

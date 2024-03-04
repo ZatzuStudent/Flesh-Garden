@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://8vyi52u1it48"]
+[gd_scene load_steps=70 format=3 uid="uid://8vyi52u1it48"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_881hs"]
 [ext_resource type="Texture2D" uid="uid://fm8msb86msot" path="res://Art Assets/Background.png" id="2_m8nip"]
@@ -33,10 +33,10 @@
 [ext_resource type="AudioStream" uid="uid://rwvylcfy36ag" path="res://Audio/HumanFarmMainTrack_v3_3-1-24_RileyHodges.mp3" id="32_xbt32"]
 [ext_resource type="PackedScene" uid="uid://cd44jek2l2vun" path="res://Scene/spray.tscn" id="33_ob8lq"]
 [ext_resource type="Script" path="res://Script/Angel Spawner.gd" id="33_rjhpf"]
-[ext_resource type="PackedScene" uid="uid://b54setsnfcu53" path="res://Scene/potion_1.tscn" id="35_r6pd4"]
-[ext_resource type="PackedScene" uid="uid://dd81i8b5ytgv5" path="res://Scene/potion_3.tscn" id="36_742qc"]
-[ext_resource type="PackedScene" uid="uid://cjet1mx7a7ujf" path="res://Scene/potion_2.tscn" id="37_vjbo2"]
 [ext_resource type="Script" path="res://Script/Pause.gd" id="38_e3t80"]
+[ext_resource type="Script" path="res://Script/Ending.gd" id="38_k0gjl"]
+[ext_resource type="Texture2D" uid="uid://cwdglgpo8w02b" path="res://Art Assets/EndingScene_1.png" id="39_i6g5n"]
+[ext_resource type="Texture2D" uid="uid://co28m4kjt63qx" path="res://Art Assets/EndingScene_2.png" id="40_678or"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnnvw"]
 size = Vector2(984, 304)
@@ -52,6 +52,27 @@ size = Vector2(59, 512)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oaepy"]
 size = Vector2(350, 499)
+
+[sub_resource type="Animation" id="Animation_p0fji"]
+resource_name = "new_animation"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Tutorial_Cauldron_up:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3ec7"]
+_data = {
+"new_animation": SubResource("Animation_p0fji")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gbged"]
 size = Vector2(133, 772)
@@ -120,9 +141,26 @@ tracks/4/keys = {
 "values": [ExtResource("10_1qapa"), null]
 }
 
+[sub_resource type="Animation" id="Animation_5mfqx"]
+resource_name = "fade"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lty1d"]
 _data = {
-"drag": SubResource("Animation_sihkd")
+"drag": SubResource("Animation_sihkd"),
+"fade": SubResource("Animation_5mfqx")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8xwod"]
@@ -132,7 +170,7 @@ size = Vector2(144.5, 284)
 radius = 53.1507
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqolp"]
-size = Vector2(115, 181)
+size = Vector2(115, 96)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_innsl"]
 radius = 78.1025
@@ -142,6 +180,78 @@ size = Vector2(238, 116)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3k17"]
 size = Vector2(552, 132)
+
+[sub_resource type="Animation" id="Animation_x4er2"]
+resource_name = "blood"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BloodLabel3:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_58e04"]
+resource_name = "frog"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrogLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vqjyq"]
+resource_name = "pot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PotsLabel4:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_shapc"]
+resource_name = "pull"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PullLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t6k47"]
+_data = {
+"blood": SubResource("Animation_x4er2"),
+"frog": SubResource("Animation_58e04"),
+"pot": SubResource("Animation_vqjyq"),
+"pull": SubResource("Animation_shapc")
+}
 
 [sub_resource type="Animation" id="Animation_mqrtw"]
 resource_name = "Sunrise"
@@ -215,6 +325,107 @@ size = Vector2(169, 2298)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivmy1"]
 size = Vector2(3524.75, 180)
+
+[sub_resource type="Animation" id="Animation_lqdgq"]
+resource_name = "Ending"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ending/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ending/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_u4nea"]
+resource_name = "Ending2"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ending/Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ending/Sprite2D2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ending/Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Ending/Sprite2D2:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0yi1e"]
+resource_name = "Ending3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Ending/Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eilmc"]
+_data = {
+"Ending": SubResource("Animation_lqdgq"),
+"Ending2": SubResource("Animation_u4nea"),
+"Ending3": SubResource("Animation_0yi1e")
+}
 
 [node name="Main" type="Node"]
 script = ExtResource("1_881hs")
@@ -484,6 +695,12 @@ shape = SubResource("RectangleShape2D_oaepy")
 visible = false
 script = ExtResource("22_aqirp")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial_Cauldron_up"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_c3ec7")
+}
+
 [node name="Area2D2" type="Area2D" parent="Tutorial_Cauldron_up"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial_Cauldron_up/Area2D2"]
@@ -556,7 +773,7 @@ shape = SubResource("CircleShape2D_ydg2l")
 position = Vector2(-21, 96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tutorial_Plant/Area2D2"]
-position = Vector2(943.5, 237.5)
+position = Vector2(943.5, 276)
 shape = SubResource("RectangleShape2D_uqolp")
 
 [node name="Area2D3" type="Area2D" parent="Tutorial_Plant"]
@@ -579,19 +796,14 @@ position = Vector2(-360, -129)
 position = Vector2(749, 295)
 shape = SubResource("RectangleShape2D_m3k17")
 
-[node name="PullLabel" type="Label" parent="Tutorial_Plant"]
-offset_left = 513.0
-offset_top = 46.0
-offset_right = 918.0
-offset_bottom = 190.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 30
-text = "Pull or click the tabs
-to open shops
-Pot first, then seed"
-horizontal_alignment = 1
+[node name="Area2D6" type="Area2D" parent="Tutorial_Plant"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Tutorial_Plant/Area2D6"]
+position = Vector2(454, 364)
+shape = SubResource("RectangleShape2D_uqolp")
 
 [node name="FrogLabel" type="Label" parent="Tutorial_Plant"]
+modulate = Color(1, 1, 1, 0)
 offset_left = -268.0
 offset_top = 302.0
 offset_right = 137.0
@@ -602,7 +814,20 @@ text = "Feed frog seeds,
 pots or potions"
 horizontal_alignment = 1
 
+[node name="PullLabel" type="Label" parent="Tutorial_Plant"]
+offset_left = 549.0
+offset_top = 55.0
+offset_right = 954.0
+offset_bottom = 199.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Pull or click the tabs
+to open shops
+Pot first, then seed"
+horizontal_alignment = 1
+
 [node name="BloodLabel3" type="Label" parent="Tutorial_Plant"]
+modulate = Color(1, 1, 1, 0)
 offset_left = 69.0
 offset_top = 422.0
 offset_right = 474.0
@@ -613,6 +838,7 @@ text = "Plants need BLOOD"
 horizontal_alignment = 1
 
 [node name="PotsLabel4" type="Label" parent="Tutorial_Plant"]
+modulate = Color(1, 1, 1, 0)
 offset_left = 32.0
 offset_top = -29.0
 offset_right = 462.0
@@ -622,6 +848,11 @@ theme_override_font_sizes/font_size = 30
 text = "Some plants need 
 bigger pots"
 horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Tutorial_Plant"]
+libraries = {
+"": SubResource("AnimationLibrary_t6k47")
+}
 
 [node name="Extras" type="Node2D" parent="."]
 z_index = -98
@@ -749,14 +980,22 @@ position = Vector2(13.5, 9.00002)
 scale = Vector2(16.5583, 9.58333)
 texture = ExtResource("18_wveum")
 
-[node name="Potion2" parent="." instance=ExtResource("37_vjbo2")]
-position = Vector2(-480, -188)
+[node name="Ending" type="Node2D" parent="."]
+script = ExtResource("38_k0gjl")
 
-[node name="Potion3" parent="." instance=ExtResource("36_742qc")]
-position = Vector2(-480, -188)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ending"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_eilmc")
+}
 
-[node name="Potion" parent="." instance=ExtResource("35_r6pd4")]
-position = Vector2(-480, -188)
+[node name="Sprite2D" type="Sprite2D" parent="Ending"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("39_i6g5n")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ending"]
+texture = ExtResource("40_678or")
 
 [connection signal="timeout" from="ClockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="input_event" from="Products/Node2D2/Eye_Area2D" to="Products" method="_on_parts_area_2d_input_event" binds= [0]]
@@ -766,9 +1005,10 @@ position = Vector2(-480, -188)
 [connection signal="input_event" from="Products/Node2D2/Heart_Area2D" to="Products" method="_on_parts_area_2d_input_event" binds= [9]]
 [connection signal="input_event" from="Tutorial_Cauldron_up/Area2D2" to="Tutorial_Cauldron_up" method="_on_area_2d_2_input_event"]
 [connection signal="input_event" from="Tutorial_Potion/Area2D" to="Tutorial_Potion" method="_on_area_2d_input_event"]
-[connection signal="input_event" from="Tutorial_Plant/Area2D1" to="Tutorial_Plant" method="_on_area_2d_1_input_event"]
-[connection signal="input_event" from="Tutorial_Plant/Area2D2" to="Tutorial_Plant" method="_on_area_2d_2_input_event"]
-[connection signal="input_event" from="Tutorial_Plant/Area2D3" to="Tutorial_Plant" method="_on_area_2d_3_input_event"]
-[connection signal="input_event" from="Tutorial_Plant/Area2D4" to="Tutorial_Plant" method="_on_area_2d_4_input_event"]
-[connection signal="input_event" from="Tutorial_Plant/Area2D5" to="Tutorial_Plant" method="_on_area_2d_5_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D1" to="Tutorial_Plant" method="_seed_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D2" to="Tutorial_Plant" method="_pot_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D3" to="Tutorial_Plant" method="_frog_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D4" to="Tutorial_Plant" method="_blood_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D5" to="Tutorial_Plant" method="_table_input_event"]
+[connection signal="input_event" from="Tutorial_Plant/Area2D6" to="Tutorial_Plant" method="_pot2_input_event"]
 [connection signal="timeout" from="Angel Spawner/Timer" to="Angel Spawner" method="_on_timer_timeout"]

@@ -14,12 +14,10 @@ func _process(_delta):
 		tutorial.visible = true
 		await get_tree().create_timer(1).timeout
 		animation_player.play("drag")
-		await get_tree().create_timer(1).timeout
-		animation_player.play("drag")
-		await get_tree().create_timer(1).timeout
-		animation_player.play("drag")
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed:
+			animation_player.play("fade")
+			await animation_player.animation_finished
 			queue_free()

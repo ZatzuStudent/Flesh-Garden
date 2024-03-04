@@ -10,5 +10,5 @@ func _process(_delta):
 		$Extras3.visible = true
 	if GlobalScript.money > 500:
 		$Extras2.visible = true
-	if GlobalScript.money > 800:
+	if GlobalScript.money > 1000:
 		$Extras1.visible = true

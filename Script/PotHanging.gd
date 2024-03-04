@@ -45,6 +45,11 @@ func _process(_delta):
 		global_position = get_global_mouse_position()
 	if isHolding == true:
 		global_position = get_global_mouse_position() - movePotPos
+		
+	if get_child_count() >  4:
+		seed_collision.set_deferred("disabled", true)
+	else:
+		seed_collision.set_deferred("disabled", false)
 	
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:

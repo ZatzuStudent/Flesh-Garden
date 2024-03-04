@@ -23,11 +23,19 @@ var crop_type= {
 }
 
 var parts = ["eyeball", "hands", "leg", "head","agility","wisdom","strength","passion", "lust", "heart"]
+
+var potions_types = {
+	4 : "agility",
+	5 : "wisdom",
+	6 : "strength",
+	7 : "passion",
+	8 : "lust"}
+
 var part_numbers = {0:0, 1:0, 2:0, 3:0, 4:0, 5:0, 6:0, 7:0, 8:0, 9:0}
 var part_price = {
 	0: 4, #eye 4x3x3 = 36
 	1: 7, #hand 6x3x2 = 36
-	2: 30, #leg x4
+	2: 20, #leg x4
 	3: 50, #skull x3
 	4: 90, #agility 35 
 	5: 150, #wisdom 52
@@ -50,7 +58,7 @@ var part_price = {
 @onready var plus_money_anim = $"../Float Plus Money/AnimationPlayer"
 @onready var plus_money_label = $"../Float Plus Money/Label"
 @onready var float_plus_node = $"../Float Plus Money"
-
+var holding_right = false
 
 @onready var customer_sfx = [
 	$"../sfx/AudioStreamPlayer2D1", 
@@ -73,9 +81,9 @@ func _ready():
 	sprite_2d.visible = false
 	dialog_sprite.visible = false
 	next_time_but.visible = false
+	float_plus_node.visible = false
 	collision_req.disabled = true
 	collision_req2.disabled = true
-	float_plus_node.visible = false
 	await get_tree().create_timer(randi_range(6,15)).timeout
 	next_time_but.modulate = Color(1,1,1,.2)
 	sprite_2d.texture = customer_type[GlobalScript.customer_number]
@@ -90,52 +98,12 @@ func _ready():
 	
 	if GlobalScript.customer_number == 2:
 		sprite_2d.z_index = -89
+
 	customer_old = GlobalScript.customer_number
-
-	if GlobalScript.day >= 2:
-		required_type_harvest = GlobalScript.crop_numbers[randi_range(0, GlobalScript.crop_numbers.size() -  1)]
-	elif GlobalScript.day <= 1:
-		required_type_harvest = GlobalScript.crop_numbers[randi_range(0, GlobalScript.crop_numbers.size() -  1)]
-
-	print(GlobalScript.crop_numbers)
+	required_type_harvest = GlobalScript.crop_numbers[randi_range(0, GlobalScript.crop_numbers.size() -  1)]
 	
-	if GlobalScript.storage[2] >= 1 && !GlobalScript.crop_numbers.has(2):
-		GlobalScript.crop_numbers.append(2)
-		GlobalScript.crop_numbers.append(4)
-	if GlobalScript.storage[3] >= 1 && !GlobalScript.crop_numbers.has(3):
-		GlobalScript.crop_numbers.append(3)
-		GlobalScript.crop_numbers.append(5)
-	if GlobalScript.storage[9] >= 1 && !GlobalScript.crop_numbers.has(9):
-		GlobalScript.crop_numbers.append(9)
-	if GlobalScript.cauldron == true:
-		if GlobalScript.storage[3] >= 1:
-			GlobalScript.crop_numbers.append(6)
-		if GlobalScript.storage[9] >= 1:
-			GlobalScript.crop_numbers.append(7)
-	
-	if required_type_harvest != null:
-		if required_type_harvest == 0:
-			if GlobalScript.day >= 3:
-				required_number_harvest = randi_range(6,20)
-			elif GlobalScript.day == 2:
-				required_number_harvest = randi_range(6,12)
-			elif GlobalScript.day <= 1:
-				required_number_harvest = randi_range(1,5)
-
-		elif required_type_harvest == 1:
-			if GlobalScript.day >= 3:
-				required_number_harvest = randi_range(3,15)
-			elif GlobalScript.day <= 2:
-				required_number_harvest = randi_range(1,5)
-
-		elif required_type_harvest == 2 || required_type_harvest == 3:
-			required_number_harvest = randi_range(1,3)
-
-		elif required_type_harvest == 9:
-			required_number_harvest = randi_range(2,6)
-
-		else:
-			required_number_harvest = 1
+	_check_if_available()
+	_number_harvest()
 
 	if required_type_harvest != null:
 		part_numbers[required_type_harvest] = required_number_harvest
@@ -145,17 +113,14 @@ func _ready():
 func _process(_delta):
 	if GlobalScript.time_of_day == 1:
 		_to_exit()
+	_to_open_potion_sell()
 
 func _input( event ):
 	if event is InputEventMouseButton && event.button_index == 1:
 		if !event.is_pressed():
-			if inSeller == true && required_type_harvest != null:
+			if inSeller == true && holding_right == true:
 				if GlobalScript.storage[required_type_harvest] >= part_numbers[required_type_harvest]:
-					if 4 <= required_type_harvest && required_type_harvest <= 8:
-						if  GlobalScript.isHoldingPotion == true:
-							_to_be_sold()
-					else:
-						_to_be_sold()
+					_to_be_sold()
 
 func _to_be_sold():
 	GlobalScript.storage[required_type_harvest] = GlobalScript.storage[required_type_harvest]-required_number_harvest
@@ -169,22 +134,46 @@ func _to_be_sold():
 
 var potion_needed = 0
 
-func _on_area_2d_area_entered(area):
-	if required_type_harvest != null:
-		if area.is_in_group(parts[required_type_harvest]):
-			inSeller = true
-			seller_area.call_deferred("set_disabled", false)
-			seller_area2.call_deferred("set_disabled", false)
-func _on_area_2d_area_exited(area):
-	if required_type_harvest != null:
-		if area.is_in_group(parts[required_type_harvest]):
-			inSeller = false
-			seller_area.call_deferred("set_disabled", true)
-			seller_area2.call_deferred("set_disabled", true)
-		return
+
 
 func _on_button_2_button_down():
 	_to_exit()
+
+func _on_button_2_mouse_entered():
+	next_time_but.modulate = Color(1,1,1,1)
+
+func _on_button_2_mouse_exited():
+	next_time_but.modulate = Color(1,1,1,.2)
+
+func _on_potion_holder_area_entered(area):
+	if required_type_harvest != null:
+		if area.is_in_group(parts[required_type_harvest]):
+			holding_right = true
+			
+func _on_potion_holder_area_exited(area):
+	if required_type_harvest != null:
+		if area.is_in_group(parts[required_type_harvest]):
+			holding_right = false
+			
+func _on_area_2d_area_entered(area):
+	if required_type_harvest != null:
+		if area.is_in_group("potion_hold_area"):
+			inSeller = true
+			
+func _on_area_2d_area_exited(area):
+	if required_type_harvest != null:
+		if area.is_in_group("potion_hold_area"):
+			inSeller = false
+
+func _to_open_potion_sell():
+	if holding_right == true && inSeller == true:
+		seller_area.call_deferred("set_disabled", false)
+		seller_area2.call_deferred("set_disabled", false)
+	else:
+		seller_area.call_deferred("set_disabled", true)
+		seller_area2.call_deferred("set_disabled", true)
+
+#ALL FUNCS
 
 func _to_exit():
 	while true:
@@ -201,9 +190,43 @@ func _to_exit():
 	await animation_player.animation_finished
 	$"..".queue_free()
 
-func _on_button_2_mouse_entered():
-	next_time_but.modulate = Color(1,1,1,1)
+func _check_if_available():
+	if GlobalScript.storage[2] >= 1 && !GlobalScript.crop_numbers.has(2):
+		GlobalScript.crop_numbers.append(2)
+		GlobalScript.crop_numbers.append(4)
+	if GlobalScript.storage[3] >= 1 && !GlobalScript.crop_numbers.has(3):
+		GlobalScript.crop_numbers.append(3)
+		GlobalScript.crop_numbers.append(5)
+	if GlobalScript.storage[9] >= 1 && !GlobalScript.crop_numbers.has(9):
+		GlobalScript.crop_numbers.append(9)
+	if GlobalScript.cauldron == true:
+		if GlobalScript.storage[3] >= 1:
+			GlobalScript.crop_numbers.append(6)
+		if GlobalScript.storage[9] >= 1:
+			GlobalScript.crop_numbers.append(7)
 
-func _on_button_2_mouse_exited():
-	next_time_but.modulate = Color(1,1,1,.2)
+func _number_harvest():
+	if required_type_harvest != null:
+		if required_type_harvest == 0:
+			if GlobalScript.day >= 3:
+				required_number_harvest = randi_range(6,20)
+			elif GlobalScript.day == 2:
+				required_number_harvest = randi_range(6,12)
+			elif GlobalScript.day <= 1:
+				required_number_harvest = randi_range(1,5)
+		elif required_type_harvest == 1:
+			if GlobalScript.day >= 3:
+				required_number_harvest = randi_range(3,15)
+			elif GlobalScript.day <= 2:
+				required_number_harvest = randi_range(1,5)
+		elif required_type_harvest == 2:
+			required_number_harvest = randi_range(2,6)
+		elif required_type_harvest == 3:
+			required_number_harvest = randi_range(1,3)
+		elif required_type_harvest == 9:
+			required_number_harvest = randi_range(2,6)
+		else:
+			required_number_harvest = 1
+
+
 

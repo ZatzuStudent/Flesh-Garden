@@ -9,9 +9,9 @@ var customer_love = {
 }
 
 var storage = {
-	0: 20, #eye
-	1: 20, #hand
-	2: 20, #leg
+	0: 0, #eye
+	1: 0, #hand
+	2: 0, #leg
 	3: 0, #head
 	4: 99999,
 	5: 99999, 
@@ -34,14 +34,13 @@ var time_of_day = 0
 var paused = false
 var shop_open = 1
 var is_cauldron_area = false
-var isHoldingPotion = false
 
 var isEmpty = true
 
 var frog_eaten = 0
 var frog_size = 1
 var watering = false
-
+var all_bought = false
 
 func _ready():
 	customer_number = randi_range(0,4)

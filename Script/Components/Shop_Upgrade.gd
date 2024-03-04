@@ -9,8 +9,8 @@ var upgrade_types = {
 	1 : {scene = preload("res://Scene/stool.tscn"), price = 70, pos = Vector2(-81, 275), bought = false},#stool
 	2 : {scene = preload("res://Scene/Laddle.tscn"), price = 300, pos = Vector2(-488, -24), bought = false}, #cauldron
 	3 : {scene = preload("res://Scene/clock.tscn"), price = 450, pos = Vector2(322, -207), bought = false}, #clock
-	4 : {scene = preload("res://Scene/real_plant.tscn"), price = 120, pos = Vector2(792, 150), bought = false}, #realplant
-	5 : {scene = preload("res://Scene/more_plant.tscn"), price = 400, pos = Vector2(70, 445), bought = false} #moreplant
+	4 : {scene = preload("res://Scene/real_plant.tscn"), price = 220, pos = Vector2(792, 150), bought = false}, #realplant
+	5 : {scene = preload("res://Scene/more_plant.tscn"), price = 600, pos = Vector2(70, 445), bought = false} #moreplant
 }
 var time_of_holding = 0
 @onready var pull_coll = $PullArea2D/CollisionShape2D
@@ -34,6 +34,11 @@ func _process(delta):
 	if isHolding == true:
 		time_of_holding += delta
 		global_position.x = clamp(get_global_mouse_position().x - movePotPos.x, 685, 1156)
+
+	for i in upgrade_types:
+		if upgrade_types[i].bought == false:
+			return
+	GlobalScript.all_bought = true
 
 func _on_pull_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:

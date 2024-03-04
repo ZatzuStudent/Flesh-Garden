@@ -4,6 +4,8 @@ extends Node2D
 @onready var blood_label = $BloodLabel3
 @onready var pots_label = $PotsLabel4
 @onready var pull_label = $PullLabel
+@onready var tutorial_anim = $AnimationPlayer
+
 var done_numbers = {
 	0 : 0,
 	1 : 0,
@@ -13,43 +15,64 @@ var done_numbers = {
 }
 
 func _ready():
-	pull_label.visible = true
-	frog_label.visible = false
-	blood_label.visible = false
-	pots_label.visible = false
+	pull_label.modulate = Color(1,1,1,1)
+	frog_label.modulate = Color(1,1,1,0)
+	blood_label.modulate = Color(1,1,1,0)
+	pots_label.modulate = Color(1,1,1,0)
 
-func _on_area_2d_2_input_event(_viewport, event, _shape_idx):
+func _pot_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			pots_label.visible = true
-			pull_label.visible = false
+		if event.is_pressed() && done_numbers[0] == 0:
+			pots_label.modulate = Color(1,1,1,1)
 			done_numbers[0] = 1
+			if pull == false:
+				tutorial_anim.play("pull")
+				pull = true
 
-func _on_area_2d_1_input_event(_viewport, event, _shape_idx):
+var pot = false
+var pull = false
+
+
+func _seed_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			frog_label.visible = true
-			pull_label.visible = false
+		if event.is_pressed() && done_numbers[1] == 0:
+			frog_label.modulate = Color(1,1,1,1)
 			done_numbers[1] = 1
+			if pull == false:
+				tutorial_anim.play("pull")
+				pull = true
 
-func _on_area_2d_3_input_event(_viewport, event, _shape_idx):
+func _frog_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			frog_label.visible = false
-			done_numbers[2] = 1
+		if done_numbers[2] == 0 && frog_label.modulate == Color(1,1,1,1):
+			if event.is_pressed():
+				done_numbers[2] = 1
+				tutorial_anim.play("frog")
+			else:
+				done_numbers[2] = 1
+				tutorial_anim.play("frog")
+				
 
-func _on_area_2d_5_input_event(_viewport, event, _shape_idx):
+func _table_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			blood_label.visible = true
-			pots_label.visible = true
+		if event.is_pressed() && done_numbers[3] == 0:
+			blood_label.modulate = Color(1,1,1,1)
 			done_numbers[3] = 1
+			if pot == false:
+				tutorial_anim.play("pot")
+				pot = true
 
-func _on_area_2d_4_input_event(_viewport, event, _shape_idx):
+func _pot2_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
-		if event.is_pressed():
-			blood_label.visible = false
-			pots_label.visible = false
+		if event.is_pressed() && pot == false:
+			tutorial_anim.play("pot")
+			pot = true
+
+func _blood_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton && event.button_index == 1:
+		if event.is_pressed() && done_numbers[4] == 0 && blood_label.modulate == Color(1,1,1,1):
+			blood_label.modulate = Color(1,1,1,0)
+			tutorial_anim.play("blood")
 			done_numbers[4] = 1
 
 func _process(_delta):
@@ -59,6 +82,7 @@ func _process(_delta):
 			done = false
 			break
 	if done == true:
-		print('done')
+		await tutorial_anim.animation_finished
 		queue_free()
+
 
