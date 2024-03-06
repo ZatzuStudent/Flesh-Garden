@@ -10,6 +10,7 @@ func _input(_event):
 			Engine.time_scale = 0
 			GlobalScript.paused = true
 			$Button.text = "Pause"
+			GlobalScript.shop_open = 0
 		else:
 			visible = false
 			Engine.time_scale = 1

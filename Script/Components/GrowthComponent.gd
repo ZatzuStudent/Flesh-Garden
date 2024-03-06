@@ -51,8 +51,7 @@ func _on_growth_timer_timeout():
 	if (plant_type == 0 || plant_type == 1) && plant_phase == 3:
 		GrowthTimer.stop()
 		isharvestTime = true
-		print('harvest')
-		
+
 	if (plant_type == 2 || plant_type == 3) && plant_phase == (plant_spritesheet.size()-1):
 		GrowthTimer.stop()
 		isharvestTime = true

@@ -13,13 +13,18 @@ var spawn_node = preload("res://Scene/just_spawned.tscn")
 var time_of_holding = 0
 var spawn_in_shop = 0
 var at_max = false
-
+var bought_something = false
 func _ready():
 	for i in range(upgrade_types.size()):
 		if upgrade_types[i].has("price"):
 			get_node("Prices/Label" + str(i+1)).text = str(upgrade_types[i].price)
 
 func _process(delta):
+	if get_child_count() <=  6:
+		bought_something = false
+	else:
+		bought_something = true
+				
 	if GlobalScript.shop_open != 1:
 		global_position.x = 1155
 		
@@ -53,19 +58,28 @@ func _on_pull_area_2d_input_event(_viewport, event, _shape_idx):
 			isHolding = false
 
 func _input( event ):
-	if event is InputEventMouseButton:
-		if event.button_index == 1 and !event.is_pressed():
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		if !event.is_pressed():
 			isHolding = false
+			if bought_something == true && upgrade_num != null:
+				await get_tree().create_timer(.05).timeout
+				if get_child_count() == 6:
+					GlobalScript.money -= upgrade_types[upgrade_num].price
+					bought_something = false
+					upgrade_num = null
+
+var upgrade_num = null
 
 func _on_buy_area_2d_1_input_event(_viewport, event, _shape_idx, i):
 	if GlobalScript.money >= upgrade_types[i].price:
 		if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-			GlobalScript.money -= upgrade_types[i].price
-			var instance = upgrade_types[i].scene.instantiate()
-			call_deferred("add_sibling", instance)
-			var instance2 = spawn_node.instantiate()
-			call_deferred("add_sibling", instance2)
-			global_position.x = 1155
+			if !event.is_pressed():
+				if bought_something == false:
+					upgrade_num = i
+					bought_something = true
+					var instance = upgrade_types[i].scene.instantiate()
+					call_deferred("add_child", instance)
+					global_position.x = 1155
 
 func _on_buy_area_2d_1_area_entered(area):
 	if area.is_in_group("just_spawn"):

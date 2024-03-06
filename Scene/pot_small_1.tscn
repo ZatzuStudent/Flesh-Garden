@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3bkjdbjhljle"]
+[gd_scene load_steps=10 format=3 uid="uid://d3bkjdbjhljle"]
 
 [ext_resource type="Script" path="res://Script/FrogEater.gd" id="1_bhcbi"]
 [ext_resource type="Texture2D" uid="uid://b5nqye7vyw35k" path="res://Art Assets/Pot Small.png" id="2_nes2f"]
@@ -12,6 +12,8 @@ size = Vector2(114, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrhk3"]
 size = Vector2(23, 14)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r6c8"]
 
 [node name="Pot_small_3" type="Node2D"]
 script = ExtResource("1_bhcbi")
@@ -51,6 +53,11 @@ stream = ExtResource("7_e4ws5")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 
+[node name="SpawnArea2D" type="Area2D" parent="." groups=["spawned"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2D"]
+shape = SubResource("CircleShape2D_3r6c8")
+
 [connection signal="pot_type" from="PotComponent" to="HoldComponent" method="_on_pot_component_pot_type"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="HoldComponent" method="_on_area_2d_area_entered"]
@@ -58,5 +65,6 @@ stream = ExtResource("7_e4ws5")
 [connection signal="area_exited" from="Area2D" to="HoldComponent" method="_on_area_2d_area_exited"]
 [connection signal="input_event" from="Area2D" to="HoldComponent" method="_on_area_2d_input_event"]
 [connection signal="area_entered" from="SeedArea2D" to="HoldComponent" method="_on_seed_area_2d_area_entered"]
+[connection signal="area_exited" from="SeedArea2D" to="HoldComponent" method="_on_seed_area_2d_area_exited"]
 [connection signal="area_entered" from="PlatformPlacerArea2D" to="HoldComponent" method="_on_platform_placer_area_2d_area_entered"]
 [connection signal="area_exited" from="PlatformPlacerArea2D" to="HoldComponent" method="_on_platform_placer_area_2d_area_exited"]

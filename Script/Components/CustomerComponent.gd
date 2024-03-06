@@ -85,7 +85,7 @@ func _ready():
 	collision_req.disabled = true
 	collision_req2.disabled = true
 	await get_tree().create_timer(randi_range(6,15)).timeout
-	next_time_but.modulate = Color(1,1,1,.2)
+	next_time_but.modulate = Color(1,1,1,.4)
 	sprite_2d.texture = customer_type[GlobalScript.customer_number]
 	customer_sfx[GlobalScript.customer_number].play()
 	sprite_2d.visible = true

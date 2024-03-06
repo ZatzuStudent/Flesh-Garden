@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://k635o4fh2e3k" path="res://Art Assets/Stool.png" id="1_w8dbg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f647m"]
-size = Vector2(145.75, 84)
+size = Vector2(145.75, 108)
 
 [node name="Stool" type="Node2D"]
 
@@ -14,5 +14,5 @@ texture = ExtResource("1_w8dbg")
 [node name="Area2D" type="Area2D" parent="." groups=["platform_stool"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.875, -120)
+position = Vector2(-0.875, -132)
 shape = SubResource("RectangleShape2D_f647m")

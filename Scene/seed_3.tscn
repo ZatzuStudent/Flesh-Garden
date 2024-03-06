@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://be6g00ebsiljd"]
+[gd_scene load_steps=6 format=3 uid="uid://be6g00ebsiljd"]
 
 [ext_resource type="Texture2D" uid="uid://doms7x2xwudye" path="res://Art Assets/Seed_3.png" id="1_8uonl"]
 [ext_resource type="Script" path="res://Script/FrogEater.gd" id="1_m8t37"]
 [ext_resource type="Script" path="res://Script/PlantSeedComponent_2.gd" id="4_5ialj"]
+[ext_resource type="PackedScene" uid="uid://co26svpk4iq1j" path="res://Scene/just_spawned.tscn" id="4_i1rsn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cs5to"]
 radius = 40.1995
@@ -21,6 +22,8 @@ texture = ExtResource("1_8uonl")
 
 [node name="PlantSeedComponent" type="Node2D" parent="."]
 script = ExtResource("4_5ialj")
+
+[node name="Just Spawned" parent="." instance=ExtResource("4_i1rsn")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Area2D" to="PlantSeedComponent" method="_on_area_2d_area_entered"]

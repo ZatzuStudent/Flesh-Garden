@@ -1,8 +1,8 @@
 extends Node2D
 
 var plant_type_1 = {
-	"seed_1": {"scene": preload("res://Scene/plant_1.tscn"), "pos": Vector2(0,-58)},
-	"seed_2": {"scene": preload("res://Scene/plant_2.tscn"), "pos": Vector2(15,-129)},}
+	0: {name = "seed_1", scene = preload("res://Scene/plant_1.tscn"), pos = Vector2(0,-58)},
+	1: {name = "seed_2", scene = preload("res://Scene/plant_2.tscn"), pos = Vector2(15,-129)}}
 
 @onready var seed_collision = $SeedArea2D/CollisionShape2D2
 
@@ -24,14 +24,18 @@ func _ready():
 	oldPotPos = $".".global_position
 	modulate = Color(1,1,1,.3)
 	isfrog = false
-
+var with_seed = null
 func _on_seed_area_2d_area_entered(area):
-	for group1 in plant_type_1.keys():
-		if area in get_tree().get_nodes_in_group(group1):
-			var instance = plant_type_1[group1]["scene"].instantiate()
-			instance.global_position = plant_type_1[group1]["pos"]
-			call_deferred("add_child", instance)
-			seed_collision.set_deferred("disabled", true)
+	for i in plant_type_1:
+		if area.is_in_group(plant_type_1[i].name):
+			if i in [0,1]:
+				with_seed = i
+
+func _on_seed_area_2d_area_exited(area):
+	for i in plant_type_1:
+		if area.is_in_group(plant_type_1[i].name):
+			if i in [0,1]:
+				with_seed = null
 
 func _process(_delta):
 	if number_of_pots == 0 && on_platform == true:
@@ -40,13 +44,13 @@ func _process(_delta):
 	else:
 		modulate = Color(1,1,1,.3)
 		can_putdown = false
-	
+
 	if is_just_bought == true:
 		global_position = get_global_mouse_position()
 	if isHolding == true:
 		global_position = get_global_mouse_position() - movePotPos
 		
-	if get_child_count() >  4:
+	if get_child_count() >  5:
 		seed_collision.set_deferred("disabled", true)
 	else:
 		seed_collision.set_deferred("disabled", false)
@@ -57,10 +61,15 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 			isHolding = true
 			movePotPos = get_global_mouse_position() - global_position
 			oldPotPos = global_position
+			if with_seed != null:
+				var instance = plant_type_1[with_seed].scene.instantiate()
+				instance.position = Vector2(plant_type_1[with_seed].pos)
+				call_deferred("add_child", instance)
+				with_seed = null
 
 func _input(event):
-	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if !event.pressed:
+	if  event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && !event.pressed:
 			if isfrog == true:
 				queue_free()
 				GlobalScript.frog_eaten += 1
@@ -68,10 +77,14 @@ func _input(event):
 				isHolding = false
 				if can_putdown == true:
 					is_just_bought = false
+					if has_node("SpawnArea2D"):
+						$SpawnArea2D.queue_free()
 				else:
 					global_position = oldPotPos
-				if !is_just_bought:
+				if is_just_bought == false:
 					number_of_pots = 0
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && is_just_bought:
+			queue_free()
 
 func _on_area_2d_2_area_entered(area):
 	if area.is_in_group("platform_hanging"):
@@ -95,3 +108,6 @@ func _on_area_2d_area_exited(area):
 		number_of_pots -= 1
 	if area.is_in_group("pots") && is_just_bought == true:
 		number_of_pots -= 1
+
+
+

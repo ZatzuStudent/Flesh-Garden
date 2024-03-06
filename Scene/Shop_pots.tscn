@@ -283,6 +283,10 @@ position = Vector2(263, -37)
 position = Vector2(-80, 272)
 shape = SubResource("RectangleShape2D_w28hj")
 
+[node name="Node" type="Node" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Node"]
+
 [connection signal="area_entered" from="PullArea2D" to="." method="_on_pull_area_2d_area_entered"]
 [connection signal="area_exited" from="PullArea2D" to="." method="_on_pull_area_2d_area_exited"]
 [connection signal="input_event" from="PullArea2D" to="." method="_on_pull_area_2d_input_event"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjumk3w060xgh"]
+[gd_scene load_steps=6 format=3 uid="uid://cjumk3w060xgh"]
 
 [ext_resource type="Script" path="res://Script/PotHanging.gd" id="1_p85c7"]
 [ext_resource type="Texture2D" uid="uid://cj7n7xqxhp5b5" path="res://Art Assets/Hanging Pot.png" id="2_fnvw5"]
@@ -7,6 +7,8 @@
 radius = 82.7345
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mnpll"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nvy8u"]
 
 [node name="PotHanging" type="Node2D"]
 script = ExtResource("1_p85c7")
@@ -36,9 +38,15 @@ position = Vector2(0, -107.5)
 position = Vector2(11, -164.5)
 shape = SubResource("CircleShape2D_mnpll")
 
+[node name="SpawnArea2D" type="Area2D" parent="." groups=["spawned"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnArea2D"]
+shape = SubResource("CircleShape2D_nvy8u")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="area_entered" from="SeedArea2D" to="." method="_on_seed_area_2d_area_entered"]
+[connection signal="area_exited" from="SeedArea2D" to="." method="_on_seed_area_2d_area_exited"]
 [connection signal="area_entered" from="Area2D2" to="." method="_on_area_2d_2_area_entered"]
 [connection signal="area_exited" from="Area2D2" to="." method="_on_area_2d_2_area_exited"]

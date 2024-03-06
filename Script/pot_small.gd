@@ -1,11 +1,10 @@
 extends Node2D
 
 var plant_type_1 = {
-	"seed_1": {"scene": preload("res://Scene/plant_1.tscn"), "pos": Vector2(0, -57)},
-	"seed_2": {"scene": preload("res://Scene/plant_2.tscn"), "pos": Vector2(16, -127)},}
-var plant_type_2 = {
-	"seed_3": {"scene2": preload("res://Scene/plant_3.tscn"), "pos": Vector2(9, -135)},
-	"seed_4": {"scene2": preload("res://Scene/plant_4.tscn"), "pos": Vector2(-14, -111)}}
+	0: {name = "seed_1", scene = preload("res://Scene/plant_1.tscn"), pos = Vector2(0, -57)},
+	1: {name = "seed_2", scene = preload("res://Scene/plant_2.tscn"), pos = Vector2(16, -127)},
+	2: {name = "seed_3", scene = preload("res://Scene/plant_3.tscn"), pos = Vector2(9, -135)},
+	3: {name = "seed_4", scene = preload("res://Scene/plant_4.tscn"), pos = Vector2(-14, -111)}}
 
 @onready var seed_collision = $"../SeedArea2D/CollisionShape2D2"
 @onready var movepot_sfx = $"../AudioStreamPlayer2D"
@@ -42,34 +41,49 @@ func _process(_delta):
 	if isHolding == true:
 		$"..".global_position = get_global_mouse_position() - movePotPos
 
+var with_seed = null
+
 func _on_seed_area_2d_area_entered(area):
-	for group1 in plant_type_1.keys():
-		if area in get_tree().get_nodes_in_group(group1) and pot_type in [1,  2]:
-			var instance = plant_type_1[group1]["scene"].instantiate()
-			instance.global_position = plant_type_1[group1]["pos"]
-			call_deferred("add_child", instance)
-	for group2 in plant_type_2.keys():
-		if area in get_tree().get_nodes_in_group(group2) and pot_type in [2]:
-			var instance = plant_type_2[group2]["scene2"].instantiate()
-			instance.position = plant_type_2[group2]["pos"]
-			call_deferred("add_child", instance)
+	for i in plant_type_1:
+		if area.is_in_group(plant_type_1[i].name):
+			if i in [0,1] || (i in [2,3] && pot_type == 2):
+				with_seed = i
+
+func _on_seed_area_2d_area_exited(area):
+	for i in plant_type_1:
+		if area.is_in_group(plant_type_1[i].name):
+			if i in [0,1] || (i in [2,3] && pot_type == 2):
+				with_seed = null
 
 func _input(event):
-	if event is InputEventMouseButton && event.button_index == 1:
-		if !event.is_pressed() && isHolding == true:
-			isHolding = false
-			if isPlatform == false:
-				$"..".global_position = oldPotPos
-			if isPlatform == true:
-				$"..".global_position.y = platform_pos
-				is_just_bought = false
-				placepot_sfx.play()
-			if !is_just_bought:
-				number_of_pots = 0
+	if  event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT && !event.is_pressed():
+			if with_seed != null:
+				var instance = plant_type_1[with_seed].scene.instantiate()
+				instance.position = Vector2(plant_type_1[with_seed].pos)
+				call_deferred("add_child", instance)
+				with_seed = null
+			#to hold
+			if isHolding == true:
+				isHolding = false
+				if isPlatform == false:
+					$"..".global_position = oldPotPos
+				if isPlatform == true:
+					$"..".global_position.y = platform_pos
+					is_just_bought = false
+					placepot_sfx.play()
+					if get_parent().has_node("SpawnArea2D"):
+						$"../SpawnArea2D".queue_free()
+				if !is_just_bought:
+					number_of_pots = 0
+		
+		if event.button_index == MOUSE_BUTTON_RIGHT && event.is_pressed() && is_just_bought:
+			$"..".queue_free()
+
 
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if  event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.pressed && with_seed == null:
 			isHolding = true
 			movepot_sfx.play()
 			movePotPos = get_global_mouse_position() - global_position
@@ -109,5 +123,7 @@ func _on_area_2d_area_exited(area):
 
 func _on_pot_component_pot_type(type):
 	pot_type = type
+
+
 
 

@@ -62,7 +62,7 @@ func _table_input_event(_viewport, event, _shape_idx):
 				tutorial_anim.play("pot")
 				pot = true
 
-func _pot2_input_event(viewport, event, shape_idx):
+func _pot2_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton && event.button_index == 1:
 		if event.is_pressed() && pot == false:
 			tutorial_anim.play("pot")

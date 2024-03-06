@@ -324,7 +324,7 @@ _data = {
 size = Vector2(169, 2298)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ivmy1"]
-size = Vector2(3524.75, 180)
+size = Vector2(3524.75, 360)
 
 [sub_resource type="Animation" id="Animation_lqdgq"]
 resource_name = "Ending"
@@ -649,7 +649,6 @@ theme_override_font_sizes/font_size = 50
 text = "Day: 1"
 
 [node name="Frog" parent="." instance=ExtResource("20_w4hbl")]
-z_index = -4
 position = Vector2(-106, 440)
 
 [node name="PotionShelf" type="Node2D" parent="."]
@@ -925,11 +924,11 @@ shape = SubResource("RectangleShape2D_qsnra")
 [node name="BoarderArea2D2" type="Area2D" parent="." groups=["boarder_y"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoarderArea2D2"]
-position = Vector2(224.375, 623)
+position = Vector2(224.375, 533)
 shape = SubResource("RectangleShape2D_ivmy1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BoarderArea2D2"]
-position = Vector2(137, -623)
+position = Vector2(126, -694)
 shape = SubResource("RectangleShape2D_ivmy1")
 
 [node name="Angel Spawner" type="Node2D" parent="."]
